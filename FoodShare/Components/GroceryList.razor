@@ -1,0 +1,266 @@
+@* @inject IAccountService AccountService *@
+@* @inject IAlertService AlertService *@
+@* @inject IItemService ItemService *@
+@inject NavigationManager NavigationManager
+@inject IShoppingListService ShoppingListService
+
+@if(people > 0)
+{
+    @if(!edit)
+    {
+        <div>
+                <button class="btn btn-primary button" @onclick="(()=>edit=true)">Edit Shopping List</button>
+        </div>
+        <section class="card">
+            <div class="card-header">
+                <h4>Shopping List</h4> 
+            </div>
+            
+            <table id="shopping-list-table" class="table semester-table">
+                <col><col><col>
+                <thead>
+                    <tr class="table-header">
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in currList)
+                    {
+                    <tr>
+                        <td>
+                            <p>@i.ItemName</p>
+                        </td>
+                        <td>
+                            <p>@i.ItemQuantity @i.ItemQuantityType</p>
+                        </td>
+                        <td>
+                            @if(i.DonorId == null)
+                            {
+                                <label>Pending</label>
+                            }
+                            else
+                            {
+                                <label>Accepted</label>
+                            }
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+            <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+            <div class="add-section">
+                <div class="input">
+                    <InputText placeholder="Canned Beans" @bind-Value="model.ItemName" />
+                    <ValidationMessage For="@(() => model.ItemName)" />
+                </div>
+                <div class="input">
+                    <InputNumber @bind-Value="model.ItemQuantity"/>
+                    <ValidationMessage For="@(() => model.ItemQuantity)" />
+                </div>
+                <div class="input">
+                    <InputSelect TValue="string" class="box-dropdown form-control qt" @bind-Value="model.ItemQuantityType">
+                        <option>-</option>
+                        <option>lbs</option>
+                        <option>units</option>
+                    </InputSelect>
+                    <ValidationMessage For="@(() => model.ItemQuantityType)" />
+                </div>
+                <div>
+                    <button class="add" disabled="@loading">
+                            @if (loading) 
+                        {
+                            <span class="spinner-border spinner-border-sm mr-1"></span>
+                        }
+                        +
+                    </button>
+                </div>
+            </div>
+            </EditForm>
+        </section>          
+    }
+    else{
+         <CascadingValue Name="edit" Value="@edit">
+            <EditGroceryList></EditGroceryList>
+        </CascadingValue>
+    }
+        
+       
+       
+    
+}
+
+
+@code{
+    
+    UserInfo cUser = CurrentUserService._currentUser;
+
+    private bool IsDisabled = false;
+    private bool edit = false;
+
+    [CascadingParameter(Name="people")] int people { get; set; }
+
+    [CascadingParameter(Name ="submitted")] bool submitted { get; set; }
+    
+    public ShoppingList list = new ShoppingList();
+    public List<DonationRequest> currList = new List<DonationRequest>();
+
+    private DonationRequest model = new DonationRequest();
+
+    DonationRequest donation = new DonationRequest();
+
+    AddItem item = new AddItem();
+    private bool loading = false;
+
+    @* 
+    Get a list of all donation requests where the id is not present in the donation progress table/where donor id = null
+        - cannot edit/delete a donation that has been accepted/donated
+            - could display them but not make them editable or deletable/add a note at the top:
+                Showing all items that are Pending
+        If the checkbox is selected the ids are added to an idsToDelete list 
+        when delete is selected they are deleted
+        For Update/Edit:
+            there will be an edit button on the right of the row, if the button is selected, the row becomes editable?
+    *@
+    private void Edit()
+    {
+        edit = true;
+        
+    }
+    private void Update(int id)
+    {
+        @* var word = document.getElementById("id");
+        word.contentEditable = true;
+        word.focus(); *@
+    }
+    private void OnValidSubmit()
+    {
+        model.FeederId = cUser.Id;
+        @* int id = await ShoppingListService.InsertItem(model); *@
+        @* model.id = id; *@
+        currList.Add(model);
+        DonationRequest m = model;
+        ShoppingListService.Register(m);
+
+
+        model = new DonationRequest();
+        model.ItemName = string.Empty;
+        model.ItemQuantity = 0;
+        
+        @* loading = false; *@
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+         cUser = CurrentUserService._currentUser;
+        currList = await ShoppingListService.GetItemsByFeeder(cUser.Id);
+    }
+
+    @* public async void refresh()
+    {
+        
+    } *@
+}
+
+            
+            @* <tbody>
+
+            </tbody> *@
+            @* <!-- Items to Input-->
+                @foreach (var i in list.Items)
+                {
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Canned Beans" class="form-control" @bind-value="i.ItemName"
+                    @bind-value:event="oninput" />
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Eg. Intro to WGSS" class="form-control" @bind-value="i.ItemQuantity"
+                    @bind-value:event="oninput" />
+                    </td>
+                    <td>
+                        <select class="box-dropdown form-control" @bind="i.ItemQuantityType">
+                            <option>-</option>
+                            <option>lbs</option>
+                            <option>units</option>
+                        </select>
+                    </td>
+                    <td>
+                        @* <label>Pending</label> *@ @*
+                    </td>
+                </tr>
+                }
+            </tbody> *@
+
+        @* <div class="add-section">
+            <button class="add" type="button" @onclick = "@(()=>list.Items.Add(new Item{}))" disabled="@IsDisabled">+</button>
+        </div> *@
+        @* <div class="send">
+            <button class="button" type="button" disabled="@IsDisabled" @onclick = "OnValidSubmit">Send List</button>
+        </div> *@
+
+
+            @* <table class="add-section">
+                <tbody>
+                    <tr>
+                        <td>
+                            <InputText placeholder="Canned Beans" @bind-Value="model.ItemName" />
+                            <ValidationMessage For="@(() => model.ItemName)" />
+                        </td>
+                        <td>
+                            <div class="r">
+                                <InputNumber @bind-Value="model.ItemQuantity"/>
+                                <ValidationMessage For="@(() => model.ItemQuantity)" />
+                                <InputSelect TValue="string" class="box-dropdown form-control qt" @bind-Value="model.ItemQuantityType">
+                                    <option>-</option>
+                                    <option>lbs</option>
+                                    <option>units</option>
+                                </InputSelect>
+                                <ValidationMessage For="@(() => model.ItemQuantityType)" />
+                            </div>
+                            
+                        </td>
+                        <td>
+                            <button class="add" disabled="@loading">
+                                 @if (loading) 
+                                {
+                                    <span class="spinner-border spinner-border-sm mr-1"></span>
+                                }
+                                +
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> *@
+        
+        @* <table id="shopping-list-table">
+            <tbody>
+                 <tr>
+                    <td>
+                        <input type="text" placeholder="Canned Beans" class="form-control" @bind-value="item.ItemName"
+                    @bind-value:event="oninput" />
+                    </td>
+                    <td>
+                        <div class="r">
+                            <input type="text" placeholder="Eg. Intro to WGSS" class="form-control" @bind-value="item.ItemQuantity"
+                    @bind-value:event="oninput" />
+                    @* </td>
+                    <td> *@ @*
+                            <select class="box-dropdown form-control qt" @bind="item.ItemQuantityType">
+                                <option>-</option>
+                                <option>lbs</option>
+                                <option>units</option>
+                            </select>
+                        </div>
+                        
+                    </td>
+                    <td>
+                        @* <button class="add" type="button" disabled="@IsDisabled" @onclick="OnValidSubmit">+</button> *@ @*
+                        <button class="add" type="button" disabled="@IsDisabled" @onclick="@(()=>currList.Add(new DonationRequest(item)))">+</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table> *@

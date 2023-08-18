@@ -1,0 +1,89 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = FoodShare
+build_property.RootNamespace = FoodShare
+build_property.ProjectDir = /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/Dialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9EaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/DialogForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9EaWFsb2dGb3JtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/MoreInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Nb3JlSW5mby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Account/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9Mb2dvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/EditGroceryList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9FZGl0R3JvY2VyeUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-dt37ayzztc
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/GroceryList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Hcm9jZXJ5TGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-tsdtb2m1yk
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Account/CreateAccount.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9DcmVhdGVBY2NvdW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-nuziuaw7kd
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Account/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9Mb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-yys5osjy8c
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Donor/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRG9ub3IvSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-mmiz7fgs14
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Donor/MoreInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRG9ub3IvTW9yZUluZm8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-e96nzluehl
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Feeder/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmVlZGVyL0hvbWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-9g22p0w6sn
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ho0mgu62t8
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ibtpzrl6ln
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-70xfwrm4pr

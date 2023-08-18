@@ -1,0 +1,117 @@
+@page "/feeder/home"
+
+<body>
+        <div class="card">
+            <h5 class="card-header">FEEDER</h5>
+        @* BODY OF THE FORM *@ 
+        
+            <div class="form-group">
+                <label>How many people do you plan to feed this week?</label>
+                <input type="number" placeholder="20" min="0" @bind-value="expectedPeople" @bind-value:event="oninput"/>
+            </div>
+            <div class="form-group">
+                <label>How many people are you able to feed with your current stock?</label>
+                <input type="number" placeholder="20" min="0" @bind-value="fedPeople" @bind-value:event="oninput"/>
+            </div>
+
+        @* FOOTER OF THE DIALOG AKA. WHERE THE BUTONS ARE *@
+        
+            <div class="buttons">
+                <button class="btn btn-primary button" @onclick="OnValidSubmit">
+                    Submit
+                </button>
+            </div>
+
+            @* <CascadingValue Name="people" Value="@peopletobefed">
+                <GroceryList></GroceryList>
+            </CascadingValue> *@
+            
+            @if(peopletobefed < 0 || peopletobefed == 0){
+                <p class="info">If you need donations this week, make sure that the first number is greater than the second number.</p>
+            }
+        </div>
+        
+            @* <div>
+                <button class="btn btn-primary button" visible="false" @onclick="(()=>edit=true)">Edit Shopping List</button>
+            </div> *@
+
+        @* @if(edit)
+        {
+            
+            <CascadingValue Value="this">
+                <EditGroceryList></EditGroceryList>
+            </CascadingValue>
+        }
+        else if (!edit)
+        { *@
+            
+            <CascadingValue Name="people" Value="@peopletobefed">
+                <CascadingValue Name = "submitted" Value="submitted">
+                    <GroceryList></GroceryList>
+                </CascadingValue>
+            </CascadingValue>
+        @* } *@
+         
+</body>
+
+@* @if (DialogIsOpen)
+{
+   <Dialog Caption="WEEKLY FOOD SURVEY"
+           Message="@message"
+           OnClose="@OnDialogClose"
+           Type="Dialog.Category.Okay">
+   </Dialog>
+} *@
+
+@code {
+    
+    @* ShoppingList list = new ShoppingList(); *@
+    
+    UserInfo cUser;
+    private int expectedPeople;
+    private int fedPeople;
+    private int peopletobefed;
+
+    public bool edit = false;
+    private bool submitted = false; 
+
+    //Dialog related code
+    private int idAuthor;
+    private string message;
+    private bool DialogIsOpen = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        peopletobefed = 0;
+        cUser = CurrentUserService._currentUser;
+    } 
+
+    private void OnValidSubmit()
+    {
+        peopletobefed = expectedPeople - fedPeople;
+    }
+
+    private bool sharedValue = false;
+
+    private void UpdateSharedValue(bool newValue)
+    {
+        sharedValue = newValue;
+    }
+
+    @* private void OpenDialog()
+    {
+        DialogIsOpen = true;
+        message = "How many people do you hope to feed this week?";
+    } *@
+   @* private async Task OnDialogClose(bool isOk)
+   
+   { *@
+      @* if (isOk)
+        {
+            await authorService.Delete(idAuthor);
+            authors = await authorService.ListAll((curPage - 1) *
+            pageSize, pageSize, sortColumnName, sortDir, searchTerm);
+        } 
+        DialogIsOpen = false;
+   } *@
+}

@@ -1,0 +1,56 @@
+@* @page "/Home"
+@inject NavigationManager _navigationManager
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
+@* 
+@if()
+
+@if() *@
+@* <AuthorizeView Roles="Feeder">
+    <Authorized>
+        <FeederHome></FeederHome>
+        <!-- Content for authorized users with the required roles -->
+    </Authorized>
+</AuthorizeView>
+
+<AuthorizeView Roles="Donor">
+    <Authorized>
+        <DonorHome></DonorHome> 
+        <!-- Content for authorized users with the required roles -->
+    </Authorized>
+</AuthorizeView>
+
+<div>
+    <button @onclick="LogoutUser">Logout</button>
+</div> *@
+
+@code{
+
+    @* [CascadingParameter]
+    private <Task<AuthenticationState> GetAuthenticationStateAsync { get; set; }
+        GetAuthenticationStateAsync *@
+    
+    @* User currUser = _httpClient.GetFromJsonAsync<User>("user/getcurrentuser"); *@
+
+    @* public User user = new User();
+    protected override async Task OnInitializedAsync()
+    {
+        user = (await authenticationStateTask).User;
+
+        if (user.Identity.IsAuthenticated)
+            IsUserAuthenticated = true;
+
+        if (user.IsInRole("Publisher"))
+            IsPublisher = true;
+
+        if ((await authorizationService.AuthorizeAsync(user, "SeniorEmployee")).Succeeded)
+            IsSeniorEmployee = true;
+    } *@
+
+    @* private async Task LogoutUser()
+    {
+        await LocalStorage.RemoveItemAsync("jwt_token");
+        _navigationManager.NavigateTo("/", true);
+    } *@
+}
+

@@ -1,0 +1,124 @@
+@inject NavigationManager NavigationManager
+@inject IShoppingListService ShoppingListService
+
+ @* Adds id to a list 
+        if delete is selected: 
+            Are you sure you want to delete x items?
+        Yes -> the items in the list are deleted 
+
+Get a list of all donation requests where the id is not present in the donation progress table/where donor id = null
+    - cannot edit/delete a donation that has been accepted/donated
+        - could display them but not make them editable or deletable/add a note at the top:
+            Showing all items that are Pending
+    If the checkbox is selected the ids are added to an idsToDelete list 
+    when delete is selected they are deleted
+    For Update/Edit:
+        there will be an edit button on the right of the row, if the button is selected, the row becomes editable?  *@
+
+@if(currList == null)
+{
+    <p>content is loading</p>
+}
+else
+{
+<section class="card">
+    <div class="card-header">
+        <h4>Edit Shopping List</h4> 
+    </div>
+    <table id="shopping-list-table" class="table semester-table">
+        <col><col><col>
+        <thead>
+            <tr class="table-header">
+                <th></th>
+                <th>Item Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in currList)
+            {
+                if(i.DonorId == null)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" asp-for="@i.selected" @bind-value="@i.selected" @bind-value:event="oninput">
+                        </td>
+                        <td>
+                            <p>@i.ItemName</p>
+                        </td>
+                        <td>
+                            <p>@i.ItemQuantity @i.ItemQuantityType</p>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+            
+            <div class="buttons">
+                <button class="btn btn-primary button" @onclick="Back">
+                    Back
+                </button>
+                <button @onclick="Delete" class="btn btn-primary button">
+                    Delete
+                </button>
+            </div>
+                    
+
+        @* <div class="card-header">
+            
+                    @* <button>Back</button> *@ @*
+            
+         </div> *@
+
+
+</section>
+}
+
+
+@code{
+
+    [CascadingParameter]
+    public FoodShare.Pages.Feeder.FeederHome Parent { get; set; }
+
+    UserInfo cUser = CurrentUserService._currentUser;
+    private void Back()
+    {
+        NavigationManager.NavigateTo("/feeder/home", true);
+    } 
+
+    public List<DonationRequest> currList = new List<DonationRequest>();
+
+    private DonationRequest model = new DonationRequest();
+
+    List<int> IdsToDelete = new List<int>();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        
+        cUser = CurrentUserService._currentUser;
+
+        currList = await ShoppingListService.GetItemsByFeeder(cUser.Id);
+    }
+
+    private void Delete()
+    {
+        
+        foreach (var d in currList)
+        {
+            if (d.selected)
+            {
+                IdsToDelete.Add(d.id);
+            }
+        }
+
+        foreach (var id in IdsToDelete)
+        {
+            currList.RemoveAll(d => d.id == id);
+        }
+
+        ShoppingListService.DeleteItems(IdsToDelete);
+
+        IdsToDelete = new List<int>();
+    }
+}

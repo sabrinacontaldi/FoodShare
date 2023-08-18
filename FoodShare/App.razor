@@ -1,0 +1,40 @@
+﻿@inject NavigationManager NavigationManager
+@* @inject CurrentUserService *@
+@using FoodShare.Pages.Donor
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Authorization
+
+@* <CascadingAuthenticationState> *@
+    @* <CascadingValue Value="@currentUser"> *@
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+                @* <Route Path="/feeders/{organization:string}" Component="@typeof(MoreInfo)"/> *@
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        @* <Found Context="routeData">
+            <AppRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        </Found> *@
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+            @* @{ 
+                // redirect to home page if not found
+                NavigationManager.NavigateTo("/"); 
+            } *@
+        </NotFound>
+    </Router>
+@* </CascadingValue> *@
+@* </CascadingAuthenticationState> *@
+
+@* @code {
+    private UserInfo currentUser = new UserInfo();
+
+    // Set the user information when the user logs in
+    public void SetUserInfo(UserInfo userInfo)
+    {
+        currentUser = userInfo;
+    }
+} *@

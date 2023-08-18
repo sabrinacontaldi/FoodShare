@@ -1,0 +1,49 @@
+﻿@page "/"
+<link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
+
+<PageTitle>Home</PageTitle>
+
+<body class="main-page">     
+    <div class="box">
+        <div class="card">
+            @* <i class="fa-solid fa-laptop"></i> *@
+            <h5>What do we do?</h5>
+            <div class="pra">
+                <p>We connect those who have excess food with those who don't have enough food, opening a channel of communication between
+                the two parties.</p>
+                <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p> -->
+            </div>
+        </div>
+
+        <div class= "card" >
+            @* <i class="fa-sharp fa-solid fa-database"></i> *@
+            <h5>Why do we do it?</h5>
+            <div class="pra">
+                <p>The goal is to reduce food waste and help make the food dontaion process more efficient and effective.</p>
+
+                <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p> -->	
+            </div>
+        </div>
+
+        <div class= "card" >
+            @* <i class="fa-solid fa-laptop"></i> *@
+            <h5>How can you help?</h5>
+            <div class="pra">
+                <p>Sign up and join our team! At this current moment we are focusing on Grocery stores as donors and food banks and 
+                shelters as distributors.</p>
+
+                <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p>	 -->
+            </div>
+        </div>
+    </div>    
+    
+    @* I'm pretty sure there's a better way to navigate between the pages *@
+    <div class="buttons button-center button-horizontal">
+        <a href="/account/create-account" asp-page="/account/create-account" class="button" type="button">Create an Account</a>
+        <a href="/account/login" asp-page="/account/login" class="button" type="button">Login</a>
+    </div> 
+</body>
