@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FoodShare.DatabaseObjects
 {
+    // When a new User (Feeder/Donor) creates an account, their information is saved into this NewUser database object so that it can be sent to the database
     public class NewUser
     {
         // [Required]

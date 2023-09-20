@@ -300,13 +300,13 @@
       "mscorlib.dll": "sha256-qqpKd+W+AFb6UxudEYEKzrz7ma81p5LrWUwPBVvHV4U=",
       "netstandard.dll": "sha256-OYYuPT3JUknj4LdYIa58zF7kDB3tCnLzjCSuhEjtKXM=",
       "System.Private.CoreLib.dll": "sha256-EVS7zPxPV\/41g2mzPwdXtwiigWxI\/SeAHme1IgyD6tc=",
-      "FoodShare.dll": "sha256-A5ZYNXQ6zdupQz8Lj4qHk7XEhLxBTLZ3cCe1W+w6bwo="
+      "FoodShare.dll": "sha256-gu92Q0zp5VTUG5Fb340J3Gd03eZtMbGiEIWPos4AWT4="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "FoodShare.pdb": "sha256-Rr6H1IzI2y2nl5hCaa5mG9FRLaFeStwFq75SB91p4BU="
+      "FoodShare.pdb": "sha256-qOwI4Otegnyswc4Uow5RfcJHhABfR4ISR\/Ns4loVS0I="
     },
     "runtime": {
       "dotnet.7.0.5.g2dwklfcqd.js": "sha256-codB25EodaFEP43MDCfMBuKXU4LqurUKnQrpoMIFnPs=",

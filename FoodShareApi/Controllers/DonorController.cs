@@ -7,11 +7,16 @@ using FoodShareApi.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 using Microsoft.AspNetCore.Cors;
+// Auth0
+using Microsoft.AspNetCore.Authorization;
 
 namespace FoodShareApi.Controllers
 {   
     [ApiController]
     [Route("api/[controller]")]
+    // Auth0
+    // help secure the webApi
+    [Authorize]
     public class DonorController : ControllerBase
     {
         private readonly FoodshareContext DBContext;

@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoodShare.DatabaseObjects
 {
+    // When a new Feeder creates an account, their information is saved into this NewFeeder database object so that it can be sent to the database
     public class NewFeeder
     {
         [Required]
@@ -16,6 +17,8 @@ namespace FoodShare.DatabaseObjects
         public string Branch { get; set; }
         [Required]
         public int ZipCode { get; set; }
+
+        // More information that could be collected
         // [Required]
         // public DateTime StartDate { get; set; }
 
