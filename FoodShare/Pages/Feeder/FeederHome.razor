@@ -1,5 +1,11 @@
 @page "/feeder/home"
 
+@* Auth0 *@
+@* @attribute [Authorize] *@
+
+@* PG AUTH & RBAUTH *@
+@attribute [Authorize(Roles = "Spider Man")]
+
 <body>
         <div class="card">
             <h5 class="card-header">FEEDER</h5>

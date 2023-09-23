@@ -8,7 +8,6 @@ using FoodShare.Models;
 
 namespace FoodShare.DatabaseObjects
 {
-    // When a new Item is added, the information is saved into this AddItem database object so that the information can be sent to the database
     public class AddItem
     {
         [Required]

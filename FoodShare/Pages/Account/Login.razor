@@ -12,7 +12,7 @@
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 
-@* JWT TOKEN *@
+
 @* @inject JwtTokenHandler TokenHandler *@
 
 <h1>Welcome back!</h1>
@@ -63,10 +63,46 @@
      @* private bool IsAuthorized => TokenHandler.IsTokenValid(); *@
 
     private bool error = false;
-    @* Currently this error message is green; we want it to be red *@
     private string errorMessage = "Username or password is incorrect";
-
     
+    @* private async void OnValidSubmit()
+    {
+        loading = true;
+        try
+        {
+            string token = await UserService.Login(model);
+
+            if(token != string.Empty)
+            {
+                User u = await UserService.GetUserByUsername(model.Username);
+                
+                if(u.donor_id != null && u.donor_id != 0)
+                {
+                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.donor_id, u.username, "donor"));
+                    NavigationManager.NavigateTo("/donor/home");
+                }
+                else if(u.feeder_id != null && u.feeder_id != 0)
+                {
+                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.feeder_id, u.username, "feeder"));
+                    NavigationManager.NavigateTo("/feeder/home");
+                }
+                await LocalStorage.SetItemAsync("jwt_token", token);
+
+            }
+           
+        }
+        catch(Exception ex)
+        {
+            loading = false;
+            error = true;
+            errorMessage = ex.Message;
+            StateHasChanged();
+        }
+    } *@
+    
+
+
+
     private async void OnValidSubmit()
     {
         loading = true;
@@ -117,47 +153,10 @@
             StateHasChanged();
         }
     }
-
-    //OnValidSubmit for JwtToken
-    @* private async void OnValidSubmit()
-    {
-        loading = true;
-        try
-        {
-            string token = await UserService.Login(model);
-
-            if(token != string.Empty)
-            {
-                User u = await UserService.GetUserByUsername(model.Username);
-                
-                if(u.donor_id != null && u.donor_id != 0)
-                {
-                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.donor_id, u.username, "donor"));
-                    NavigationManager.NavigateTo("/donor/home");
-                }
-                else if(u.feeder_id != null && u.feeder_id != 0)
-                {
-                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.feeder_id, u.username, "feeder"));
-                    NavigationManager.NavigateTo("/feeder/home");
-                }
-                await LocalStorage.SetItemAsync("jwt_token", token);
-
-            }
-           
-        }
-        catch(Exception ex)
-        {
-            loading = false;
-            error = true;
-            errorMessage = ex.Message;
-            StateHasChanged();
-        }
-    } *@
-
 }
-    
+       
 
-        @* What is this for? *@
+
         @* loading = true; *@
         @* string token = await UserService.Login(model); *@
 

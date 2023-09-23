@@ -9,17 +9,12 @@ using System.Net;
 using Microsoft.AspNetCore.Cors;
 
 using Newtonsoft.Json;
-using Microsoft.AspNetCore.Authorization;
 
 namespace FoodShareApi.Controllers
 {
     
     [ApiController]
     [Route("api/[controller]")]
-    // Auth0
-    // help secure the webApi
-    [Authorize]
-
     public class ItemController : ControllerBase
     {
         private readonly FoodshareContext DBContext;

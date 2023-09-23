@@ -4,31 +4,60 @@
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Authorization
 
-@* <CascadingAuthenticationState> *@
-    @* <CascadingValue Value="@currentUser"> *@
+@* Auth0 content*@
+
+@* Propogate the current authentication state to the inner components so that they can work on it consistently *@
+@*<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
-            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-                @* <Route Path="/feeders/{organization:string}" Component="@typeof(MoreInfo)"/> *@
+            @* used to customize the content according to the user's authentication status *@ @*
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"> 
+                <Authorizing>
+                    <p>Determining session state, please wait...</p>
+                </Authorizing>
+                <NotAuthorized>
+                    <h1>Sorry</h1>
+                    <p>You're not authorized to reach this page. You need to log in.</p>
+                </NotAuthorized>
+            </AuthorizeRouteView>
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
         </Found>
-        @* <Found Context="routeData">
-            <AppRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        </Found> *@
         <NotFound>
             <PageTitle>Not found</PageTitle>
             <LayoutView Layout="@typeof(MainLayout)">
                 <p role="alert">Sorry, there's nothing at this address.</p>
             </LayoutView>
-            @* @{ 
-                // redirect to home page if not found
-                NavigationManager.NavigateTo("/"); 
-            } *@
         </NotFound>
     </Router>
-@* </CascadingValue> *@
-@* </CascadingAuthenticationState> *@
+@* </CascadingAuthenticationState>  *@
 
+@* Patrick God Tutorial *@
+<CascadingAuthenticationState> 
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" >
+                <NotAuthorized>
+                    Sorry, but you are not allowed to see this. :(
+                    You should login to see this information
+                </NotAuthorized>
+            </AuthorizeRouteView>
+                @* <Route Path="/feeders/{organization:string}" Component="@typeof(MoreInfo)"/> *@ 
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+             @* @{ 
+                // redirect to home page if not found
+                NavigationManager.NavigateTo("/"); 
+            }  *@
+        </NotFound>
+    </Router>
+ </CascadingAuthenticationState>
+
+@* Not sure where this fits in*@
 @* @code {
     private UserInfo currentUser = new UserInfo();
 

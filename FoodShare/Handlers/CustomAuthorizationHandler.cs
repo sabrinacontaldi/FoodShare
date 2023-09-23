@@ -1,6 +1,3 @@
-// What does this class do?
-// When is it referenced?
-
 using System;
 using System.Collections.Generic;
 using System.Linq;

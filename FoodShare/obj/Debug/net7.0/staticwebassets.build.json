@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "v9Nf9Oq+gZ1yN2RNbb930PTEhUyn7z0gRsjhE5MIxV0=",
+  "Hash": "rSdbYS/iCMmXZ7HDr+9adGMICZ4COFeMlyh3NXE/D8c=",
   "Source": "FoodShare",
   "BasePath": "/",
   "Mode": "Root",
@@ -17,10 +17,10 @@
   ],
   "Assets": [
     {
-      "Identity": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.webassembly.authentication/7.0.5/staticwebassets/AuthenticationService.js",
+      "Identity": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.webassembly.authentication/7.0.10/staticwebassets/AuthenticationService.js",
       "SourceId": "Microsoft.AspNetCore.Components.WebAssembly.Authentication",
       "SourceType": "Package",
-      "ContentRoot": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.webassembly.authentication/7.0.5/staticwebassets/",
+      "ContentRoot": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.webassembly.authentication/7.0.10/staticwebassets/",
       "BasePath": "_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication",
       "RelativePath": "AuthenticationService.js",
       "AssetKind": "All",
@@ -31,7 +31,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.webassembly.authentication/7.0.5/staticwebassets/AuthenticationService.js"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.webassembly.authentication/7.0.10/staticwebassets/AuthenticationService.js"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Azure.Core.dll",
@@ -1833,7 +1833,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.authorization/7.0.5/lib/net7.0/Microsoft.AspNetCore.Authorization.dll"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.authorization/7.0.11/lib/net7.0/Microsoft.AspNetCore.Authorization.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll",
@@ -1850,7 +1850,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.authorization/7.0.5/lib/net7.0/Microsoft.AspNetCore.Components.Authorization.dll"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.authorization/7.0.11/lib/net7.0/Microsoft.AspNetCore.Components.Authorization.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.dll",
@@ -1867,7 +1867,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components/7.0.5/lib/net7.0/Microsoft.AspNetCore.Components.dll"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components/7.0.11/lib/net7.0/Microsoft.AspNetCore.Components.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Forms.dll",
@@ -1884,7 +1884,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.forms/7.0.5/lib/net7.0/Microsoft.AspNetCore.Components.Forms.dll"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.forms/7.0.10/lib/net7.0/Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Web.dll",
@@ -1901,7 +1901,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.web/7.0.5/lib/net7.0/Microsoft.AspNetCore.Components.Web.dll"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.web/7.0.10/lib/net7.0/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
@@ -1918,7 +1918,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.webassembly.authentication/7.0.5/lib/net7.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.components.webassembly.authentication/7.0.10/lib/net7.0/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.WebAssembly.dll",
@@ -2020,7 +2020,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.metadata/7.0.5/lib/net7.0/Microsoft.AspNetCore.Metadata.dll"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.aspnetcore.metadata/7.0.11/lib/net7.0/Microsoft.AspNetCore.Metadata.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Razor.Language.dll",
@@ -2751,7 +2751,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.0/lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.1/lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.Extensions.Logging.dll",
@@ -2955,7 +2955,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.jsinterop/7.0.5/lib/net7.0/Microsoft.JSInterop.dll"
+      "OriginalItemSpec": "/Users/sabrinacontaldi/.nuget/packages/microsoft.jsinterop/7.0.10/lib/net7.0/Microsoft.JSInterop.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.JSInterop.WebAssembly.dll",
@@ -9095,6 +9095,23 @@
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.Extensions.Logging.dll"
     },
     {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/7P+pNiS8.gz",
+      "SourceId": "FoodShare",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.dll"
+    },
+    {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/7PRCWX+3.gz",
       "SourceId": "FoodShare",
       "SourceType": "Computed",
@@ -9588,6 +9605,23 @@
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/System.Net.NameResolution.dll"
     },
     {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/bpODW4+G.gz",
+      "SourceId": "FoodShare",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Authorization.dll"
+    },
+    {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/BqJo7rbj.gz",
       "SourceId": "FoodShare",
       "SourceType": "Computed",
@@ -9603,6 +9637,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/fr/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll"
+    },
+    {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/brH0m7ra.gz",
+      "SourceId": "FoodShare",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Forms.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/bT+k3N8I.gz",
@@ -10149,23 +10200,6 @@
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/System.Runtime.dll"
     },
     {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/DtaokY+Z.gz",
-      "SourceId": "FoodShare",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Authorization.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Authorization.dll"
-    },
-    {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/DXihVr2p.gz",
       "SourceId": "FoodShare",
       "SourceType": "Computed",
@@ -10181,23 +10215,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.VisualBasic.dll"
-    },
-    {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/E4Cr+kao.gz",
-      "SourceId": "FoodShare",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Forms.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/E6Ls4IOX.gz",
@@ -10846,23 +10863,6 @@
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/fr/Microsoft.CodeAnalysis.VisualBasic.resources.dll"
     },
     {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/gfeKQ+ZS.gz",
-      "SourceId": "FoodShare",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.JSInterop.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.JSInterop.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.JSInterop.dll"
-    },
-    {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/Gfu7FgGD.gz",
       "SourceId": "FoodShare",
       "SourceType": "Computed",
@@ -11116,6 +11116,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll"
+    },
+    {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/HDfhrkpP.gz",
+      "SourceId": "FoodShare",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.JSInterop.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.JSInterop.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.JSInterop.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/HJ7N4y2O.gz",
@@ -11560,6 +11577,23 @@
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/System.Runtime.Serialization.Formatters.dll"
     },
     {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/jPY5hKV8.gz",
+      "SourceId": "FoodShare",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
+    },
+    {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/jrAHvdAa.gz",
       "SourceId": "FoodShare",
       "SourceType": "Computed",
@@ -11762,23 +11796,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.Extensions.Http.dll"
-    },
-    {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/Km9oILme.gz",
-      "SourceId": "FoodShare",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.Extensions.Logging.Abstractions.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.Extensions.Logging.Abstractions.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.Extensions.Logging.Abstractions.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/kMA+mPIF.gz",
@@ -12323,23 +12340,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/dotnet.wasm"
-    },
-    {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/mHOSt8DT.gz",
-      "SourceId": "FoodShare",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/MhqLpJRp.gz",
@@ -13158,23 +13158,6 @@
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/System.dll"
     },
     {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/Q2+u6rFi.gz",
-      "SourceId": "FoodShare",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Web.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Web.dll"
-    },
-    {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/QA6GytaX.gz",
       "SourceId": "FoodShare",
       "SourceType": "Computed",
@@ -13379,23 +13362,6 @@
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.Extensions.DependencyModel.dll"
     },
     {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/rcybiziP.gz",
-      "SourceId": "FoodShare",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.dll"
-    },
-    {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/RD8nVa1r.gz",
       "SourceId": "FoodShare",
       "SourceType": "Computed",
@@ -13496,6 +13462,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/System.Runtime.InteropServices.dll"
+    },
+    {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/RihZJ81B.gz",
+      "SourceId": "FoodShare",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/rlQfaZSG.gz",
@@ -14195,6 +14178,23 @@
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/System.Security.Cryptography.Cng.dll"
     },
     {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/UbgmxWJ4.gz",
+      "SourceId": "FoodShare",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Web.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Web.dll"
+    },
+    {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/uf+gC9XB.gz",
       "SourceId": "FoodShare",
       "SourceType": "Computed",
@@ -14380,6 +14380,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/pl/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll"
+    },
+    {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/vq8htg9g.gz",
+      "SourceId": "FoodShare",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.Logging.Abstractions.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.Extensions.Logging.Abstractions.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.Extensions.Logging.Abstractions.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/VrVxXa2B.gz",
@@ -14586,6 +14603,23 @@
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/ru/Microsoft.CodeAnalysis.resources.dll"
     },
     {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/w8YYTYAd.gz",
+      "SourceId": "FoodShare",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Metadata.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Metadata.dll"
+    },
+    {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/WABk+5m8.gz",
       "SourceId": "FoodShare",
       "SourceType": "Computed",
@@ -14652,23 +14686,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.VisualStudio.Web.CodeGeneration.dll"
-    },
-    {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/wkN+EGcx.gz",
-      "SourceId": "FoodShare",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Components.Authorization.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/WonmqoML.gz",
@@ -15536,23 +15553,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/ru/Microsoft.CodeAnalysis.Features.resources.dll"
-    },
-    {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/Zx102zCf.gz",
-      "SourceId": "FoodShare",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Metadata.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/bin/Debug/net7.0/wwwroot/_framework/Microsoft.AspNetCore.Metadata.dll"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/ZXX6PGBR.gz",

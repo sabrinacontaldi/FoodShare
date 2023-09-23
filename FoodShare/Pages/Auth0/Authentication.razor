@@ -1,0 +1,36 @@
+@page "/authentication/{action}"
+
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Microsoft.Extensions.Configuration
+
+@inject NavigationManager Navigation
+@inject IConfiguration Configuration
+
+<RemoteAuthenticatorView Action="@Action">
+
+    <LogOut>
+        
+        @{
+            var authority = (string)Configuration["Auth0:Authority"];
+            var clientId = (string)Configuration["Auth0:ClientId"];
+
+            Navigation.NavigateTo($"{authority}/v2/logout?client_id={clientId}");
+        }
+
+    </LogOut>
+
+</RemoteAuthenticatorView>
+
+@code{
+
+    [Parameter] public string Action { get; set; }
+}
+
+@* Auth0 *@
+@* This component implements a page containing the REmoteAuthenticatorView compoonent which manages the users' authentication 
+    status and interacts with the authorization server on the Auth0 side. While th elogin interaction doesnt require any specific 
+    code, you need to manage the logout transaction.
+    Blazor clears your authentication state on the client side but doesnt disconnect you from Auth0 - to close your session on the Auth0 
+    side, you need to explicitly call the logout endpoint.*@
+
+@* NOTE: At the time of writing, the logout function seems to not be stable due to an apparent Blazor problem (2022) *@

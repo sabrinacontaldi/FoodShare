@@ -1,9 +1,7 @@
-// What does this class do?
-// When is it referenced?
-
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.IdentityModel.Tokens.Jwt;
+
 
 namespace Foodshare.Handlers
 {

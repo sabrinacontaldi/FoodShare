@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
-@inject CurrentUserService cUserService
+@* @inject CurrentUserService cUserService *@
 
 <div class="page">
     @* <div class="sidebar">
@@ -14,8 +14,13 @@
                 <img src="/images/handshake.png">
             </div>
             @* <button @onclick="logout">LogOut</button> *@
+            <div class="login_logout">
+            @* Auth0 *@
+            @* Not sure if this is the right placing of this *@
+                <AccessControl />
+            </div>
         </header>
-
+        
         <article class="content px-4">
             @Body
         </article>

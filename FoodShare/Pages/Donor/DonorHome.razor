@@ -1,5 +1,11 @@
 @page "/donor/home"
 
+@* Auth0 *@
+@* @attribute [Authorize] *@
+
+@* PG AUTH & RBAUTH *@
+@attribute [Authorize(Roles = "Iron Man")]
+
 @inject IJSRuntime jsRuntime
 @inject IFeederService FeederService
 @inject IShoppingListService ShoppingListService

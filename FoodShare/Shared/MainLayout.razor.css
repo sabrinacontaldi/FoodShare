@@ -7,7 +7,7 @@
 main {
     flex: 1;
 }
-
+/* Space at the top of the page that the title and logo are in */
 header{
     display: flex;
 	align-items: center;
@@ -15,22 +15,30 @@ header{
     background-color: #53af8a;
     height: 50vh;
 }
-header h1{
-    font-family: "Papyrus";
-    font-weight: bold;
-    /* font: "Papyrus"; */
-    text-align: center;
-    color: white !important;
-    font-size: 15vh;
-    position: absolute;
-    top: 5rem;
-}
-header img{
-    height: 20vh;
-    position: relative;
-    align-items: center;
-    margin-top: 7rem;
-}
+    header h1{
+        font-family: "Papyrus";
+        font-weight: bold;
+        /* font: "Papyrus"; */
+        text-align: center;
+        color: white !important;
+        font-size: 15vh;
+        position: absolute;
+        top: 5rem;
+    }
+    header img{
+        height: 20vh;
+        position: relative;
+        align-items: center;
+        margin-top: 7rem;
+    }
+    header .login_logout{
+        position: fixed;
+        top: 0;
+        right: 0;
+        /* align-items: end;
+        text-align: right;
+        display: inline; */
+    }
 main{
     background-color: #191919;
 }
@@ -96,7 +104,7 @@ main{
         text-decoration: none; */
         /* object-position: 5%; 
     } */
-
+/* 
     .top-row ::deep a, .top-row ::deep .btn-link {
         white-space: nowrap;
         margin-left: 1.5rem;
@@ -110,9 +118,9 @@ main{
     .top-row ::deep a:first-child {
         overflow: hidden;
         text-overflow: ellipsis;
-    }
+    } */
 
-@media (max-width: 640.98px) {
+/* @media (max-width: 640.98px) {
     .top-row:not(.auth) {
         display: none;
     }
@@ -154,7 +162,7 @@ main{
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
-}
+} */
 
 /* .shopping-list{
 	font-family: 'Courier New', Courier, monospace;

@@ -1,4 +1,7 @@
 ﻿@page "/"
+@* Auth0 *@
+@* @attribute [Authorize] *@
+@* @attribute [AllowAnonymous] *@
 <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" 
@@ -6,6 +9,17 @@
     referrerpolicy="no-referrer" />
 
 <PageTitle>Home</PageTitle>
+
+@* PG AUTH + RBAUTH *@
+<AuthorizeView Roles="Iron Man">
+    <Authorized>
+        <h1>You're logged in as @context.User.Identity.Name</h1>
+    </Authorized>
+    <NotAuthorized>
+        <h1>You're not logged in</h1>
+    </NotAuthorized>
+</AuthorizeView>
+@* ------------- *@
 
 <body class="main-page">     
     <div class="box">

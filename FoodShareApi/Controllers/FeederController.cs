@@ -8,17 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 using Microsoft.AspNetCore.Cors;
 using System.Data.SqlClient;
-// Auth0
-using Microsoft.AspNetCore.Authorization;
-
 
 namespace FoodShareApi.Controllers
 {   
     [ApiController]
     [Route("api/[controller]")]
-    // Auth0
-    // help secure the webApi
-    [Authorize]
     public class FeederController : ControllerBase
     {
         private readonly FoodshareContext DBContext;
