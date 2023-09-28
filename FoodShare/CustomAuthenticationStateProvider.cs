@@ -6,6 +6,7 @@ using System.Text.Json;
 
 public class CustomAuthenticationStateProvider : AuthenticationStateProvider
 {
+    // possibly parse token as a parameter
     public async override Task<AuthenticationState> GetAuthenticationStateAsync()
     {
         //Random token so that the rest of the authentication can be completed before looking at JWT

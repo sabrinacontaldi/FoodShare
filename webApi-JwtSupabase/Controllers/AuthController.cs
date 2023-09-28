@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
+using Supabase.Gotrue;
 
 namespace JwtWebApi.Controllers
 {
@@ -16,9 +17,11 @@ namespace JwtWebApi.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        public static User user = new User();
+        public static User currUser = new User();
         private readonly IConfiguration _configuration;
         private readonly IUserService _userService;
+
+        private readonly Supabase.Client _client;
 
         public AuthController(IConfiguration configuration)
         {
@@ -33,42 +36,38 @@ namespace JwtWebApi.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(UserDTO request)
+        public async Task<ActionResult<string>> Register(UserDTO request)
         {
-            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[]passwordSalt);
-            
-            // user.Username = request.Username;
-            // user.PasswordHash = passwordHash;
-            // user.PasswordSalt = passwordSalt;
+            CreatePasswordHash(request.Password, out byte[] hashed_password, out byte[]password_salt);
 
-            var newUser = new User
+            var user = new User
             {
                 Username = request.Username,
-                passwordHash = request.passwordHash,
-                passwordSalt = request.passwordSalt
+                PasswordHash = hashed_password,
+                PasswordSalt = password_salt
             };
 
-            var response = await _client.From<Newsletter>().Insert(newsletter);
+            var response = await _client.From<User>().Insert(user);
 
-            var newNewsletter = response.Models.First();
+            var newUser = response.Models.First();
 
-            return Ok(newUser);
+            return Ok(newUser.Id);
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserDTO request)
         {
-            if(user.Username != request.Username)
+            if(currUser.Username != request.Username)
             {
                 return BadRequest("User not found.");
             }
 
-            if(!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+            if(!VerifyPasswordHash(request.Password, currUser.PasswordHash, currUser.PasswordSalt))
             {
                 return BadRequest("Wrong Password.");
             }
 
-            string token = CreateToken(user);
+            string token = CreateToken(currUser);
 
             // refresh token
             var refreshToken = GenerateRefreshToken();
@@ -77,62 +76,21 @@ namespace JwtWebApi.Controllers
             return Ok(token);
         }
 
-        //login method
-        // [HttpPost("Login")]
-        // public async Task<ActionResult<string>> Login(LoginDTO login)
-        // {
-        //     User User = await DBContext.Users.Select(
-        //             s => new User
-        //             {
-        //                 id = s.id,
-        //                 contact_person = s.contact_person,
-        //                 username = s.username,
-        //                 email_address = s.email_address,
-        //                 feeder_id = s.feeder_id,
-        //                 donor_id = s.donor_id
-        //             })
-        //         .FirstOrDefaultAsync(s => s.username == login.username);
-
-        //     if (User == null)
-        //     {
-        //         return BadRequest("Incorrect username.");
-        //     }
-
-        //     Password Password = await DBContext.Passwords.Select(
-        //             s => new Password
-        //             {
-        //                 id = s.id,
-        //                 password = s.password
-        //             })
-        //         .FirstOrDefaultAsync(s => s.id == User.id);
-            
-        //     string check = BCrypt.Net.BCrypt.HashPassword(login.password, SALT);
-
-        //     if(check != Password.password)
-        //     {
-        //         return BadRequest("Incorrect password.");
-        //     }
-            
-        //     string token = CreateToken(User);
-        //     return token;
-        // }
-        
-
         [HttpPost("refresh-token")]
         public async Task<ActionResult<string>> RefreshToken()
         {
             var refreshToken = Request.Cookies["refreshToken"];
 
-            if(!user.RefreshToken.Equals(refreshToken))
+            if(!currUser.RefreshToken.Equals(refreshToken))
             {
                 return Unauthorized("Invalid Refresh Token.");
             }
-            else if(user.TokenExpires < DateTime.Now)
+            else if(currUser.TokenExpires < DateTime.Now)
             {
                 return Unauthorized("Token expired.");
             }
 
-            string token = CreateToken(user);
+            string token = CreateToken(currUser);
             var newRefreshToken = GenerateRefreshToken();
             SetRefreshToken(newRefreshToken);
 
@@ -160,9 +118,9 @@ namespace JwtWebApi.Controllers
             };
             Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
 
-            user.RefreshToken = newRefreshToken.Token;
-            user.TokenCreated = newRefreshToken.Created;
-            user.TokenExpires = newRefreshToken.Expires;
+            currUser.RefreshToken = newRefreshToken.Token;
+            currUser.TokenCreated = newRefreshToken.Created;
+            currUser.TokenExpires = newRefreshToken.Expires;
 
         }
 

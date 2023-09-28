@@ -1,21 +1,12 @@
 // PG Auth + RBAuth
 global using Microsoft.AspNetCore.Components.Authorization;
-
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using FoodShare.Services;
-// using Microsoft.IdentityModel.Tokens;
-// using Microsoft.AspNetCore.Authentication.JwtBearer;
-// using Supabase;
 using System.Net.Security;
-// using System;
 using Foodshare.Handlers;
 using Blazored.LocalStorage;
 using FoodShare.Handlers;
-// using System.Security.Cryptography.X509Certificates;
 
-
-
-// using SqliteWasmHelper;
 
 namespace FoodShare
 {
@@ -29,17 +20,12 @@ namespace FoodShare
             builder.RootComponents.Add<App>("#app");
 
             builder.Services
-            //    .AddScoped<IAccountService, AccountService>()
-            //    .AddScoped<IAlertService, AlertService>()
                .AddScoped<IShoppingListService, ShoppingListService>()
-            //    .AddScoped<IItemService, ItemService>()
                .AddScoped<IFeederService, FeederService>()
                .AddScoped<IDonorService, DonorService>()
                .AddScoped<IUserService, UserService>()
                .AddScoped<IPasswordService, PasswordService>()
                .AddScoped<CurrentUserService>()
-            //    .AddScoped<LocalStorageService>()
-            //    .AddScoped<AuthenticationStateProvider>()
                .AddScoped<JwtTokenHandler>();
             
             // PG Auth + RBAuth
@@ -47,8 +33,10 @@ namespace FoodShare
             builder.Services.AddAuthorizationCore();
 
             builder.Services.AddTransient<CustomAuthorizationHandler>();
+            
             //Adds local storage so that the current logged in user can be stored
             builder.Services.AddBlazoredLocalStorage();
+            
             // Add authorization policies
             builder.Services.AddAuthorizationCore(options =>
             {
@@ -66,20 +54,11 @@ namespace FoodShare
                 });
             });
            
+            //add API    
             builder.Services.AddScoped(x => {
                var apiUrl = new Uri(builder.Configuration["apiUrl"]);
                 return new HttpClient() { BaseAddress = apiUrl };
            });
-
-            //Auth0 authentication and authorization
-                //specify using the parameters from the AuthO section of the appsettings.json
-                //specify the type of authenticattion and authorization flow you want to use  (Authorization Code flow)
-            builder.Services.AddOidcAuthentication(options =>
-            {
-                builder.Configuration.Bind("Auth0", options.ProviderOptions);
-
-                options.ProviderOptions.ResponseType = "code";
-            });
 
             //IGNORE SSL ERRORS FROM A SPECIFIC DOMAIN
             builder.Services

@@ -1,35 +1,8 @@
 ﻿@inject NavigationManager NavigationManager
-@* @inject CurrentUserService *@
+
 @using FoodShare.Pages.Donor
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Authorization
-
-@* Auth0 content*@
-
-@* Propogate the current authentication state to the inner components so that they can work on it consistently *@
-@*<CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(App).Assembly">
-        <Found Context="routeData">
-            @* used to customize the content according to the user's authentication status *@ @*
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"> 
-                <Authorizing>
-                    <p>Determining session state, please wait...</p>
-                </Authorizing>
-                <NotAuthorized>
-                    <h1>Sorry</h1>
-                    <p>You're not authorized to reach this page. You need to log in.</p>
-                </NotAuthorized>
-            </AuthorizeRouteView>
-            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-        </Found>
-        <NotFound>
-            <PageTitle>Not found</PageTitle>
-            <LayoutView Layout="@typeof(MainLayout)">
-                <p role="alert">Sorry, there's nothing at this address.</p>
-            </LayoutView>
-        </NotFound>
-    </Router>
-@* </CascadingAuthenticationState>  *@
 
 @* Patrick God Tutorial *@
 <CascadingAuthenticationState> 
@@ -56,14 +29,3 @@
         </NotFound>
     </Router>
  </CascadingAuthenticationState>
-
-@* Not sure where this fits in*@
-@* @code {
-    private UserInfo currentUser = new UserInfo();
-
-    // Set the user information when the user logs in
-    public void SetUserInfo(UserInfo userInfo)
-    {
-        currentUser = userInfo;
-    }
-} *@
