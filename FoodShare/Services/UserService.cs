@@ -35,7 +35,7 @@ namespace FoodShare.Services
 
         public async Task<int> Register(NewUser user)
         {
-            var response = await _httpClient.PostAsJsonAsync($"api/User/InsertUser", user);
+            var response = await _httpClient.PostAsJsonAsync($"api/SBAuth/Register", user);
             var content = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)
             {
