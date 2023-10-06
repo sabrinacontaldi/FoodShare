@@ -8,6 +8,7 @@ using System.ComponentModel;
 using JwtWebApi;
 using Supabase;
 using JwtWebApi.Models;
+using JwtWebApi.Contracts.Newsletter;
 using JwtWebApi.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,11 +57,22 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false
         };
     });
-builder.Services.AddCors(options => options.AddPolicy(name: "NgOrigins",
-    policy => 
+// builder.Services.AddCors(options => options.AddPolicy(name: "NgOrigins",
+//     policy => 
+//     {
+//         policy.WithOrigins("https//localhost:5209").AllowAnyMethod().AllowAnyHeader();
+//     }));
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy", builder =>
     {
-        policy.WithOrigins("https//localhost:5209").AllowAnyMethod().AllowAnyHeader();
-    }));
+        builder.WithOrigins("http://localhost:5209") // Allow requests from this origin
+               .AllowAnyMethod() // Allow any HTTP method
+               .AllowAnyHeader(); // Allow any HTTP headers
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -70,7 +82,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("NgOrigins");
+// app.UseCors("NgOrigins");
+app.UseCors("MyCorsPolicy");
 
 app.MapPost("/newsletters", async (
     CreateNewsletterRequest request,

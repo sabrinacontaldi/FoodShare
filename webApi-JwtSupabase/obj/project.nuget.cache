@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c18zSL1UozKuNa0SimsXezFiZe7awE8XsTAbQWmAllzZKN4yV1RlLjBHWFQjRYhxpMZ2VVIjlc0zEYpB05SKqg==",
+  "dgSpecHash": "Ys+2Fly/NVy6JCoaLdo/5ELKi1/g5xhPA1NvcwA2XQHh8cXQFZfRwMQu1sslYvoZ9BY5nZsT9EroTODKONq2aQ==",
   "success": true,
-  "projectFilePath": "/Users/sabrinacontaldi/Desktop/webApi-JwtSupabase/JwtWebApi.csproj",
+  "projectFilePath": "/Users/sabrinacontaldi/Desktop/FoodShareProject/webApi-JwtSupabase/JwtWebApi.csproj",
   "expectedPackageFiles": [
     "/Users/sabrinacontaldi/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/sabrinacontaldi/.nuget/packages/functions-csharp/1.3.1/functions-csharp.1.3.1.nupkg.sha512",

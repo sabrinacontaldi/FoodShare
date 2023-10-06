@@ -6,6 +6,7 @@ using System.Net.Security;
 using Foodshare.Handlers;
 using Blazored.LocalStorage;
 using FoodShare.Handlers;
+using FoodShare.Services;
 
 
 namespace FoodShare
@@ -25,6 +26,7 @@ namespace FoodShare
                .AddScoped<IDonorService, DonorService>()
                .AddScoped<IUserService, UserService>()
                .AddScoped<IPasswordService, PasswordService>()
+               .AddScoped<ISBUserService, SBUserService>()
                .AddScoped<CurrentUserService>()
                .AddScoped<JwtTokenHandler>();
             
@@ -72,7 +74,7 @@ namespace FoodShare
                 }
                 httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
                 {
-                    if (message.RequestUri.Host == "https://127.0.0.1:5076")
+                    if (message.RequestUri.Host == "http://127.0.0.1:5000")
                     {
                         return true;
                     }
@@ -86,7 +88,7 @@ namespace FoodShare
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                             policy =>
                             {
-                                policy.WithOrigins("https://127.0.0.1:5706")
+                                policy.WithOrigins("http://127.0.0.1:5000")
                                 .AllowAnyHeader()
                                 .AllowAnyMethod()
                                 .SetIsOriginAllowed(origin => true)

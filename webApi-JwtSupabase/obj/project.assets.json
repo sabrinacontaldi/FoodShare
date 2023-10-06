@@ -3509,11 +3509,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sabrinacontaldi/Desktop/webApi-JwtSupabase/JwtWebApi.csproj",
+      "projectUniqueName": "/Users/sabrinacontaldi/Desktop/FoodShareProject/webApi-JwtSupabase/JwtWebApi.csproj",
       "projectName": "JwtWebApi",
-      "projectPath": "/Users/sabrinacontaldi/Desktop/webApi-JwtSupabase/JwtWebApi.csproj",
+      "projectPath": "/Users/sabrinacontaldi/Desktop/FoodShareProject/webApi-JwtSupabase/JwtWebApi.csproj",
       "packagesPath": "/Users/sabrinacontaldi/.nuget/packages/",
-      "outputPath": "/Users/sabrinacontaldi/Desktop/webApi-JwtSupabase/obj/",
+      "outputPath": "/Users/sabrinacontaldi/Desktop/FoodShareProject/webApi-JwtSupabase/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/sabrinacontaldi/.nuget/NuGet/NuGet.Config"

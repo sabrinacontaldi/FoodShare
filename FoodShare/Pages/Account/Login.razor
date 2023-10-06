@@ -10,6 +10,7 @@
 @inject IPasswordService PasswordService
 @inject CurrentUserService CurrentUserService
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject ISBUserService UserService
 
 
 
@@ -21,16 +22,16 @@
     <div class="card">
         <h4 class="card-header">Login</h4>
         <div class="card-body">
-            <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+            <EditForm Model="@SBModel" OnValidSubmit="OnValidSubmit2">
                 <DataAnnotationsValidator/>
                 <div class="form-group">
-                    <label>Username</label>
-                    <InputText @bind-Value="model.Username" class="form-control" />
+                    <label>Email</label>
+                    <InputText @bind-Value="SBModel.Email" class="form-control" />
                     <ValidationMessage For="@(() => model.Username)" />
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <InputText @bind-Value="model.Password" class="form-control" type="password"/>
+                    <InputText @bind-Value="SBModel.Password" class="form-control" type="password"/>
                     <ValidationMessage For="@(() => model.Password)" />
                 </div>
                 @if(error)
@@ -55,6 +56,8 @@
 @code {
     private Models.Account.Login model = new Models.Account.Login();
 
+    private Models.Account.SBLogin SBModel = new Models.Account.SBLogin();
+
     private Models.User user = new Models.User();
     private Models.Account.AddPassword password = new Models.Account.AddPassword();
 
@@ -65,42 +68,24 @@
     private bool error = false;
     private string errorMessage = "Username or password is incorrect";
     
-    @* private async void OnValidSubmit()
+    private async void OnValidSubmit2()
     {
         loading = true;
         try
         {
-            string token = await UserService.Login(model);
-
-            if(token != string.Empty)
-            {
-                User u = await UserService.GetUserByUsername(model.Username);
-                
-                if(u.donor_id != null && u.donor_id != 0)
-                {
-                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.donor_id, u.username, "donor"));
-                    NavigationManager.NavigateTo("/donor/home");
-                }
-                else if(u.feeder_id != null && u.feeder_id != 0)
-                {
-                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.feeder_id, u.username, "feeder"));
-                    NavigationManager.NavigateTo("/feeder/home");
-                }
-                await LocalStorage.SetItemAsync("jwt_token", token);
-
-            }
-           
+            await UserService.Login(SBModel);
+            NavigationManager.NavigateTo("/");
         }
         catch(Exception ex)
         {
             loading = false;
+            
             error = true;
-            errorMessage = ex.Message;
             StateHasChanged();
         }
-    } *@
-    
-    private async void OnValidSubmit()
+
+    }
+    @* private async void OnValidSubmit()
     {
         loading = true;
         try
@@ -149,9 +134,43 @@
             error = true;
             StateHasChanged();
         }
-    }
+    } *@
 }
-       
+
+    @* private async void OnValidSubmit()
+    {
+        loading = true;
+        try
+        {
+            string token = await UserService.Login(model);
+
+            if(token != string.Empty)
+            {
+                User u = await UserService.GetUserByUsername(model.Username);
+                
+                if(u.donor_id != null && u.donor_id != 0)
+                {
+                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.donor_id, u.username, "donor"));
+                    NavigationManager.NavigateTo("/donor/home");
+                }
+                else if(u.feeder_id != null && u.feeder_id != 0)
+                {
+                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.feeder_id, u.username, "feeder"));
+                    NavigationManager.NavigateTo("/feeder/home");
+                }
+                await LocalStorage.SetItemAsync("jwt_token", token);
+
+            }
+           
+        }
+        catch(Exception ex)
+        {
+            loading = false;
+            error = true;
+            errorMessage = ex.Message;
+            StateHasChanged();
+        }
+    } *@      
 
 
         @* loading = true; *@
