@@ -11,7 +11,7 @@
 @inject CurrentUserService CurrentUserService
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 @inject ISBUserService UserService
-
+@inject IJSRuntime JSRuntime
 
 
 @* @inject JwtTokenHandler TokenHandler *@
@@ -73,7 +73,15 @@
         loading = true;
         try
         {
-            await UserService.Login(SBModel);
+            string token = await UserService.Login(SBModel);
+            @* Token is working! *@
+            @* Get token from header *@
+            @* Decode token and verify that it is valid *@
+            @* if decoded value doesnt exist -> expired *@
+            @* find user role*@
+            @*  *@
+            await JSRuntime.InvokeVoidAsync("localStorage.setItem", "jwt", token);
+            @* Console.WriteLine(token); *@
             NavigationManager.NavigateTo("/");
         }
         catch(Exception ex)

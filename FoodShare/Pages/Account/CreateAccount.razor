@@ -1,11 +1,6 @@
 @page "/account/create-account"
-@* @inject IAccountService AccountService *@
-@* @inject IAlertService AlertService *@
-@inject IFeederService FeederService
-@inject IDonorService DonorService
-@inject IUserService UserService
-@inject IPasswordService PasswordService
 @inject ISBUserService SBUserService
+@inject IProfileService ProfileService
 @inject NavigationManager NavigationManager
 
 <h1>Welcome to the FoodShare Team!</h1>
@@ -33,7 +28,7 @@
         </div>
     </div>
 
-    @* The create account form for donors and feeders *@
+@* The create account form is only visible once the user has selected the type of account they want to create *@
 @if(feeder || donor)
 {
     <div class="card">
@@ -41,30 +36,17 @@
         <div class="card-body">
             <EditForm Model="@model" OnValidSubmit="OnValidSubmit" OnInvalidSubmit="InvalidSubmit">
                 <DataAnnotationsValidator />
-            @* @if(personalInfo == false && accInfo == false)
-            {
-                <h3>
-                    Your Organization
-                </h3>
+
                 <div class="form-group">
-                    <label>Organization</label>
+                    <label>Organization Name</label>
                     <InputText @bind-Value="model.Organization" class="form-control" />
                     <ValidationMessage For="@(() => model.Organization)" />
                 </div>
 
-                @if(feeder)
-                {
                 <div class="form-group">
-                    <label>Description</label>
-                    <InputText @bind-Value="model.Description" class="form-control" />
-                    <ValidationMessage For="@(() => model.Description)" />
-                </div>
-                }
-                
-                <div class="form-group">
-                    <label>Branch</label>
-                    <InputText @bind-Value="model.Branch" class="form-control" />
-                    <ValidationMessage For="@(() => model.Branch)" />
+                    <label>Contact Number</label>
+                    <InputNumber @bind-Value="model.Number" class="form-control" />
+                    <ValidationMessage For="@(() => model.Organization)" />
                 </div>
 
                 <div class="form-group">
@@ -91,23 +73,6 @@
                     <ValidationMessage For="@(() => model.ZipCode)" />
                 </div>
 
-                <div class="buttons">
-                    <button class="btn btn-primary button" @onclick="onNext">
-                        Next
-                    </button>
-                </div>
-            }
-            else if(personalInfo == true && accInfo == false)
-            {
-                 <h3>
-                    Contact Person For Your Location (You)
-                </h3>
-                <div class="form-group">
-                    <label>Contact Person</label>
-                    <InputText @bind-Value="model.Name" class="form-control" />
-                    <ValidationMessage For="@(() => model.Name)" />
-                </div> *@
-
                 <div class="form-group">
                     <label>Email Address</label>
                     <InputText @bind-Value="model.EmailAddress" type="email" class="form-control" />
@@ -119,27 +84,6 @@
                     <InputText @bind-Value="model.ConfirmEmail" type="email" class="form-control" />
                     <ValidationMessage For="@(() => model.ConfirmEmail)" />
                 </div>
-
-                @* <div class="buttons">
-                    <button class="btn btn-primary button" @onclick="onBack">
-                        Back
-                    </button>
-                    <button class="btn btn-primary button" @onclick="onNext">
-                        Next
-                    </button>
-                </div>
-
-            }
-            else if(personalInfo == false && accInfo == true)
-            {
-                <h3>
-                   Login Information For Your Location
-                </h3>
-                 <div class="form-group">
-                    <label>Username</label>
-                    <InputText @bind-Value="model.Username" class="form-control" />
-                    <ValidationMessage For="@(() => model.Username)" />
-                </div> *@
 
                 <div class="form-group">
                     <label>Password</label>
@@ -153,15 +97,8 @@
                     <ValidationMessage For="@(() => model.ConfirmPassword)" />
                 </div>
 
-                @* @if(error)
-                {
-                   <p class="error">@errorMessage</p>
-                } *@
-
                 <div class="buttons">
-                     @* <button class="btn btn-primary button" @onclick="onBack">
-                        Back
-                    </button> *@
+            
                     <button disabled="@(formValid)" class="btn btn-primary button" @onclick="OnValidSubmit">
                         @if (loading) 
                         {
@@ -171,7 +108,6 @@
                     </button>
                     @* <NavLink href="account/login" class="btn btn-link">Cancel</NavLink> *@
                 </div>
-            @* } *@
                     
             </EditForm>
         </div>
@@ -185,75 +121,60 @@
     //The model that all user input is bound to
     private Models.Account.AddUser model = new Models.Account.AddUser();
 
-    //The model used to add a 
-    private DatabaseObjects.NewFeeder newF = new DatabaseObjects.NewFeeder();
-    private DatabaseObjects.NewDonor newD = new DatabaseObjects.NewDonor();
-    private DatabaseObjects.NewUser newUser = new DatabaseObjects.NewUser();
-    private Models.Account.AddPassword newPassword = new Models.Account.AddPassword();
-
-    private bool formValid = false;
-
     //types of accounts that can be created
     public bool feeder = false;
     public bool donor = false;
+    public string role = "";
 
     //variables that change the color of the donor/feeder block when it is updated
     public string feederclass = "question-card";
     public string donorclass = "question-card";
 
-    //variables that influence the visibility of sections of the application
-    public bool next = false;
-    public bool personalInfo = false;
-    public bool accInfo = false;
-
+    //Tracks whether the form is valid and submit should be clickable
+    private bool formValid = false;
+    private bool loading;
+    
+    //Track and display error messages
     public bool error = false;
     private string errorMessage = "";
 
-    public void onNext()
-    {
-        if(personalInfo == false && accInfo == false)
-            personalInfo = true;
-        else if(personalInfo == true && accInfo == false)
-        {
-            personalInfo = false;
-            accInfo = true;
-        }
-            
-        next = true;
-    }
-    public void onBack()
-    {
-       
-        if(personalInfo == true && accInfo == false)
-            personalInfo = false;
 
-        if(personalInfo == false && accInfo == true)
-        {   
-            personalInfo = true;
-            accInfo = false;
-        }
-            
-        @* next = true; *@
-    }
-
+    // If feeder is selected, the feeder block will be highlighted
     public void newFeeder()
     {
         feeder = true;
         donor = false;
+        role = "Feeder";
         feederclass = "question-card-selected";
         donorclass = "question-card";
     }
 
+    // If donor is selected, the donor block will be highlighted
     public void newDonor()
     {
         feeder = false;
         donor = true;
+        role = "Donor";
         feederclass = "question-card";
         donorclass = "question-card-selected";
     }
 
-    private bool loading;
+    private async void InvalidSubmit()
+    {
+        error = true;
+        errorMessage = "Please enter all required information";
+    }
 
+    //This only looks at password and email fields -> needs to be updated
+    private bool IsFormValid()
+    {
+        return !string.IsNullOrWhiteSpace(model.EmailAddress) ||
+           !string.IsNullOrWhiteSpace(model.ConfirmEmail) || // Add other required fields.
+           !string.IsNullOrWhiteSpace(model.Password) ||
+           !string.IsNullOrWhiteSpace(model.ConfirmPassword);
+    }
+
+    
     private async void OnValidSubmit()
     {
         bool isValid = IsFormValid();
@@ -270,7 +191,25 @@
 
             Models.Account.NewSBUser NewUser = new  Models.Account.NewSBUser(model.EmailAddress, model.Password);
             try{
-                await SBUserService.Register(NewUser);
+                string id = await SBUserService.Register(NewUser);
+                //To Debug
+                Console.WriteLine(id);
+            
+                Models.Account.Profile.Profile profile = new Models.Account.Profile.Profile{
+                    Id = id,
+                    Role = role,
+
+                    Name = model.Organization,
+                    Email = model.EmailAddress,
+                    Number = model.Number,
+
+                    StreetAddress = model.StreetAddress,
+                    City = model.City,
+                    State = model.State,
+                    ZipCode = model.ZipCode
+                };
+                string content = await ProfileService.Register(profile);
+                
                 NavigationManager.NavigateTo("/account/login");
             } 
             catch(Exception ex)
@@ -285,145 +224,4 @@
         
     }
 
-    private async void InvalidSubmit()
-    {
-        error = true;
-        errorMessage = "Please enter all required information";
-    }
-
-    private bool IsFormValid()
-    {
-        return !string.IsNullOrWhiteSpace(model.EmailAddress) ||
-           !string.IsNullOrWhiteSpace(model.ConfirmEmail) || // Add other required fields.
-           !string.IsNullOrWhiteSpace(model.Password) ||
-           !string.IsNullOrWhiteSpace(model.ConfirmPassword);
-    }
-
-    @* private async void OnValidSubmit2()
-    {
-        error = false;
-        loading = true;
-        try{
-
-            if(feeder == true)
-            {
-                //new Feeder
-                newF.Organization = model.Organization;
-                newF.Description = model.Description;
-                newF.Branch = model.Branch;
-                newF.ZipCode = model.ZipCode;
-
-                //new user
-                //id of new feeder is set to the user's feeder_id
-                try{
-                    newUser.feeder_id = await FeederService.Register(newF);
-
-                    newUser.contact_person = model.Name;
-                    newUser.email_address = model.EmailAddress;
-                    newUser.username = model.Username;
-
-                    try{
-                        newPassword.Id = await UserService.Register(newUser);
-
-                        newPassword.Password = model.Password;
-                        
-                        await PasswordService.Register(newPassword);
-                        
-                        NavigationManager.NavigateTo("/account/login");
-                        
-                        loading = false;
-                    }
-                    catch(Exception ex)
-                    {
-                        loading = false; 
-                        error = true;
-                        errorMessage = ex.Message;
-                        StateHasChanged();
-                        
-                    }
-
-                }
-                catch(Exception ex)
-                {
-                    loading = false; 
-                    error = true;
-                    errorMessage = ex.Message;
-                    StateHasChanged();
-                    
-                }
-
-                //new password
-                //id of new user is set to the password's id
-                
-            }
-            else if(donor == true)
-            {
-                //new Donor
-                newD.Organization = model.Organization;
-                newD.Branch = model.Branch;
-                newD.ZipCode = model.ZipCode;
-
-                try{
-                    newUser.donor_id = await DonorService.Register(newD);
-
-                    newUser.contact_person = model.Name;
-                    newUser.email_address = model.EmailAddress;
-                    newUser.username = model.Username;
-
-                    try{
-                        newPassword.Id = await UserService.Register(newUser);
-
-                        newPassword.Password = model.Password;
-                        
-                        await PasswordService.Register(newPassword);
-                        
-                        loading = false;
-                        
-                        NavigationManager.NavigateTo("/account/login");
-                    }
-                    catch(Exception ex)
-                    {
-                        loading = false; 
-                        error = true;
-                        errorMessage = "Error with Password";
-                        StateHasChanged();
-                        
-                    }
-
-                }
-                catch(Exception ex)
-                {
-                    loading = false; 
-                    error = true;
-                    errorMessage = "This Username is taken";
-                    StateHasChanged();
-                    
-                }
-            }
-        }
-        catch(Exception ex)
-        {
-            loading = false; 
-            error = true;
-            errorMessage = "Error, try again";
-            StateHasChanged();
-            
-        } *@
-
-
-         @* loading = true;
-        try
-        {
-            await AccountService.Register(model1);
-            AlertService.Success("Registration successful", keepAfterRouteChange: true);
-            NavigationManager.NavigateTo("account/login");
-        }
-        catch (Exception ex)
-        {
-            AlertService.Error(ex.Message);
-            loading = false;
-            StateHasChanged();
-        } *@
-       
-    }
 }

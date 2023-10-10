@@ -9,9 +9,10 @@ namespace FoodShare.Models.Account
     public class AddUser
     {
         //General Info -> NEW FEEDER/DONOR
-        // [Required]
-        // public string Organization { get; set; }
-
+        [Required]
+        public string Organization { get; set; }
+        [Required]
+        public long Number { get; set; }
         // [Required]
         // public string Description { get; set; }
 
@@ -19,14 +20,14 @@ namespace FoodShare.Models.Account
         // public string Branch { get; set; }
 
         //Address info
-        // [Required]
-        // public string StreetAddress { get; set; }
-        // [Required]
-        // public string City { get; set; }
-        // [Required]
-        // public string State { get; set; }
-        // [Required]
-        // public int ZipCode { get; set; }
+        [Required]
+        public string StreetAddress { get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string State { get; set; }
+        [Required]
+        public int ZipCode { get; set; }
 
         //Contact person + Account info
         //  [Required]

@@ -27,6 +27,7 @@ namespace FoodShare
                .AddScoped<IUserService, UserService>()
                .AddScoped<IPasswordService, PasswordService>()
                .AddScoped<ISBUserService, SBUserService>()
+               .AddScoped<IProfileService, ProfileService>()
                .AddScoped<CurrentUserService>()
                .AddScoped<JwtTokenHandler>();
             

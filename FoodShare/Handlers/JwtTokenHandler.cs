@@ -8,9 +8,11 @@ namespace Foodshare.Handlers
    
     public class JwtTokenHandler
     {
-        private readonly AuthenticationStateProvider _authenticationStateProvider;
+        // private readonly AuthenticationStateProvider _authenticationStateProvider;
+        private readonly CustomAuthenticationStateProvider _authenticationStateProvider;
+        
 
-        public JwtTokenHandler(AuthenticationStateProvider authenticationStateProvider)
+        public JwtTokenHandler(CustomAuthenticationStateProvider authenticationStateProvider)
         {
             _authenticationStateProvider = authenticationStateProvider;
         }
