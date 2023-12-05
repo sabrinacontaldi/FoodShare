@@ -1,0 +1,203 @@
+*[b-jmfa3jv8ng]{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page[b-jmfa3jv8ng]{
+    /* background: #ebecf1; */
+    background: #191919;
+    color: #191919
+}
+
+.wrapper[b-jmfa3jv8ng]{
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* TOP SECTION */
+.links[b-jmfa3jv8ng]{
+    background: #53af8a;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+
+    /* margin-bottom: 20px; */
+    margin-bottom: 2rem;
+    padding: 15px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.links h5[b-jmfa3jv8ng]{
+    margin-bottom: 1rem;
+}
+    /* filter bar */
+    .filter[b-jmfa3jv8ng]{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* align-items: center; */
+        height: 3rem;
+        width: 80%;
+        /* align-items: stretch; */
+        /* background-color: white; */
+        padding: 0;
+    }
+        .select[b-jmfa3jv8ng]{
+            /* height: 100%; */
+            /* font-weight: 200; */
+            margin: 0;
+            padding-left: 1rem;
+            font-size: medium;
+            height: inherit;
+            width: 300px;
+            /* padding: 8px 5px; */
+            /* color: #53af8a; */
+            color: #191919;
+            cursor: pointer;
+            border-radius: 5px;
+            
+            /* margin-left: 1rem;
+            margin-right: 1rem; */
+        }
+        .filter-btn[b-jmfa3jv8ng]{
+            width: 125px;
+            background: #53af8a;
+            color: #fff;
+            border-radius: 5px;
+            border-color: white;
+            border-style: solid;
+            /* padding: 8px 5px; */
+            text-align: center;
+            font-weight: 200;
+            cursor: pointer;
+            height: inherit;
+        }
+        .filter-btn:hover[b-jmfa3jv8ng]{
+            /* background: #3bd62b; */
+            /* transform: scale(1.2); */
+            background: white;
+            color: #53af8a;
+        }
+
+/* .links ul{
+    display: flex;
+    justify-content: center;
+} */
+
+/* .links ul li{
+    margin: 0 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 3px;
+    cursor: pointer;
+} */
+
+/* .links ul li:hover,
+.links ul li.active{
+    color: #4abd3e;
+} */
+
+.view_item img[b-jmfa3jv8ng]{
+    width: 75px;
+}
+
+.view_main[b-jmfa3jv8ng]{
+    background: #fff;
+    border-radius: 3px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* LIST VIEW */
+.list-view .view_item[b-jmfa3jv8ng]{
+    border: 1px solid #e2efe1;
+    margin: 10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+/* .view_item{
+    justify-content:space-between;
+} */
+
+.list-view .view_item:last-child[b-jmfa3jv8ng]{
+    margin-bottom: 0;
+}
+
+.list-view .view_item .vi_left[b-jmfa3jv8ng]{
+    margin-right: 25px;
+}
+
+.view_item .title[b-jmfa3jv8ng]{
+    font-weight: 600;
+}
+
+.view_item .content[b-jmfa3jv8ng]{
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 200;
+}
+
+.view_item .btn[b-jmfa3jv8ng]{
+    width: 125px;
+    background: #53af8a;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px 5px;
+    text-align: center;
+    font-weight: 200;
+    cursor: pointer;
+}
+.list-view .view_item .vi_right[b-jmfa3jv8ng]{
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.btn:hover[b-jmfa3jv8ng]{
+    /* background: #3bd62b; */
+    transform: scale(1.2);
+}
+
+/* GRID VIEW */
+.grid-view[b-jmfa3jv8ng]{
+    width: 100%;
+}
+.grid-view .view_item[b-jmfa3jv8ng]{
+    width: 230px;
+    border: 1px solid #e2efe1;
+    padding: 25px;
+    align-items: center;
+    margin: 10px;
+    display: inline-block;
+}
+
+/* .grid-view .view_item:last-child{
+    margin-bottom: 0;
+} */
+
+.grid-view .view_item .vi_left[b-jmfa3jv8ng]{
+    margin-bottom: 10px;
+}
+
+.grid-view .view_item .btn[b-jmfa3jv8ng]{
+    margin: 0 auto;
+}
+
+
+/* FILTER BAR */
+
+/* .select{
+    height: inherit;
+    width: max-content;
+    padding-bottom: 0%;
+    padding-top: 0%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+} */

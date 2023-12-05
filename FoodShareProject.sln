@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodShare", "FoodShare\FoodShare.csproj", "{EAA12B90-0699-40EA-BD36-6B9F90033862}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtWebApi", "JwtWebApi\JwtWebApi.csproj", "{2FD59BC4-D3FF-47E1-BAC2-B607E1DD19F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAA12B90-0699-40EA-BD36-6B9F90033862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA12B90-0699-40EA-BD36-6B9F90033862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA12B90-0699-40EA-BD36-6B9F90033862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA12B90-0699-40EA-BD36-6B9F90033862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FD59BC4-D3FF-47E1-BAC2-B607E1DD19F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FD59BC4-D3FF-47E1-BAC2-B607E1DD19F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FD59BC4-D3FF-47E1-BAC2-B607E1DD19F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FD59BC4-D3FF-47E1-BAC2-B607E1DD19F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E123819A-449B-44C1-A4E5-3DDE3E28362F}
+	EndGlobalSection
+EndGlobal

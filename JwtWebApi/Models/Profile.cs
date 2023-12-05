@@ -40,5 +40,12 @@ namespace JwtWebApi.Models
 
         [Column("zip_code")]
         public int ZipCode { get; set; }
+
+
+
+        // Refresh token stuff -> Not sure if this is the place for it
+        // public string RefreshToken { get; set; } = string.Empty;
+        // public DateTime TokenCreated { get; set; }
+        // public DateTime TokenExpires { get; set; }
     }
 }

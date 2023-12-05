@@ -1,3 +1,5 @@
+// This is the class that is used to parse data when a new user is created
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

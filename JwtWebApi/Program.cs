@@ -85,59 +85,59 @@ if (app.Environment.IsDevelopment())
 // app.UseCors("NgOrigins");
 app.UseCors("MyCorsPolicy");
 
-app.MapPost("/newsletters", async (
-    CreateNewsletterRequest request,
-    Supabase.Client client) =>
-    {
-        var newsletter = new Newsletter
-        {
-            Name = request.Name,
-            Description = request.Description,
-            ReadTime = request.ReadTime
-        };
+// app.MapPost("/newsletters", async (
+//     CreateNewsletterRequest request,
+//     Supabase.Client client) =>
+//     {
+//         var newsletter = new Newsletter
+//         {
+//             Name = request.Name,
+//             Description = request.Description,
+//             ReadTime = request.ReadTime
+//         };
 
-        var response = await client.From<Newsletter>().Insert(newsletter);
+//         var response = await client.From<Newsletter>().Insert(newsletter);
 
-        var newNewsletter = response.Models.First();
+//         var newNewsletter = response.Models.First();
 
-        return Results.Ok(newNewsletter.Id);
-    });
+//         return Results.Ok(newNewsletter.Id);
+//     });
 
-app.MapGet("/newsletters/{id}", async (long id, Supabase.Client client) =>
-    {
-        var response = await client
-            .From<Newsletter>()
-            .Where(n => n.Id == id)
-            .Get();
+// app.MapGet("/newsletters/{id}", async (long id, Supabase.Client client) =>
+//     {
+//         var response = await client
+//             .From<Newsletter>()
+//             .Where(n => n.Id == id)
+//             .Get();
         
-        var newsletter = response.Models.FirstOrDefault();
+//         var newsletter = response.Models.FirstOrDefault();
 
-        if (newsletter is null)
-        {
-            return Results.NotFound();
-        }
+//         if (newsletter is null)
+//         {
+//             return Results.NotFound();
+//         }
 
-        var newsletterResponse = new NewsletterResponse
-        {
-            id = newsletter.Id,
-            Name = newsletter.Name,
-            Description = newsletter.Description,
-            ReadTime = newsletter.ReadTime,
-            CreatedAt = newsletter.CreatedAt
-        };
+//         var newsletterResponse = new NewsletterResponse
+//         {
+//             id = newsletter.Id,
+//             Name = newsletter.Name,
+//             Description = newsletter.Description,
+//             ReadTime = newsletter.ReadTime,
+//             CreatedAt = newsletter.CreatedAt
+//         };
 
-        return Results.Ok(newsletterResponse);
-    });
+//         return Results.Ok(newsletterResponse);
+//     });
 
-app.MapDelete("/newsletters/{id}", async (long id, Supabase.Client client) =>
-{
-    await client
-        .From<Newsletter>()
-        .Where(n => n.Id == id)
-        .Delete();
+// app.MapDelete("/newsletters/{id}", async (long id, Supabase.Client client) =>
+// {
+//     await client
+//         .From<Newsletter>()
+//         .Where(n => n.Id == id)
+//         .Delete();
     
-    return Results.NoContent();
-});
+//     return Results.NoContent();
+// });
 
 app.UseHttpsRedirection();
 

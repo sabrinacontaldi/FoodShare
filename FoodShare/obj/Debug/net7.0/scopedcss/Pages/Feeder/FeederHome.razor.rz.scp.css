@@ -1,0 +1,183 @@
+body[b-bb5sj34t0t]{
+    /* display: flex; */
+	justify-content: center;
+	align-items: center;
+	min-height: fit-content;
+    background-color: #191919;
+}
+.box[b-bb5sj34t0t]{
+	display: flex;
+	flex-direction: column;
+	min-height: fit-content;
+    background: #f78e06;
+	padding: 10px;
+}
+.buttons[b-bb5sj34t0t]{
+	max-width:  100%;
+	margin:  0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    text-align: center;
+    /* background-color: #191919; */
+}
+
+.card[b-bb5sj34t0t]{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    /* align-items: center; */
+    position:  center;
+    justify-content: center;
+    /* background-color: #53af8a; */
+}
+.card-header[b-bb5sj34t0t]{
+    width: 100%;
+    background-color: #53af8a;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.card-body[b-bb5sj34t0t]{
+    background-color: white;
+    width: 100%;
+}
+
+.shopping-list[b-bb5sj34t0t]{
+	font-family: 'Courier New', Courier, monospace;
+    /* box-sizing: content-box; */
+    /* width: 90%; */
+    border: 2px solid grey;
+    padding-top: 0;
+    padding: 10px;
+    border-radius: 4px;
+    min-height: fit-content;
+    min-width: fit-content;
+    margin: 5px;
+}
+	.shopping-list h4[b-bb5sj34t0t]{
+		text-align: center;
+	}
+
+  .table-header[b-bb5sj34t0t]{
+		text-align: center;
+		color: white;
+		background-color: #333;
+	}
+	
+	input[b-bb5sj34t0t]{
+		font-family:'Courier New', Courier, monospace;
+		color: black;
+		text-align: center;
+		margin-top: 5px;
+		/* width: inherit;
+		height: inherit; */
+	}
+	
+	select[b-bb5sj34t0t]{
+		color: black;
+		text-align: center;
+		border-style: hidden;
+		border-radius: 4px;
+		min-width: 10px;
+		height: inherit;
+		padding-left: 5px;    
+	}
+	
+	input[b-bb5sj34t0t], select[b-bb5sj34t0t]{
+		text-align: center;
+		box-sizing: border-box;
+		border-style: solid;
+		border-width: 1px;
+		height: 38px;
+		margin-top: 5px;
+	}
+	
+	.box-dropdown[b-bb5sj34t0t]{
+		text-align: center;
+	}
+
+
+	.radio-buttons[b-bb5sj34t0t]{
+		width: fit-content;
+		background-color: #fff;
+		padding: 5px;
+		padding-bottom: 0;
+		margin-bottom: 2px;
+		border-color: rgb(14, 13, 13);
+		border-width: 2px;
+		max-height: fit-content;
+	}
+
+	.radio-buttons input[b-bb5sj34t0t]{
+		height: auto;
+	}
+
+	.radio[b-bb5sj34t0t]{
+		color: black;
+	}
+	/* .quantity{
+		
+	} */
+	/* .radio-buttons input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+	} */
+
+	/* .radio {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 25px;
+		width: 25px;
+		background-color: #eee;
+		border-radius: 50%;
+		filter: grayscale(1);
+	  } */
+
+/* table #course-table {
+	background-image:url(seven-samurai.jpg);
+	background-size: cover;
+	border-collapse: collapse;
+}
+table #course-table caption {
+	font-size: larger;
+	padding: 1em;
+}
+table #course-table td {
+	padding: .5em;
+}
+table #course-table thead tr {
+	background: #000;
+	color: #fff;
+} */
+
+.button[b-bb5sj34t0t]{
+	background-color: #53af8a;
+	color: white;
+	text-decoration: none;
+	border:  2px solid transparent;
+	font-weight: bold;
+	padding: 15px 25px;
+	border-radius: 30px;
+	transition: transform .4s;
+    margin: 10px;
+    width: 200px;
+}
+.button:hover[b-bb5sj34t0t]{
+	transform: scale(1.2);
+}
+
+.info[b-bb5sj34t0t]{
+	font-style: italic;
+	text-decoration: double;
+	text-align: center;
+}
+
+.table[b-bb5sj34t0t]{
+	margin: 1rem;
+}

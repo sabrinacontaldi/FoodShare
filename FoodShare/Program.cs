@@ -3,11 +3,8 @@ global using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using FoodShare.Services;
 using System.Net.Security;
-using Foodshare.Handlers;
 using Blazored.LocalStorage;
-using FoodShare.Handlers;
 using FoodShare.Services;
-
 
 namespace FoodShare
 {
@@ -22,20 +19,15 @@ namespace FoodShare
 
             builder.Services
                .AddScoped<IShoppingListService, ShoppingListService>()
-               .AddScoped<IFeederService, FeederService>()
-               .AddScoped<IDonorService, DonorService>()
-               .AddScoped<IUserService, UserService>()
-               .AddScoped<IPasswordService, PasswordService>()
                .AddScoped<ISBUserService, SBUserService>()
-               .AddScoped<IProfileService, ProfileService>()
-               .AddScoped<CurrentUserService>()
-               .AddScoped<JwtTokenHandler>();
+               .AddScoped<IProfileService, ProfileService>();
+            //    .AddScoped<JwtTokenHandler>();
             
             // PG Auth + RBAuth
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             builder.Services.AddAuthorizationCore();
 
-            builder.Services.AddTransient<CustomAuthorizationHandler>();
+            // builder.Services.AddTransient<CustomAuthorizationHandler>();
             
             //Adds local storage so that the current logged in user can be stored
             builder.Services.AddBlazoredLocalStorage();

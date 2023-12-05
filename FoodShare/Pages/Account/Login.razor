@@ -4,11 +4,6 @@
 @* @inject IAccountService AccountService *@
 @* @inject IAlertService AlertService *@
 @inject NavigationManager NavigationManager
-@inject IUserService UserService
-@inject IDonorService DonorService
-@inject IFeederService FeederService
-@inject IPasswordService PasswordService
-@inject CurrentUserService CurrentUserService
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 @inject ISBUserService UserService
 @inject IJSRuntime JSRuntime
@@ -27,12 +22,12 @@
                 <div class="form-group">
                     <label>Email</label>
                     <InputText @bind-Value="SBModel.Email" class="form-control" />
-                    <ValidationMessage For="@(() => model.Username)" />
+                    <ValidationMessage For="@(() => SBModel.Email)" />
                 </div>
                 <div class="form-group">
                     <label>Password</label>
                     <InputText @bind-Value="SBModel.Password" class="form-control" type="password"/>
-                    <ValidationMessage For="@(() => model.Password)" />
+                    <ValidationMessage For="@(() => SBModel.Password)" />
                 </div>
                 @if(error)
                 {
@@ -54,12 +49,12 @@
     </div>
 </body>
 @code {
-    private Models.Account.Login model = new Models.Account.Login();
+    @* private Models.Account.Login model = new Models.Account.Login(); *@
 
     private Models.Account.SBLogin SBModel = new Models.Account.SBLogin();
 
-    private Models.User user = new Models.User();
-    private Models.Account.AddPassword password = new Models.Account.AddPassword();
+    @* private Models.User user = new Models.User(); *@
+    @* private Models.Account.AddPassword password = new Models.Account.AddPassword(); *@
 
     private bool loading;
 
@@ -81,8 +76,9 @@
             @* find user role*@
             @*  *@
             await JSRuntime.InvokeVoidAsync("localStorage.setItem", "jwt", token);
-            @* Console.WriteLine(token); *@
-            NavigationManager.NavigateTo("/");
+            Console.WriteLine(token);
+            
+            NavigationManager.NavigateTo("/", forceLoad: true);
         }
         catch(Exception ex)
         {
@@ -93,162 +89,4 @@
         }
 
     }
-    @* private async void OnValidSubmit()
-    {
-        loading = true;
-        try
-        {
-           
-            User u = await UserService.GetUserByUsername(model.Username);
-            password.Id = u.Id;
-            password.Password = model.Password;
-
-            var h = await PasswordService.CheckPassword(password);
-            if (h)
-            {   
-                if(u.feeder_id != null && u.feeder_id != 0)
-                {
-
-                    var userInfo = new UserInfo((int)u.feeder_id, u.username, "feeder");
-
-                    CurrentUserService.SetCurrentUser(userInfo);
-                    loading = false;
-                    StateHasChanged();
-                    NavigationManager.NavigateTo("/feeder/home");
-
-                    
-                }
-                else if(u.donor_id != null && u.donor_id != 0)
-                {
-
-                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.donor_id, u.username, "donor"));
-                    loading = false;
-                    NavigationManager.NavigateTo("/donor/home");
-                }
-                
-            }
-            else
-            {
-                loading = false;
-                StateHasChanged();
-                error = true;
-
-            }
-        }
-        catch(Exception ex)
-        {
-            loading = false;
-            
-            error = true;
-            StateHasChanged();
-        }
-    } *@
 }
-
-    @* private async void OnValidSubmit()
-    {
-        loading = true;
-        try
-        {
-            string token = await UserService.Login(model);
-
-            if(token != string.Empty)
-            {
-                User u = await UserService.GetUserByUsername(model.Username);
-                
-                if(u.donor_id != null && u.donor_id != 0)
-                {
-                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.donor_id, u.username, "donor"));
-                    NavigationManager.NavigateTo("/donor/home");
-                }
-                else if(u.feeder_id != null && u.feeder_id != 0)
-                {
-                    CurrentUserService.SetCurrentUser(new UserInfo((int)u.feeder_id, u.username, "feeder"));
-                    NavigationManager.NavigateTo("/feeder/home");
-                }
-                await LocalStorage.SetItemAsync("jwt_token", token);
-
-            }
-           
-        }
-        catch(Exception ex)
-        {
-            loading = false;
-            error = true;
-            errorMessage = ex.Message;
-            StateHasChanged();
-        }
-    } *@      
-
-
-        @* loading = true; *@
-        @* string token = await UserService.Login(model); *@
-
-        @* try{
-             *@
-           
-
-        @* }
-        catch(Exception ex)
-        { *@
-            @* NavigationManager.NavigateTo("/donor/home");
-        } *@
-            @* loading = false; *@
-            @* CurrentUserService.SetCurrentUser(token); *@
-
-            @* if(CurrentUserService.CurrentUser.Role == "feeder")
-                NavigationManager.NavigateTo("/feeder/home");
-            else if(CurrentUserService.CurrentUser.Role == "donor")
-                NavigationManager.NavigateTo("/donor/home"); 
-
-        }
-        catch(Exception ex)
-        {
-            loading = false;
-            NavigationManager.NavigateTo("/account/login");
-        }
-         *@ 
-
-        @* if(TokenHandler.) *@
-    
-        @* try
-        {
-            int id = await UserService.GetID(model.Username);
-            password.Id = id;
-            password.Password = model.Password;
-
-            var h = await PasswordService.CheckPassword(password);
-            if (h)
-            {
-                loading = false;
-                NavigationManager.NavigateTo("/donor/home");
-            }
-            else
-            {
-                loading = false;
-                StateHasChanged();
-                error = true;
-
-            }
-        }
-        catch(Exception ex)
-        {
-            loading = false;
-            
-            error = true;
-            StateHasChanged();
-        } *@
-       
-        @* try
-        {
-            await AccountService.Login(model);
-            var returnUrl = NavigationManager.QueryString("returnUrl") ?? "";
-            NavigationManager.NavigateTo(returnUrl);
-        }
-        catch (Exception ex)
-        {
-            AlertService.Error(ex.Message);
-            loading = false;
-            StateHasChanged();
-        } *@
-    

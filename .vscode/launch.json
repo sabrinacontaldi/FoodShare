@@ -1,17 +1,49 @@
+// {
+    // "version": "0.2.0",
+    // "configurations": [
+    //     {
+    //         "name": ".NET Core Launch (web)",
+    //         "type": "coreclr",
+    //         "request": "launch",
+    //         "preLaunchTask": "build",
+
+    //         // "program": "${workspaceFolder}/FoodShareApi/bin/Debug/net7.0/FoodShareApi.dll",
+    //         "program": "${workspaceFolder}/FoodShareApi/bin/Debug/net7.0/FoodShareApi.dll",
+    //         "args": [],
+    //         "cwd": "${workspaceFolder}/FoodShareApi",
+    //         "stopAtEntry": false,
+
+    //         "serverReadyAction": {
+    //             "action": "openExternally",
+    //             "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+    //         },
+    //         "env": {
+    //             "ASPNETCORE_ENVIRONMENT": "Development"
+    //         },
+    //         "sourceFileMap": {
+    //             "/Views": "${workspaceFolder}/Views"
+    //         }
+    //     },
+    //     {
+    //         "name": ".NET Core Attach",
+    //         "type": "coreclr",
+    //         "request": "attach"
+    //     }
+    // ]
+// }
+
 {
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": ".NET Core Server",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-
-            "program": "${workspaceFolder}/FoodShareApi/bin/Debug/net7.0/FoodShareApi.dll",
+            "program": "${workspaceFolder}/JwtWebApi/bin/Debug/net7.0/JwtWebApi.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/FoodShareApi",
+            "cwd": "${workspaceFolder}/JwtWebApi",
             "stopAtEntry": false,
-
             "serverReadyAction": {
                 "action": "openExternally",
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
@@ -20,13 +52,34 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
             "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
+                "/Views": "${workspaceFolder}/JwtWebApi/Views"
             }
         },
         {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach"
+            "name": "Blazor WebAssembly",
+            "type": "blazorwasm",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "url": "https://localhost:5209",
+            "webRoot": "${workspaceFolder}/FoodShare/wwwroot",
+            // "hostingModel": "Server",
+            // "serverProject": "Server",
+            // "args": [],
+            "cwd": "${workspaceFolder}/FoodShare",
+            // "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            // "sourceFileMap": {
+            //     "/Views": "${workspaceFolder}/FoodShare/Pages"
+            // }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Client and Server",
+            "configurations": ["Blazor WebAssembly", ".NET Core Server"]
         }
     ]
 }

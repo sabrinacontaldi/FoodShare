@@ -1,4 +1,7 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@* @inject CustomAuthenticationStateProvider AuthState *@
 @* Auth0 *@
 @* @attribute [Authorize] *@
 @* @attribute [AllowAnonymous] *@
@@ -11,7 +14,7 @@
 <PageTitle>Home</PageTitle>
 
 @* PG AUTH + RBAUTH *@
-<AuthorizeView Roles="Iron Man">
+<AuthorizeView Roles = "Feeder, Donor">
     <Authorized>
         <h1>You're logged in as @context.User.Identity.Name</h1>
     </Authorized>
@@ -54,10 +57,29 @@
             </div>
         </div>
     </div>    
-    
     @* I'm pretty sure there's a better way to navigate between the pages *@
     <div class="buttons button-center button-horizontal">
         <a href="/account/create-account" asp-page="/account/create-account" class="button" type="button">Create an Account</a>
         <a href="/account/login" asp-page="/account/login" class="button" type="button">Login</a>
     </div> 
 </body>
+
+@code{
+    
+    protected override async Task OnInitializedAsync()
+    {
+        string token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "jwt");
+        Console.WriteLine("This is the token being taken from local storage: " + token);
+
+        @* string state = AuthState. *@
+        @* Console.WriteLine(token.user.Identity.Name); *@
+    }
+
+    
+    @* string? state = GetAuthenticationStateAsync(); *@
+
+    @* string name = context.User.Identity.Name;
+
+    Console.WriteLine(name); *@
+
+}
