@@ -8,7 +8,6 @@ using System.ComponentModel;
 using JwtWebApi;
 using Supabase;
 using JwtWebApi.Models;
-using JwtWebApi.Contracts.Newsletter;
 using JwtWebApi.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);

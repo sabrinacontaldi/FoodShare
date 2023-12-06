@@ -81,13 +81,15 @@
 
                             </div>
                             <div class="vi_center">
-                                <p class="title">@item.ItemName</p>
-                                <p class="content">@item.ItemQuantity @item.ItemQuantityType</p>
+                                <p class="title">@item.Name</p>
+                                <p class="content">@item.Quantity @item.QuantityType</p>
                             </div>
                             <br/>
                             <div class="vi_right">
                                  @* <button class="btn" @onclick="()=> ShowMoreInfo(feeder)" >More Info</button> *@
-                                 <button class="btn" @onclick="()=> ShowMoreInfo(item.FeederId)" >More Info</button>
+                                 
+                                 @* Uncomment
+                                 <button class="btn" @onclick="()=> ShowMoreInfo(item.FeederId)" >More Info</button> *@
                             </div>
                         </div>
                     }
@@ -105,6 +107,8 @@
     
     
     //this variable is true if the user is filtering by location and false if the user is filtering by item
+    
+    
     private bool location = true;
 
     UserInfo cUser = CurrentUserService._currentUser;
@@ -146,12 +150,12 @@
                 break;
             
             //ITEM FILTER OPTIONS
-            case "Oldest to Newest":
+            @* case "Oldest to Newest":
                 items = await ShoppingListService.GetAllItems();
                 break;
             case "Newest to Oldest":
                 items = await ShoppingListService.GetItemsNewToOld();
-                break;
+                break; *@
 
             //The default is not filtered 
             @* default:

@@ -21,10 +21,6 @@
       "PackagePath": "staticwebassets/appsettings.json"
     },
     {
-      "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/cookieHelper.js",
-      "PackagePath": "staticwebassets/cookieHelper.js"
-    },
-    {
       "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/css/app.css",
       "PackagePath": "staticwebassets/css/app.css"
     },

@@ -20,7 +20,7 @@ namespace JwtWebApi.Controllers
     [Route("api/[controller]")]
     public class SBAuthController : ControllerBase
     {
-        public static User currUser = new User();
+        // public static SBUserDTO currUser = new User();
         private readonly IConfiguration _configuration;
         private readonly Supabase.Client _client;
 
@@ -126,7 +126,8 @@ namespace JwtWebApi.Controllers
             {
                 // Add id?
                 new Claim(ClaimTypes.Name, profile.Name),
-                new Claim(ClaimTypes.Role, profile.Role)
+                new Claim(ClaimTypes.Role, profile.Role),
+                new Claim(ClaimTypes.NameIdentifier , profile.Id)
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
@@ -145,32 +146,32 @@ namespace JwtWebApi.Controllers
             return jwt;
         }
 
-        private RefreshToken GenerateRefreshToken()
-        {
-            var refreshToken = new RefreshToken
-            {
-                Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
-                Expires = DateTime.Now.AddDays(7),
-                Created = DateTime.Now
-            };
+        // private RefreshToken GenerateRefreshToken()
+        // {
+        //     var refreshToken = new RefreshToken
+        //     {
+        //         Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+        //         Expires = DateTime.Now.AddDays(7),
+        //         Created = DateTime.Now
+        //     };
 
-            return refreshToken;
-        }
+        //     return refreshToken;
+        // }
 
-        private void SetRefreshToken(RefreshToken newRefreshToken)
-        {
-            var cookieOptions = new CookieOptions
-            {
-                HttpOnly = true,
-                Expires = newRefreshToken.Expires
-            };
-            Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
+        // private void SetRefreshToken(RefreshToken newRefreshToken)
+        // {
+        //     var cookieOptions = new CookieOptions
+        //     {
+        //         HttpOnly = true,
+        //         Expires = newRefreshToken.Expires
+        //     };
+        //     Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
 
-            currUser.RefreshToken = newRefreshToken.Token;
-            currUser.TokenCreated = newRefreshToken.Created;
-            currUser.TokenExpires = newRefreshToken.Expires;
+        //     currUser.RefreshToken = newRefreshToken.Token;
+        //     currUser.TokenCreated = newRefreshToken.Created;
+        //     currUser.TokenExpires = newRefreshToken.Expires;
 
-        }
+        // }
 
       // Old method for creating token that didnt work
         // private string GenerateCustomToken(ProfileResponse profile)

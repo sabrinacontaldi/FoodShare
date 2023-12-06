@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using JwtWebApi.Contracts;
-using JwtWebApi.Contracts.Newsletter;
+using JwtWebApi.Contracts;
 using JwtWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 

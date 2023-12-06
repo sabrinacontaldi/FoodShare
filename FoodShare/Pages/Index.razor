@@ -1,6 +1,8 @@
 ﻿@page "/"
 @inject IJSRuntime JSRuntime
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@using System.Security.Claims
 @* @inject CustomAuthenticationStateProvider AuthState *@
 @* Auth0 *@
 @* @attribute [Authorize] *@
@@ -14,72 +16,110 @@
 <PageTitle>Home</PageTitle>
 
 @* PG AUTH + RBAUTH *@
-<AuthorizeView Roles = "Feeder, Donor">
+<AuthorizeView Roles="Feeder">
     <Authorized>
-        <h1>You're logged in as @context.User.Identity.Name</h1>
+        <h1>You're logged in as a Feeder, @context.User.Identity.Name</h1>
+        @if (isParentInitialized)
+        {
+            <CascadingValue Name="Id" Value="@id">
+                <GroceryList></GroceryList>
+            </CascadingValue>
+        }
+        else
+        {
+            <!-- Optionally, you can show a loading message or spinner while waiting for the parent to initialize -->
+            <p>Loading...</p>
+        }
+        
     </Authorized>
+</AuthorizeView>
+<AuthorizeView Roles ="Donor">
+    <Authorized>
+        <h1>You're logged in as a Donor, @context.User.Identity.Name</h1>
+    </Authorized>
+</AuthorizeView>
+
+@* ------------- *@
+<AuthorizeView>
     <NotAuthorized>
-        <h1>You're not logged in</h1>
+
+    <body class="main-page">     
+        <div class="box">
+            <div class="card">
+                @* <i class="fa-solid fa-laptop"></i> *@
+                <h5>What do we do?</h5>
+                <div class="pra">
+                    <p>We connect those who have excess food with those who don't have enough food, opening a channel of communication between
+                    the two parties.</p>
+                    <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p> -->
+                </div>
+            </div>
+
+            <div class= "card" >
+                @* <i class="fa-sharp fa-solid fa-database"></i> *@
+                <h5>Why do we do it?</h5>
+                <div class="pra">
+                    <p>The goal is to reduce food waste and help make the food dontaion process more efficient and effective.</p>
+
+                    <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p> -->	
+                </div>
+            </div>
+
+            <div class= "card" >
+                @* <i class="fa-solid fa-laptop"></i> *@
+                <h5>How can you help?</h5>
+                <div class="pra">
+                    <p>Sign up and join our team! At this current moment we are focusing on Grocery stores as donors and food banks and 
+                    shelters as distributors.</p>
+
+                    <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p>	 -->
+                </div>
+            </div>
+        </div>    
+        @* I'm pretty sure there's a better way to navigate between the pages *@
+        <div class="buttons button-center button-horizontal">
+            <a href="/account/create-account" asp-page="/account/create-account" class="button" type="button">Create an Account</a>
+            <a href="/account/login" asp-page="/account/login" class="button" type="button">Login</a>
+        </div> 
+    </body>
+
     </NotAuthorized>
 </AuthorizeView>
-@* ------------- *@
-
-<body class="main-page">     
-    <div class="box">
-        <div class="card">
-            @* <i class="fa-solid fa-laptop"></i> *@
-            <h5>What do we do?</h5>
-            <div class="pra">
-                <p>We connect those who have excess food with those who don't have enough food, opening a channel of communication between
-                the two parties.</p>
-                <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p> -->
-            </div>
-        </div>
-
-        <div class= "card" >
-            @* <i class="fa-sharp fa-solid fa-database"></i> *@
-            <h5>Why do we do it?</h5>
-            <div class="pra">
-                <p>The goal is to reduce food waste and help make the food dontaion process more efficient and effective.</p>
-
-                <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p> -->	
-            </div>
-        </div>
-
-        <div class= "card" >
-            @* <i class="fa-solid fa-laptop"></i> *@
-            <h5>How can you help?</h5>
-            <div class="pra">
-                <p>Sign up and join our team! At this current moment we are focusing on Grocery stores as donors and food banks and 
-                shelters as distributors.</p>
-
-                <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p>	 -->
-            </div>
-        </div>
-    </div>    
-    @* I'm pretty sure there's a better way to navigate between the pages *@
-    <div class="buttons button-center button-horizontal">
-        <a href="/account/create-account" asp-page="/account/create-account" class="button" type="button">Create an Account</a>
-        <a href="/account/login" asp-page="/account/login" class="button" type="button">Login</a>
-    </div> 
-</body>
 
 @code{
+    [CascadingParameter]
+    private Task<AuthenticationState>? authenticationState { get; set; }
     
+    protected string? id {get; set;}
+
+    private bool isParentInitialized = false;
+
     protected override async Task OnInitializedAsync()
     {
-        string token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "jwt");
-        Console.WriteLine("This is the token being taken from local storage: " + token);
+        @* Save id *@
+        @* Use id as a cascading parameter into different components *@
+        if (authenticationState is not null)
+        {
 
-        @* string state = AuthState. *@
-        @* Console.WriteLine(token.user.Identity.Name); *@
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState?.User;
+           
+            if (user?.Identity is not null && user.Identity.IsAuthenticated)
+            {
+               var nameIdentifierClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+               if (nameIdentifierClaim != null)
+                {
+                    id = nameIdentifierClaim.Value;
+                    @* check to see if it works *@
+                    Console.WriteLine(id);
+                }
+            }
+
+            if(id != null)
+            {
+                isParentInitialized = true;
+            }
+        }
     }
-
-    
-    @* string? state = GetAuthenticationStateAsync(); *@
-
-    @* string name = context.User.Identity.Name;
-
-    Console.WriteLine(name); *@
 
 }

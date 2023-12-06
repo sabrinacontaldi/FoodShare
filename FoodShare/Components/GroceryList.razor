@@ -1,113 +1,118 @@
+@* @using Microsoft.AspNetCore.HttpContext *@
 @* @inject IAccountService AccountService *@
 @* @inject IAlertService AlertService *@
 @* @inject IItemService ItemService *@
 @inject NavigationManager NavigationManager
 @inject IShoppingListService ShoppingListService
+@* @inject IHttpContextAccessor httpContextAccessor *@
 
-@if(people > 0)
+
+@if(!edit)
 {
-    @if(!edit)
-    {
-        <div>
-                <button class="btn btn-primary button" @onclick="(()=>edit=true)">Edit Shopping List</button>
+    <div>
+        <button class="btn btn-primary button" @onclick="(()=>edit=true)">Edit Shopping List</button>
+    </div>
+    <section class="card">
+        <div class="card-header">
+            <h4>Shopping List</h4> 
         </div>
-        <section class="card">
-            <div class="card-header">
-                <h4>Shopping List</h4> 
-            </div>
-            
-            <table id="shopping-list-table" class="table semester-table">
-                <col><col><col>
-                <thead>
-                    <tr class="table-header">
-                        <th>Item Name</th>
-                        <th>Quantity</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var i in currList)
-                    {
-                    <tr>
-                        <td>
-                            <p>@i.ItemName</p>
-                        </td>
-                        <td>
-                            <p>@i.ItemQuantity @i.ItemQuantityType</p>
-                        </td>
-                        <td>
-                            @if(i.DonorId == null)
-                            {
-                                <label>Pending</label>
-                            }
-                            else
-                            {
-                                <label>Accepted</label>
-                            }
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-
-            <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
-            <DataAnnotationsValidator />
-            <div class="add-section">
-                <div class="input">
-                    <InputText placeholder="Canned Beans" @bind-Value="model.ItemName" />
-                    <ValidationMessage For="@(() => model.ItemName)" />
-                </div>
-                <div class="input">
-                    <InputNumber @bind-Value="model.ItemQuantity"/>
-                    <ValidationMessage For="@(() => model.ItemQuantity)" />
-                </div>
-                <div class="input">
-                    <InputSelect TValue="string" class="box-dropdown form-control qt" @bind-Value="model.ItemQuantityType">
-                        <option>-</option>
-                        <option>lbs</option>
-                        <option>units</option>
-                    </InputSelect>
-                    <ValidationMessage For="@(() => model.ItemQuantityType)" />
-                </div>
-                <div>
-                    <button class="add" disabled="@loading">
-                            @if (loading) 
-                        {
-                            <span class="spinner-border spinner-border-sm mr-1"></span>
-                        }
-                        +
-                    </button>
-                </div>
-            </div>
-            </EditForm>
-        </section>          
-    }
-    else{
-         <CascadingValue Name="edit" Value="@edit">
-            <EditGroceryList></EditGroceryList>
-        </CascadingValue>
-    }
         
-       
-       
-    
+        <table id="shopping-list-table" class="table semester-table">
+            <col><col><col>
+            <thead>
+                <tr class="table-header">
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in currList)
+                {
+                <tr>
+                    <td>
+                        <p>@i.Name</p>
+                    </td>
+                    <td>
+                        <p>@i.Quantity @i.QuantityType</p>
+                    </td>
+                    <td>
+                        @* @if(i.DonorId == null)
+                        {
+                            <label>Pending</label>
+                        }
+                        else
+                        {
+                            <label>Accepted</label>
+                        } *@
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <div class="add-section">
+            <div class="input">
+                <InputText placeholder="Canned Beans" @bind-Value="model.Name" />
+                <ValidationMessage For="@(() => model.Name)" />
+            </div>
+            <div class="input">
+                <InputNumber @bind-Value="model.Quantity"/>
+                <ValidationMessage For="@(() => model.Quantity)" />
+            </div>
+            <div class="input">
+                <InputSelect TValue="string" class="box-dropdown form-control qt" @bind-Value="model.QuantityType">
+                    <option>-</option>
+                    <option>lbs</option>
+                    <option>units</option>
+                </InputSelect>
+                <ValidationMessage For="@(() => model.QuantityType)" />
+            </div>
+            <div>
+                <button class="add" disabled="@loading">
+                        @if (loading) 
+                    {
+                        <span class="spinner-border spinner-border-sm mr-1"></span>
+                    }
+                    +
+                </button>
+            </div>
+        </div>
+        </EditForm>
+    </section>          
 }
+else{
+    <CascadingValue Name="edit" Value="@edit">
+        <EditGroceryList></EditGroceryList>
+    </CascadingValue>
+}
+        
+@* } *@
 
 
 @code{
-    
+    @* private readonly IHttpContextAccessor _contextAccessor; *@
     UserInfo cUser = CurrentUserService._currentUser;
+
+    @* Issue is that the string is null when it's passed to this component
+    Is there a way for this component to only load once the parent has been initialised*@
+    [CascadingParameter]
+    protected string Id {get; set;}
 
     private bool IsDisabled = false;
     private bool edit = false;
 
-    [CascadingParameter(Name="people")] int people { get; set; }
 
-    [CascadingParameter(Name ="submitted")] bool submitted { get; set; }
+    @* [CascadingParameter(Name="people")] int people { get; set; } *@
+
+    @* [CascadingParameter(Name ="submitted")] bool submitted { get; set; } *@
     
     public ShoppingList list = new ShoppingList();
     public List<DonationRequest> currList = new List<DonationRequest>();
-
+    
+    @* Model *@
     private DonationRequest model = new DonationRequest();
 
     DonationRequest donation = new DonationRequest();
@@ -130,15 +135,16 @@
         edit = true;
         
     }
-    private void Update(int id)
-    {
+    @* private void Update(int id)
+    { *@
         @* var word = document.getElementById("id");
         word.contentEditable = true;
         word.focus(); *@
-    }
+    @* } *@
     private void OnValidSubmit()
     {
-        model.FeederId = cUser.Id;
+        @* model.FeederId = cUser.Id; *@
+        model.FeederId = Id;
         @* int id = await ShoppingListService.InsertItem(model); *@
         @* model.id = id; *@
         currList.Add(model);
@@ -147,16 +153,29 @@
 
 
         model = new DonationRequest();
-        model.ItemName = string.Empty;
-        model.ItemQuantity = 0;
+        model.Name = string.Empty;
+        model.Quantity = 0;
         
         @* loading = false; *@
     }
 
     protected override async Task OnInitializedAsync()
     {
-         cUser = CurrentUserService._currentUser;
-        currList = await ShoppingListService.GetItemsByFeeder(cUser.Id);
+        Console.WriteLine("This is the Id: " + Id);
+        @* Id = "15cd8b63-102a-44df-b42d-721d72ebd7d6"; *@
+        @* Instead of using cUser - use localStorage Id *@
+        @* string id = httpContextAccessor.HttpContext.User.Identity.NameIdentifier; *@
+        @* Console.WriteLine(id); *@
+        cUser = CurrentUserService._currentUser;
+        @* currList = await ShoppingListService.GetItemsByFeeder(cUser.Id); *@
+        try{
+            currList = await ShoppingListService.GetItemsByFeeder(Id);
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        @* currList = await ShoppingListService.GetItemsByFeeder("15cd8b63-102a-44df-b42d-721d72ebd7d6"); *@
     }
 
     @* public async void refresh()

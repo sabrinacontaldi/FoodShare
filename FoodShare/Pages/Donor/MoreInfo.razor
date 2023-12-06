@@ -3,7 +3,7 @@
 @inject NavigationManager NavigationManager
 @inject IShoppingListService ShoppingListService
 
-<body>
+@* <body>
     @if(feeder == null)
     {
         <h1>Loading</h1>
@@ -44,7 +44,8 @@
                 <button class="btn" @onclick="OpenDialog">Donate</button>
             </div>
         </div>
-    
+</body>
+     *@
         @* <div class="card">
             <h5 class="card-header">@feeder.organization, @feeder.branch</h5>
             <div class ="card-body">
@@ -74,8 +75,8 @@
 
     @* <h1>Int Page</h1>
     <p>You passed in the int value: @Id</p> *@
-</body>
 
+@* Uncomment
 @if (DialogIsOpen)
 {
     if(info)
@@ -95,12 +96,12 @@
         </Dialog>
     }
     
-}
+} *@
       
 
-@code{
+@* @code{
     [Parameter]
-    public int Id {get; set;}
+    public string Id {get; set;}
 
     private bool IsDisabled = false;
 
@@ -148,9 +149,9 @@
         }
             
        
-    }
+    } *@
 
-     private void OnDialogClose(bool isOk){
+     @* private void OnDialogClose(bool isOk){
         
         DialogIsOpen = false;
 
@@ -166,10 +167,11 @@
                     donations.Add(d);
                 }
             }
-            ShoppingListService.UpdateDonorIds(donations);
+            //Uncomment
+            @* ShoppingListService.UpdateDonorIds(donations); *@ @*
             IsDisabled = true;
-        }
-    }
+        } 
+    }*@
 
 
 }

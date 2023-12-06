@@ -1,3 +1,10 @@
+/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.csproj.AssemblyReference.cache
+/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.AssemblyInfoInputs.cache
+/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.AssemblyInfo.cs
+/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.csproj.CoreCompileInputs.cache
+/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.MvcApplicationPartsAssemblyInfo.cs
+/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.MvcApplicationPartsAssemblyInfo.cache
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/bin/Debug/net7.0/appsettings.Development.json
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/bin/Debug/net7.0/appsettings.json
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/bin/Debug/net7.0/JwtWebApi
@@ -36,13 +43,6 @@
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/bin/Debug/net7.0/System.Reactive.dll
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/bin/Debug/net7.0/Websocket.Client.dll
-/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.csproj.AssemblyReference.cache
-/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.GeneratedMSBuildEditorConfig.editorconfig
-/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.AssemblyInfoInputs.cache
-/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.AssemblyInfo.cs
-/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.csproj.CoreCompileInputs.cache
-/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.MvcApplicationPartsAssemblyInfo.cs
-/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.MvcApplicationPartsAssemblyInfo.cache
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/staticwebassets/msbuild.JwtWebApi.Microsoft.AspNetCore.StaticWebAssets.props
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/staticwebassets/msbuild.build.JwtWebApi.props
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.JwtWebApi.props

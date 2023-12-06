@@ -23,6 +23,9 @@ namespace FoodShare
                .AddScoped<IProfileService, ProfileService>();
             //    .AddScoped<JwtTokenHandler>();
             
+            // Accessing context in components
+
+
             // PG Auth + RBAuth
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             builder.Services.AddAuthorizationCore();

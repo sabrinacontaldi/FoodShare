@@ -7,9 +7,9 @@ namespace FoodShare.Models
 {
     public class Item
     {
-        public string ItemName { get; set; }
-        public string ItemQuantityType { get; set; }
-        public int ItemQuantity { get; set; }
+        public string Name { get; set; }
+        public string QuantityType { get; set; }
+        public int Quantity { get; set; }
         public string Status { get; set; }
         public bool selected {get; set;} = false;
 
@@ -18,9 +18,9 @@ namespace FoodShare.Models
             
         }
         public Item(string name, string quantityType, int quantity){
-            ItemName = name;
-            ItemQuantityType = quantityType;
-            ItemQuantity = quantity;
+            Name = name;
+            QuantityType = quantityType;
+            Quantity = quantity;
         }
 
     }

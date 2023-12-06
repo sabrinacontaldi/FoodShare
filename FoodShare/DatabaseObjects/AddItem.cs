@@ -11,16 +11,16 @@ namespace FoodShare.DatabaseObjects
     public class AddItem
     {
         [Required]
-        public string ItemName { get; set; }
+        public string Name { get; set; }
 
         [Required]
-        public string ItemQuantityType { get; set; }
+        public string QuantityType { get; set; }
         
         [Required]
-        public int ItemQuantity { get; set; }
+        public int Quantity { get; set; }
 
         [Required]
-        public int feeder_id {get; set; }
+        public string FeederId {get; set; }
         // public string Status { get; set; }
         // [Required]
         // public DateTime RequestDate { get; set; }
@@ -28,9 +28,9 @@ namespace FoodShare.DatabaseObjects
         public AddItem(){}
         public AddItem(ShoppingList sl, Item item)
         {
-            ItemName = item.ItemName;
-            ItemQuantity = item.ItemQuantity;
-            ItemQuantityType = item.ItemQuantityType;
+            Name = item.Name;
+            Quantity = item.Quantity;
+            QuantityType = item.QuantityType;
             // RequestDate = sl.Date;
         }
 

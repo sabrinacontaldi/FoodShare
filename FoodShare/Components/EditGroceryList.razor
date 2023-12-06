@@ -15,7 +15,7 @@ Get a list of all donation requests where the id is not present in the donation 
     For Update/Edit:
         there will be an edit button on the right of the row, if the button is selected, the row becomes editable?  *@
 
-@if(currList == null)
+@* @if(currList == null)
 {
     <p>content is loading</p>
 }
@@ -69,8 +69,8 @@ else
             
                     @* <button>Back</button> *@ @*
             
-         </div> *@
-
+         </div> *@ 
+@*
 
 </section>
 }
@@ -98,7 +98,7 @@ else
         
         cUser = CurrentUserService._currentUser;
 
-        currList = await ShoppingListService.GetItemsByFeeder(cUser.Id);
+        currList = await ShoppingListService.GetItemsByFeeder(Id);
     }
 
     private void Delete()
@@ -121,4 +121,4 @@ else
 
         IdsToDelete = new List<int>();
     }
-}
+} *@

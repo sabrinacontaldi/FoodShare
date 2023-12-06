@@ -11,51 +11,51 @@ namespace FoodShare.Models
 {
     public class DonationRequest
     {
-        [JsonPropertyName("id")]
+        [JsonPropertyName("Id")]
         public int id { get; set; }
 
-        [JsonPropertyName("ItemName")]
+        [JsonPropertyName("Name")]
         [Required]
-        public string ItemName { get; set; }
+        public string Name { get; set; }
 
-        [JsonPropertyName("ItemQuantityType")]
+        [JsonPropertyName("QuantityType")]
         [Required]
         [RegularExpression("^(?!-).*$", ErrorMessage = "Please select a valid value.")]
-        public string ItemQuantityType { get; set; }
+        public string QuantityType { get; set; }
 
-        [JsonPropertyName("ItemQuantity")]
+        [JsonPropertyName("Quantity")]
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Value must be greater than zero.")]
-        public int ItemQuantity { get; set; }
+        public int Quantity { get; set; }
 
         // [JsonPropertyName("RequestDate")]
         // public Date RequestDate { get; set; }
 
-        [JsonPropertyName("feeder_id")]
+        [JsonPropertyName("FeederId")]
         [Required]
-        public int FeederId { get; set;}
+        public string FeederId { get; set;}
 
-        [JsonPropertyName("donor_id")]
-        public int? DonorId { get; set;} = null;
+        // [JsonPropertyName("donor_id")]
+        // public int? DonorId { get; set;} = null;
 
         public bool selected {get; set;} = false;
 
         public DonationRequest(){}
 
-        public DonationRequest(int ID, AddItem item)
+        public DonationRequest(int Id, AddItem item)
         {
-            id = ID;
-            ItemName = item.ItemName;
-            ItemQuantityType = item.ItemQuantityType;
-            ItemQuantity = item.ItemQuantity;
+            id = Id;
+            Name = item.Name;
+            QuantityType = item.QuantityType;
+            Quantity = item.Quantity;
         }
 
         public DonationRequest(AddItem item)
         {
             // id = ID;
-            ItemName = item.ItemName;
-            ItemQuantityType = item.ItemQuantityType;
-            ItemQuantity = item.ItemQuantity;
+            Name = item.Name;
+            QuantityType = item.QuantityType;
+            Quantity = item.Quantity;
         }
     }
 }

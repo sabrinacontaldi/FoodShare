@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Mk58oMTuwpH9Chgx3e27OZIJeca/5gPPtOKgsMBmnuA=",
+  "Hash": "rSdbYS/iCMmXZ7HDr+9adGMICZ4COFeMlyh3NXE/D8c=",
   "Source": "FoodShare",
   "BasePath": "/",
   "Mode": "Root",
@@ -15655,23 +15655,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/appsettings.json"
-    },
-    {
-      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/cookieHelper.js",
-      "SourceId": "FoodShare",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "cookieHelper.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/cookieHelper.js"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/css/app.css",
