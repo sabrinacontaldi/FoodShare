@@ -27,6 +27,82 @@ namespace JwtWebApi.Controllers
 
     // Edited for Supabase
     //------------------------------------------------------
+    //add a new donation request to the table
+        [HttpPost("new")]
+        public async Task<ActionResult<string>> InsertItem(CreateDonationRequest request)
+        {
+            var donationRequest = new DonationRequest
+            {
+                ItemName = request.ItemName,
+                Quantity = request.Quantity,
+                QuantityType = request.QuantityType,
+                FeederId = request.FeederId
+            };
+
+            var response = await _client.From<DonationRequest>().Insert(donationRequest);
+
+            var newDonationRequest = response.Models.First();
+
+            return Ok(newDonationRequest.Id);
+        }
+
+        // Update an item
+        [HttpPut("update")]
+        public async Task<HttpStatusCode> UpdateItem(DonationRequest Item)
+        {
+            var entity = await _client
+                .From<DonationRequest>()
+                .Where(x => x.Id == Item.Id)
+                .Single();
+
+            entity.ItemName = Item.ItemName;
+            entity.Quantity = Item.Quantity;
+            entity.QuantityType = Item.QuantityType;
+            // Do we need the option to update donor id?
+            
+            await entity.Update<DonationRequest>();
+            return HttpStatusCode.OK;
+        }
+
+        //Update donor id used when a donor agrees to donate an item
+        [HttpPut("UpdateDonorId")]
+        public async Task<HttpStatusCode> UpdateDonorId(DonationRequestResponse Item)
+        {
+            var entity = await _client
+                .From<DonationRequest>()
+                .Where(x => x.Id == Item.Id)
+                .Single();
+
+            entity.DonorId = Item.DonorId;
+            // Do we need the option to update donor id?
+            
+            await entity.Update<DonationRequest>();
+            return HttpStatusCode.OK;
+
+            // var entity = await DBContext.DonationRequests.FirstOrDefaultAsync(s => s.Id == Item.Id);
+
+            //     entity.ItemName = Item.ItemName;
+            //     entity.ItemQuantity = Item.ItemQuantity;
+            //     entity.ItemQuantityType = Item.ItemQuantityType;
+            //     // entity.RequestDate = Item.RequestDate;
+            //     entity.feeder_id = Item.feeder_id;
+            //     entity.donor_id = Item.donor_id;
+
+            // await DBContext.SaveChangesAsync();
+            // return HttpStatusCode.OK;
+        }
+    
+        //Delete a donation request given a specific id
+        [HttpDelete("delete/{id}")]
+        public async Task<HttpStatusCode> DeleteItem(long id)
+        {
+            await _client
+                .From<DonationRequest>()
+                .Where(n => n.Id == id)
+                .Delete();
+            
+            return HttpStatusCode.OK;
+        }
     // Get Requests
         //returns a donation request linked to a specified id
         [HttpGet("Get/{id}")]
@@ -52,7 +128,8 @@ namespace JwtWebApi.Controllers
                 ItemName = donationRequest.ItemName,
                 Quantity = donationRequest.Quantity,
                 QuantityType = donationRequest.QuantityType,
-                FeederId = donationRequest.FeederId
+                FeederId = donationRequest.FeederId,
+                DonorId = donationRequest.DonorId
             };
 
             return Ok(donationRequestResponse);
@@ -69,20 +146,13 @@ namespace JwtWebApi.Controllers
                 .Where(s => s.FeederId == id)
                 .Get();
 
-            // if (dataList.Error != null)
-            // {
-            //     // Log the error
-            //     Console.WriteLine($"Error fetching data: {dataList.Error.Message}");
-            //     return BadRequest(dataList.Error.Message);
-            // }
-
-
             dataList.Models.ForEach(s => response.Add(new DonationRequestResponse{
                 Id = s.Id,
                 ItemName = s.ItemName,
                 Quantity = s.Quantity,
                 QuantityType = s.QuantityType,
                 FeederId = s.FeederId,
+                DonorId = s.DonorId,
                 CreatedAt = s.CreatedAt
             }));
 
@@ -99,123 +169,83 @@ namespace JwtWebApi.Controllers
             }
         }
 
-
-        //add a new donation request to the table
-        [HttpPost("new")]
-        public async Task<ActionResult<string>> InsertItem(CreateDonationRequest request)
+        // For Donor views:
+         // returns all donation requests (oldest to newest)
+        [HttpGet("GetItems")]
+        public async Task<ActionResult<List<DonationRequestResponse>>> GetItem()
         {
-            var donationRequest = new DonationRequest
+            
+            List <DonationRequestResponse> response = new List <DonationRequestResponse>();
+            
+            var dataList = await _client
+                .From<DonationRequest>()
+                // Only items that still need to be donated
+                .Where(s => s.DonorId == null)
+                .Get();
+
+            dataList.Models.ForEach(s => response.Add(new DonationRequestResponse{
+                Id = s.Id,
+                ItemName = s.ItemName,
+                Quantity = s.Quantity,
+                QuantityType = s.QuantityType,
+                FeederId = s.FeederId,
+                DonorId = s.DonorId,
+                CreatedAt = s.CreatedAt
+            }));
+
+
+           if (!response.Any())
             {
-                ItemName = request.ItemName,
-                Quantity = request.Quantity,
-                QuantityType = request.QuantityType,
-                FeederId = request.FeederId,
-                // donor_id = Item.donor_id
-            };
-
-            var response = await _client.From<DonationRequest>().Insert(donationRequest);
-
-            var newDonationRequest = response.Models.First();
-
-            return Ok(newDonationRequest.Id);
+                Console.WriteLine("No data found.");
+                return NotFound();
+            }
+            else
+            {
+                Console.WriteLine("Data found.");
+                return Ok(response);
+            }
+        
         }
 
-        // Update an item
-        [HttpPut("update")]
-        public async Task<HttpStatusCode> UpdateItem(DonationRequest Item)
-        {
-            var entity = await _client
-                .From<DonationRequest>()
-                .Where(x => x.Id == Item.Id)
-                .Single();
-
-            entity.ItemName = Item.ItemName;
-            entity.Quantity = Item.Quantity;
-            entity.QuantityType = Item.QuantityType;
+        //returns all donation requests ordered from newest to oldest
+        // [HttpGet("GetItemsNewToOld")]
+        // public async Task<ActionResult<List<DonationRequestResponse>>> GetItemNewToOld()
+        // {
+        //     List <DonationRequestResponse> response = new List <DonationRequestResponse>();
             
-            await entity.Update<DonationRequest>();
-            return HttpStatusCode.OK;
-        }
-    
-        //Delete a donation request given a specific id
-        [HttpDelete("delete/{id}")]
-        public async Task<HttpStatusCode> DeleteItem(long id)
-        {
-            await _client
-                .From<DonationRequest>()
-                .Where(n => n.Id == id)
-                .Delete();
-            
-            return HttpStatusCode.OK;
-        }
+        //     var dataList = await _client
+        //         .From<DonationRequest>()
+        //         // Only items that still need to be donated
+        //         .Where(s => s.DonorId == null)
+        //         // This is what the supabase c# client says you should do but it gives an error
+        //         .Order(d => d.Id, Ordering.Descending)
+        //         .Get();
+
+        //     dataList.Models.ForEach(s => response.Add(new DonationRequestResponse{
+        //         Id = s.Id,
+        //         ItemName = s.ItemName,
+        //         Quantity = s.Quantity,
+        //         QuantityType = s.QuantityType,
+        //         FeederId = s.FeederId,
+        //         DonorId = s.DonorId,
+        //         CreatedAt = s.CreatedAt
+        //     }));
 
 
+        //    if (!response.Any())
+        //     {
+        //         Console.WriteLine("No data found.");
+        //         return NotFound();
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("Data found.");
+        //         return Ok(response);
+        //     }
+        // }
     }
 }
-    // ----------------------------------------------------
-    // For Donor
-    // returns all donation requests (oldest to newest)
-    // [HttpGet("GetItems")]
-    // public async Task<ActionResult<List<DonationRequestDTO>>> GetItem()
-    // {
-    //     // HttpContext.Response.Headers.Add("");
-    //     var List = await _client
-    //         .From<DonationRequest>()
-    //         .Where(s => s.donor_id == null) 
-    //         .Select(
-    //             s => new DonationRequestDTO
-    //             {
-    //                 Id = s.Id,
-    //                 ItemName = s.ItemName,
-    //                 ItemQuantity = s.ItemQuantity,
-    //                 ItemQuantityType = s.ItemQuantityType,
-    //                 // RequestDate = s.RequestDate,
-    //                 feeder_id = s.feeder_id,
-    //                 donor_id = s.donor_id
-    //             }
-    //         ).ToListAsync();
-
-    //     if (List.Count < 0)
-    //     {
-    //         return NotFound();
-    //     }
-    //     else
-    //     {
-    //         return List;
-    //     }
-    // }
     
-    
-    //     //returns all donation requests ordered from newest to oldest
-    //     [HttpGet("GetItemsNewToOld")]
-    //     public async Task<ActionResult<List<DonationRequestDTO>>> GetItemNewToOld()
-    //     {
-    //         // HttpContext.Response.Headers.Add("");
-    //         var List = await DBContext.DonationRequests
-    //         .Where(s => s.donor_id == null) 
-    //         .Select(
-    //             s => new DonationRequestDTO
-    //             {
-    //                 Id = s.Id,
-    //                 ItemName = s.ItemName,
-    //                 ItemQuantity = s.ItemQuantity,
-    //                 ItemQuantityType = s.ItemQuantityType,
-    //                 // RequestDate = s.RequestDate,
-    //                 feeder_id = s.feeder_id,
-    //                 donor_id = s.donor_id
-    //             }
-    //         ).OrderByDescending(d => d.Id)
-    //         .ToListAsync();
-
-    //         if (List.Count < 0)
-    //         {
-    //             return NotFound();
-    //         }
-    //         else
-    //         {
-    //             return List;
-    //         }
-    //     }
 
     
     //     [HttpPost("InsertItemRID")]
@@ -239,19 +269,5 @@ namespace JwtWebApi.Controllers
     //         return entity.Id;
     //     }
 
-    //     [HttpPut("UpdateDonorId")]
-    //     public async Task<HttpStatusCode> UpdateDonorId(DonationRequestDTO Item)
-    //     {
-    //         var entity = await DBContext.DonationRequests.FirstOrDefaultAsync(s => s.Id == Item.Id);
-
-    //             entity.ItemName = Item.ItemName;
-    //             entity.ItemQuantity = Item.ItemQuantity;
-    //             entity.ItemQuantityType = Item.ItemQuantityType;
-    //             // entity.RequestDate = Item.RequestDate;
-    //             entity.feeder_id = Item.feeder_id;
-    //             entity.donor_id = Item.donor_id;
-
-    //         await DBContext.SaveChangesAsync();
-    //         return HttpStatusCode.OK;
-    //     }
+    //     
     // }

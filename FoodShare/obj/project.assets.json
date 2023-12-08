@@ -58,32 +58,6 @@
           "lib/net7.0/Blazored.LocalStorage.dll": {}
         }
       },
-      "functions-csharp/1.2.1": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.1",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Functions.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Functions.dll": {}
-        }
-      },
-      "gotrue-csharp/3.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Gotrue.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Gotrue.dll": {}
-        }
-      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1944,11 +1918,30 @@
           }
         }
       },
+      "Microsoft.NET.ILLink.Analyzers/7.0.100-1.23211.1": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.ILLink.Analyzers.props": {}
+        }
+      },
+      "Microsoft.NET.ILLink.Tasks/7.0.100-1.23211.1": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
       "Microsoft.NET.Runtime.Emscripten.2.0.23.Sdk.win-x64/6.0.15": {
         "type": "package"
       },
       "Microsoft.NET.Runtime.WebAssembly.Sdk/7.0.4": {
         "type": "package"
+      },
+      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.0": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
+          "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets": {}
+        }
       },
       "Microsoft.NET.StringTools/17.3.2": {
         "type": "package",
@@ -2227,19 +2220,6 @@
           }
         }
       },
-      "MimeMapping/2.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/MimeMapping.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/MimeMapping.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Mono.TextTemplating/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -2301,15 +2281,15 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/13.0.3": {
+      "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Newtonsoft.Json.dll": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Newtonsoft.Json.dll": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         }
@@ -2458,35 +2438,6 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "postgrest-csharp/3.1.3": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.2",
-          "System.Linq.Expressions": "4.3.0",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Postgrest.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Postgrest.dll": {}
-        }
-      },
-      "realtime-csharp/5.0.4": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.2",
-          "Websocket.Client": "4.6.1",
-          "postgrest-csharp": "3.1.3",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Realtime.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Realtime.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -2658,47 +2609,6 @@
             "assetType": "native",
             "rid": "ubuntu.16.10-x64"
           }
-        }
-      },
-      "supabase-core/0.0.2": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Core.dll": {}
-        }
-      },
-      "supabase-csharp/0.9.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3",
-          "functions-csharp": "1.2.1",
-          "gotrue-csharp": "3.1.0",
-          "postgrest-csharp": "3.1.3",
-          "realtime-csharp": "5.0.4",
-          "supabase-core": "0.0.2",
-          "supabase-storage-csharp": "1.2.9"
-        },
-        "compile": {
-          "lib/netstandard2.0/Supabase.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Supabase.dll": {}
-        }
-      },
-      "supabase-storage-csharp/1.2.9": {
-        "type": "package",
-        "dependencies": {
-          "MimeMapping": "2.0.0",
-          "Newtonsoft.Json": "13.0.3",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Storage.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Storage.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -3427,22 +3337,6 @@
         },
         "compile": {
           "ref/netstandard/_._": {}
-        }
-      },
-      "System.Reactive/5.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net5.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net5.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net5.0/_._": {}
         }
       },
       "System.Reflection/4.3.0": {
@@ -4203,19 +4097,6 @@
           "lib/netstandard1.3/System.Threading.dll": {}
         }
       },
-      "System.Threading.Channels/5.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.0/System.Threading.Channels.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/System.Threading.Channels.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Threading.Tasks/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -4341,23 +4222,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
-      },
-      "Websocket.Client/4.6.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Reactive": "5.0.0",
-          "System.Threading.Channels": "5.0.0"
-        },
-        "compile": {
-          "lib/net6.0/Websocket.Client.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Websocket.Client.dll": {
-            "related": ".xml"
-          }
-        }
       }
     },
     "net7.0/browser-wasm": {
@@ -4415,32 +4279,6 @@
         },
         "runtime": {
           "lib/net7.0/Blazored.LocalStorage.dll": {}
-        }
-      },
-      "functions-csharp/1.2.1": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.1",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Functions.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Functions.dll": {}
-        }
-      },
-      "gotrue-csharp/3.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Gotrue.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Gotrue.dll": {}
         }
       },
       "Humanizer.Core/2.14.1": {
@@ -6275,11 +6113,30 @@
           }
         }
       },
+      "Microsoft.NET.ILLink.Analyzers/7.0.100-1.23211.1": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.ILLink.Analyzers.props": {}
+        }
+      },
+      "Microsoft.NET.ILLink.Tasks/7.0.100-1.23211.1": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
       "Microsoft.NET.Runtime.Emscripten.2.0.23.Sdk.win-x64/6.0.15": {
         "type": "package"
       },
       "Microsoft.NET.Runtime.WebAssembly.Sdk/7.0.4": {
         "type": "package"
+      },
+      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.0": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
+          "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets": {}
+        }
       },
       "Microsoft.NET.StringTools/17.3.2": {
         "type": "package",
@@ -6546,19 +6403,6 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "MimeMapping/2.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/MimeMapping.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/MimeMapping.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Mono.TextTemplating/2.2.1": {
         "type": "package",
         "dependencies": {
@@ -6620,15 +6464,15 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/13.0.3": {
+      "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Newtonsoft.Json.dll": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Newtonsoft.Json.dll": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         }
@@ -6777,35 +6621,6 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "postgrest-csharp/3.1.3": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.2",
-          "System.Linq.Expressions": "4.3.0",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Postgrest.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Postgrest.dll": {}
-        }
-      },
-      "realtime-csharp/5.0.4": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.2",
-          "Websocket.Client": "4.6.1",
-          "postgrest-csharp": "3.1.3",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Realtime.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Realtime.dll": {}
         }
       },
       "runtime.any.System.Collections/4.3.0": {
@@ -7071,47 +6886,6 @@
       },
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package"
-      },
-      "supabase-core/0.0.2": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Core.dll": {}
-        }
-      },
-      "supabase-csharp/0.9.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3",
-          "functions-csharp": "1.2.1",
-          "gotrue-csharp": "3.1.0",
-          "postgrest-csharp": "3.1.3",
-          "realtime-csharp": "5.0.4",
-          "supabase-core": "0.0.2",
-          "supabase-storage-csharp": "1.2.9"
-        },
-        "compile": {
-          "lib/netstandard2.0/Supabase.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Supabase.dll": {}
-        }
-      },
-      "supabase-storage-csharp/1.2.9": {
-        "type": "package",
-        "dependencies": {
-          "MimeMapping": "2.0.0",
-          "Newtonsoft.Json": "13.0.3",
-          "supabase-core": "0.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Storage.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Storage.dll": {}
-        }
       },
       "System.AppContext/4.3.0": {
         "type": "package",
@@ -7807,22 +7581,6 @@
           "ref/netstandard/_._": {}
         }
       },
-      "System.Reactive/5.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net5.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net5.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net5.0/_._": {}
-        }
-      },
       "System.Reflection/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -8478,19 +8236,6 @@
           "lib/netstandard1.3/System.Threading.dll": {}
         }
       },
-      "System.Threading.Channels/5.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.0/System.Threading.Channels.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/System.Threading.Channels.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Threading.Tasks/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -8612,23 +8357,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
-      },
-      "Websocket.Client/4.6.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Reactive": "5.0.0",
-          "System.Threading.Channels": "5.0.0"
-        },
-        "compile": {
-          "lib/net6.0/Websocket.Client.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Websocket.Client.dll": {
-            "related": ".xml"
-          }
-        }
       }
     }
   },
@@ -8683,30 +8411,6 @@
         "icon.png",
         "lib/net6.0/Blazored.LocalStorage.dll",
         "lib/net7.0/Blazored.LocalStorage.dll"
-      ]
-    },
-    "functions-csharp/1.2.1": {
-      "sha512": "gLdmNzld5Y/BQeZTecCZD8QLcWpAAy0dkqHdbt9iHkn4V8Fs+l2IT5z1KfRjpwOMw3jH69xhzsZ11x0TyCQRmg==",
-      "type": "package",
-      "path": "functions-csharp/1.2.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "functions-csharp.1.2.1.nupkg.sha512",
-        "functions-csharp.nuspec",
-        "lib/netstandard2.0/Functions.dll"
-      ]
-    },
-    "gotrue-csharp/3.1.0": {
-      "sha512": "8xP+3mR0F4QqvoOjV6Jdz7bdTt4M4kyN/s46nJz5HmqPgNVXlDTD81kEmLcshXkBMqp8cJpX3cqS83hxxfabDg==",
-      "type": "package",
-      "path": "gotrue-csharp/3.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "gotrue-csharp.3.1.0.nupkg.sha512",
-        "gotrue-csharp.nuspec",
-        "lib/netstandard2.0/Gotrue.dll"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -10914,6 +10618,53 @@
         "lib/netstandard2.0/Microsoft.Net.Http.Headers.xml",
         "microsoft.net.http.headers.2.2.0.nupkg.sha512",
         "microsoft.net.http.headers.nuspec"
+      ]
+    },
+    "Microsoft.NET.ILLink.Analyzers/7.0.100-1.23211.1": {
+      "sha512": "0GvbEgDGcUQA9KuWcQU1WwYHXt1tBzNr1Nls/M57rM7NA/AndFwCaCEoJpJkmxRY7xLlPDBnmGp8h5+FNqUngg==",
+      "type": "package",
+      "path": "microsoft.net.illink.analyzers/7.0.100-1.23211.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "analyzers/dotnet/cs/ILLink.CodeFixProvider.dll",
+        "analyzers/dotnet/cs/ILLink.RoslynAnalyzer.dll",
+        "build/Microsoft.NET.ILLink.Analyzers.props",
+        "microsoft.net.illink.analyzers.7.0.100-1.23211.1.nupkg.sha512",
+        "microsoft.net.illink.analyzers.nuspec"
+      ]
+    },
+    "Microsoft.NET.ILLink.Tasks/7.0.100-1.23211.1": {
+      "sha512": "tvG8XZYLjT0o3WicCyKBZysVWo1jC9HdCFmNRmddx3WbAz0UCsd0qKZqpiEo99VLA8Re+FzWK51OcRldQPbt2Q==",
+      "type": "package",
+      "path": "microsoft.net.illink.tasks/7.0.100-1.23211.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "Sdk/Sdk.props",
+        "build/6.0_suppressions.xml",
+        "build/Microsoft.NET.ILLink.Tasks.props",
+        "build/Microsoft.NET.ILLink.targets",
+        "microsoft.net.illink.tasks.7.0.100-1.23211.1.nupkg.sha512",
+        "microsoft.net.illink.tasks.nuspec",
+        "tools/net472/ILLink.Tasks.dll",
+        "tools/net472/Mono.Cecil.dll",
+        "tools/net472/System.Buffers.dll",
+        "tools/net472/System.Collections.Immutable.dll",
+        "tools/net472/System.Memory.dll",
+        "tools/net472/System.Numerics.Vectors.dll",
+        "tools/net472/System.Reflection.Metadata.dll",
+        "tools/net472/System.Runtime.CompilerServices.Unsafe.dll",
+        "tools/net7.0/ILLink.Tasks.deps.json",
+        "tools/net7.0/ILLink.Tasks.dll",
+        "tools/net7.0/Mono.Cecil.Pdb.dll",
+        "tools/net7.0/Mono.Cecil.dll",
+        "tools/net7.0/illink.deps.json",
+        "tools/net7.0/illink.dll",
+        "tools/net7.0/illink.runtimeconfig.json"
       ]
     },
     "Microsoft.NET.Runtime.Emscripten.2.0.23.Sdk.win-x64/6.0.15": {
@@ -15472,6 +15223,74 @@
         "tasks/net7.0/WasmAppBuilder.dll"
       ]
     },
+    "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.0": {
+      "sha512": "zIP/2rXQN1Q7xkqxJmDU31BvoISdhM6tH0o206ShlTCWgcmMKuGapPYIDcDcUmIZjZGHrLKM4z/MsgfLGi0VUw==",
+      "type": "package",
+      "path": "microsoft.net.sdk.webassembly.pack/8.0.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "WasmAppHost/BrowserDebugHost.deps.json",
+        "WasmAppHost/BrowserDebugHost.dll",
+        "WasmAppHost/BrowserDebugHost.runtimeconfig.json",
+        "WasmAppHost/BrowserDebugProxy.dll",
+        "WasmAppHost/Microsoft.CodeAnalysis.CSharp.Scripting.dll",
+        "WasmAppHost/Microsoft.CodeAnalysis.CSharp.dll",
+        "WasmAppHost/Microsoft.CodeAnalysis.Scripting.dll",
+        "WasmAppHost/Microsoft.CodeAnalysis.dll",
+        "WasmAppHost/Microsoft.FileFormats.dll",
+        "WasmAppHost/Microsoft.NET.WebAssembly.Webcil.dll",
+        "WasmAppHost/Microsoft.SymbolStore.dll",
+        "WasmAppHost/Newtonsoft.Json.dll",
+        "WasmAppHost/WasmAppHost.deps.json",
+        "WasmAppHost/WasmAppHost.dll",
+        "WasmAppHost/WasmAppHost.runtimeconfig.json",
+        "build/Microsoft.NET.Sdk.WebAssembly.Browser.props",
+        "build/Microsoft.NET.Sdk.WebAssembly.Browser.targets",
+        "build/Microsoft.NET.Sdk.WebAssembly.Pack.props",
+        "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets",
+        "build/Wasm.web.config",
+        "microsoft.net.sdk.webassembly.pack.8.0.0.nupkg.sha512",
+        "microsoft.net.sdk.webassembly.pack.nuspec",
+        "tools/net472/Microsoft.Bcl.AsyncInterfaces.dll",
+        "tools/net472/Microsoft.Build.dll",
+        "tools/net472/Microsoft.IO.Redist.dll",
+        "tools/net472/Microsoft.NET.Sdk.WebAssembly.Pack.Tasks.dll",
+        "tools/net472/Microsoft.NET.StringTools.dll",
+        "tools/net472/Microsoft.NET.WebAssembly.Webcil.dll",
+        "tools/net472/System.Buffers.dll",
+        "tools/net472/System.Collections.Immutable.dll",
+        "tools/net472/System.Configuration.ConfigurationManager.dll",
+        "tools/net472/System.Memory.dll",
+        "tools/net472/System.Numerics.Vectors.dll",
+        "tools/net472/System.Reflection.Metadata.dll",
+        "tools/net472/System.Reflection.MetadataLoadContext.dll",
+        "tools/net472/System.Runtime.CompilerServices.Unsafe.dll",
+        "tools/net472/System.Security.AccessControl.dll",
+        "tools/net472/System.Security.Permissions.dll",
+        "tools/net472/System.Security.Principal.Windows.dll",
+        "tools/net472/System.Text.Encodings.Web.dll",
+        "tools/net472/System.Text.Json.dll",
+        "tools/net472/System.Threading.Tasks.Dataflow.dll",
+        "tools/net472/System.Threading.Tasks.Extensions.dll",
+        "tools/net472/System.ValueTuple.dll",
+        "tools/net8.0/Microsoft.Build.dll",
+        "tools/net8.0/Microsoft.NET.Sdk.WebAssembly.Pack.Tasks.dll",
+        "tools/net8.0/Microsoft.NET.StringTools.dll",
+        "tools/net8.0/Microsoft.NET.WebAssembly.Webcil.dll",
+        "tools/net8.0/Microsoft.Win32.SystemEvents.dll",
+        "tools/net8.0/System.Configuration.ConfigurationManager.dll",
+        "tools/net8.0/System.Drawing.Common.dll",
+        "tools/net8.0/System.Reflection.MetadataLoadContext.dll",
+        "tools/net8.0/System.Security.Cryptography.ProtectedData.dll",
+        "tools/net8.0/System.Security.Permissions.dll",
+        "tools/net8.0/System.Windows.Extensions.dll"
+      ]
+    },
     "Microsoft.NET.StringTools/17.3.2": {
       "sha512": "3sIZECEDSY9kP7BqPLOSIHLsiqv0TSU5cIGAMung+NrefIooo1tBMVRt598CGz+kUF1xlbOsO8nPAYpgfokx/Q==",
       "type": "package",
@@ -16237,22 +16056,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "MimeMapping/2.0.0": {
-      "sha512": "hJRJLm91AF3OSs61y3uVZ5e2NRbq9bj0X2FS5q2PKUifP0T2Eu0FsdRL9gXa537tFQIKf+2TANkzsW2s0BZenA==",
-      "type": "package",
-      "path": "mimemapping/2.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "lib/net461/MimeMapping.dll",
-        "lib/net461/MimeMapping.xml",
-        "lib/netstandard2.0/MimeMapping.dll",
-        "lib/netstandard2.0/MimeMapping.xml",
-        "mimemapping.2.0.0.nupkg.sha512",
-        "mimemapping.nuspec"
-      ]
-    },
     "Mono.TextTemplating/2.2.1": {
       "sha512": "KZYeKBET/2Z0gY1WlTAK7+RHTl7GSbtvTLDXEZZojUdAPqpQNDL6tHv7VUpqfX5VEOh+uRGKaZXkuD253nEOBQ==",
       "type": "package",
@@ -16279,15 +16082,14 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/13.0.3": {
-      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
-      "path": "newtonsoft.json/13.0.3",
+      "path": "newtonsoft.json/13.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
-        "README.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -16296,15 +16098,13 @@
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
         "lib/net45/Newtonsoft.Json.xml",
-        "lib/net6.0/Newtonsoft.Json.dll",
-        "lib/net6.0/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
@@ -16468,30 +16268,6 @@
         "lib/netstandard2.0/NuGet.Versioning.xml",
         "nuget.versioning.6.3.1.nupkg.sha512",
         "nuget.versioning.nuspec"
-      ]
-    },
-    "postgrest-csharp/3.1.3": {
-      "sha512": "sjRoJlDtox7DgoV+gr5buM80QT9HRkoeqZ4p6CMMomxpVwjnqvOt2X2acgnuU5qwmrOULJfRNsEGRbRZ957n7Q==",
-      "type": "package",
-      "path": "postgrest-csharp/3.1.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Postgrest.dll",
-        "postgrest-csharp.3.1.3.nupkg.sha512",
-        "postgrest-csharp.nuspec"
-      ]
-    },
-    "realtime-csharp/5.0.4": {
-      "sha512": "YAHM/yWBzMN5JJiLwoptAoNxRJFpzMzG9mOb5JaJ/wDkix+9ovtPDVNcikTF5KYDsSJnv+EYnZqlwiOvJlZg4w==",
-      "type": "package",
-      "path": "realtime-csharp/5.0.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Realtime.dll",
-        "realtime-csharp.5.0.4.nupkg.sha512",
-        "realtime-csharp.nuspec"
       ]
     },
     "runtime.any.System.Collections/4.3.0": {
@@ -17165,42 +16941,6 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
-      ]
-    },
-    "supabase-core/0.0.2": {
-      "sha512": "a8qJNBi1eYq1pTAov6Nut71ZO3PaZR1rhxsVrWAW74kdzGUFeBa6vC5mZgE8xBsN0qR/dLA4jDTA/Y2QNh5MVw==",
-      "type": "package",
-      "path": "supabase-core/0.0.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Core.dll",
-        "supabase-core.0.0.2.nupkg.sha512",
-        "supabase-core.nuspec"
-      ]
-    },
-    "supabase-csharp/0.9.0": {
-      "sha512": "r0FUXOI8CInYPko4YIIg5GAgeWwsVMECZ+pSKXE/vUN3WtQDExHzBON6JgypHrvw2Vp9lO0ZAV9bIFYITubTTQ==",
-      "type": "package",
-      "path": "supabase-csharp/0.9.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Supabase.dll",
-        "supabase-csharp.0.9.0.nupkg.sha512",
-        "supabase-csharp.nuspec"
-      ]
-    },
-    "supabase-storage-csharp/1.2.9": {
-      "sha512": "V1m4JqPxsA6QAP76OUd1xHgQgCoGZORbe8Nkf15VVSgMplPCXhkYOZAcXTYMq2Id+SOVO24KI8+Hii8DfwwlYg==",
-      "type": "package",
-      "path": "supabase-storage-csharp/1.2.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Storage.dll",
-        "supabase-storage-csharp.1.2.9.nupkg.sha512",
-        "supabase-storage-csharp.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -18937,35 +18677,6 @@
         "ref/netstandard/_._",
         "system.private.uri.4.3.2.nupkg.sha512",
         "system.private.uri.nuspec"
-      ]
-    },
-    "System.Reactive/5.0.0": {
-      "sha512": "erBZjkQHWL9jpasCE/0qKAryzVBJFxGHVBAvgRN1bzM0q2s1S4oYREEEL0Vb+1kA/6BKb5FjUZMp5VXmy+gzkQ==",
-      "type": "package",
-      "path": "system.reactive/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/net5.0/_._",
-        "build/netcoreapp3.1/System.Reactive.dll",
-        "build/netcoreapp3.1/System.Reactive.targets",
-        "build/netcoreapp3.1/System.Reactive.xml",
-        "buildTransitive/net5.0/_._",
-        "buildTransitive/netcoreapp3.1/System.Reactive.targets",
-        "lib/net472/System.Reactive.dll",
-        "lib/net472/System.Reactive.xml",
-        "lib/net5.0-windows10.0.19041/System.Reactive.dll",
-        "lib/net5.0-windows10.0.19041/System.Reactive.xml",
-        "lib/net5.0/System.Reactive.dll",
-        "lib/net5.0/System.Reactive.xml",
-        "lib/netcoreapp3.1/_._",
-        "lib/netstandard2.0/System.Reactive.dll",
-        "lib/netstandard2.0/System.Reactive.xml",
-        "lib/uap10.0.16299/System.Reactive.dll",
-        "lib/uap10.0.16299/System.Reactive.pri",
-        "lib/uap10.0.16299/System.Reactive.xml",
-        "system.reactive.5.0.0.nupkg.sha512",
-        "system.reactive.nuspec"
       ]
     },
     "System.Reflection/4.3.0": {
@@ -20953,32 +20664,6 @@
         "system.threading.nuspec"
       ]
     },
-    "System.Threading.Channels/5.0.0": {
-      "sha512": "RLBIxntLaG9pRmmuVDwY1kc8Bvp/FQzSxPU+19VekkScKkWtVP9r8bLhm28ama3usc816UBrmkg3vv3jUea/hw==",
-      "type": "package",
-      "path": "system.threading.channels/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Threading.Channels.dll",
-        "lib/net461/System.Threading.Channels.xml",
-        "lib/netcoreapp3.0/System.Threading.Channels.dll",
-        "lib/netcoreapp3.0/System.Threading.Channels.xml",
-        "lib/netstandard1.3/System.Threading.Channels.dll",
-        "lib/netstandard1.3/System.Threading.Channels.xml",
-        "lib/netstandard2.0/System.Threading.Channels.dll",
-        "lib/netstandard2.0/System.Threading.Channels.xml",
-        "lib/netstandard2.1/System.Threading.Channels.dll",
-        "lib/netstandard2.1/System.Threading.Channels.xml",
-        "system.threading.channels.5.0.0.nupkg.sha512",
-        "system.threading.channels.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Threading.Tasks/4.3.0": {
       "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
       "type": "package",
@@ -21328,27 +21013,6 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
-    },
-    "Websocket.Client/4.6.1": {
-      "sha512": "6ccH+gNepmlQILnp8L+9J3PvN8Nk9qmdWWhb7aBZC8TvhisgK/JMq6H1evtzRJ3MRM/FWjumP6J/HPEt+DXwuQ==",
-      "type": "package",
-      "path": "websocket.client/4.6.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "icon.png",
-        "lib/net5.0/Websocket.Client.dll",
-        "lib/net5.0/Websocket.Client.xml",
-        "lib/net6.0/Websocket.Client.dll",
-        "lib/net6.0/Websocket.Client.xml",
-        "lib/netstandard2.0/Websocket.Client.dll",
-        "lib/netstandard2.0/Websocket.Client.xml",
-        "lib/netstandard2.1/Websocket.Client.dll",
-        "lib/netstandard2.1/Websocket.Client.xml",
-        "websocket.client.4.6.1.nupkg.sha512",
-        "websocket.client.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -21364,12 +21028,14 @@
       "Microsoft.EntityFrameworkCore.InMemory >= 7.0.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0",
       "Microsoft.Extensions.Http >= 7.0.0",
+      "Microsoft.NET.ILLink.Analyzers >= 7.0.100-1.23211.1",
+      "Microsoft.NET.ILLink.Tasks >= 7.0.100-1.23211.1",
       "Microsoft.NET.Runtime.Emscripten.2.0.23.Sdk.win-x64 >= 6.0.15",
       "Microsoft.NET.Runtime.WebAssembly.Sdk >= 7.0.4",
+      "Microsoft.NET.Sdk.WebAssembly.Pack >= 8.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.0",
       "System.Net.Http.Json >= 7.0.0",
-      "System.Security.Claims >= 4.3.0",
-      "supabase-csharp >= 0.9.0"
+      "System.Security.Claims >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -21456,6 +21122,18 @@
             "target": "Package",
             "version": "[7.0.0, )"
           },
+          "Microsoft.NET.ILLink.Analyzers": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[7.0.100-1.23211.1, )",
+            "autoReferenced": true
+          },
+          "Microsoft.NET.ILLink.Tasks": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[7.0.100-1.23211.1, )",
+            "autoReferenced": true
+          },
           "Microsoft.NET.Runtime.Emscripten.2.0.23.Sdk.win-x64": {
             "target": "Package",
             "version": "[6.0.15, )"
@@ -21463,6 +21141,12 @@
           "Microsoft.NET.Runtime.WebAssembly.Sdk": {
             "target": "Package",
             "version": "[7.0.4, )"
+          },
+          "Microsoft.NET.Sdk.WebAssembly.Pack": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[8.0.0, )",
+            "autoReferenced": true
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
@@ -21475,10 +21159,6 @@
           "System.Security.Claims": {
             "target": "Package",
             "version": "[4.3.0, )"
-          },
-          "supabase-csharp": {
-            "target": "Package",
-            "version": "[0.9.0, )"
           }
         },
         "imports": [
@@ -21494,8 +21174,16 @@
         "warn": true,
         "downloadDependencies": [
           {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
             "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[7.0.14, 7.0.14]"
           }
         ],
         "frameworkReferences": {
@@ -21503,7 +21191,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

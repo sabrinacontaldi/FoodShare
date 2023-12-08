@@ -16,18 +16,16 @@
 <PageTitle>Home</PageTitle>
 
 @* PG AUTH + RBAUTH *@
+    
 <AuthorizeView Roles="Feeder">
     <Authorized>
         <h1>You're logged in as a Feeder, @context.User.Identity.Name</h1>
         @if (isParentInitialized)
         {
-            <CascadingValue Name="Id" Value="@id">
-                <GroceryList></GroceryList>
-            </CascadingValue>
+            <GroceryList Id = "@id"></GroceryList>
         }
         else
         {
-            <!-- Optionally, you can show a loading message or spinner while waiting for the parent to initialize -->
             <p>Loading...</p>
         }
         
@@ -36,6 +34,14 @@
 <AuthorizeView Roles ="Donor">
     <Authorized>
         <h1>You're logged in as a Donor, @context.User.Identity.Name</h1>
+        @if (isParentInitialized)
+        {
+            
+        }
+        else
+        {
+            <p>Loading...</p>
+        }
     </Authorized>
 </AuthorizeView>
 
@@ -43,7 +49,7 @@
 <AuthorizeView>
     <NotAuthorized>
 
-    <body class="main-page">     
+   <body class="main-page">
         <div class="box">
             <div class="card">
                 @* <i class="fa-solid fa-laptop"></i> *@
@@ -81,8 +87,7 @@
             <a href="/account/create-account" asp-page="/account/create-account" class="button" type="button">Create an Account</a>
             <a href="/account/login" asp-page="/account/login" class="button" type="button">Login</a>
         </div> 
-    </body>
-
+     </body>
     </NotAuthorized>
 </AuthorizeView>
 

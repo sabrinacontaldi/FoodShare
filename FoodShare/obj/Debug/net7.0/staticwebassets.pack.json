@@ -5,16 +5,12 @@
       "PackagePath": "staticwebassets/_framework/blazor.webassembly.js"
     },
     {
-      "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/build-gz/XaVrK4kV.gz",
+      "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/compressed/7k1yv4s7sk.gz",
       "PackagePath": "staticwebassets/_framework/blazor.webassembly.js.gz"
     },
     {
       "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/bundle/FoodShare.styles.css",
       "PackagePath": "staticwebassets/FoodShare.styles.css"
-    },
-    {
-      "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/.DS_Store",
-      "PackagePath": "staticwebassets/.DS_Store"
     },
     {
       "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/appsettings.json",
@@ -67,10 +63,6 @@
     {
       "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
       "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.woff"
-    },
-    {
-      "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/images/.DS_Store",
-      "PackagePath": "staticwebassets/images/.DS_Store"
     },
     {
       "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/images/HANDSHAKE.png",

@@ -1,4 +1,4 @@
-@page "/donor/home"
+@* @page "/donor/home" *@
 
 @* Auth0 *@
 @* @attribute [Authorize] *@
@@ -7,7 +7,6 @@
 @attribute [Authorize(Roles = "Donor")]
 
 @inject IJSRuntime jsRuntime
-@inject IFeederService FeederService
 @inject IShoppingListService ShoppingListService
 @inject NavigationManager NavigationManager
 @inject CurrentUserService cUserService
@@ -81,7 +80,7 @@
 
                             </div>
                             <div class="vi_center">
-                                <p class="title">@item.Name</p>
+                                <p class="title">@item.ItemName</p>
                                 <p class="content">@item.Quantity @item.QuantityType</p>
                             </div>
                             <br/>
@@ -105,13 +104,11 @@
                
 @code{
     
-    
     //this variable is true if the user is filtering by location and false if the user is filtering by item
-    
-    
     private bool location = true;
 
     UserInfo cUser = CurrentUserService._currentUser;
+    
     protected override async Task OnInitializedAsync()
     {
         cUser = CurrentUserService._currentUser;
@@ -121,6 +118,7 @@
     {
         NavigationManager.NavigateTo("/account/login");
     }
+
     string filter = "Closest to Furthest";
 
     @* private bool IsDisabled = false; *@
@@ -136,10 +134,11 @@
     {   
         items = null;
         feeders = null;     
-        switch(filter)
+        @* switch(filter)
         {
+            } *@
             //LOCATION FILTER OPTIONS
-            case "Closest to Furthest":
+            @* case "Closest to Furthest":
                 feeders = await FeederService.GetFeedersCloseToFar();
                 break;
             case "Most items to least items":
@@ -147,7 +146,7 @@
                 break;
             case "Least items to most items":
                 feeders = await FeederService.GetFeedersLeastToMost();
-                break;
+                break; *@
             
             //ITEM FILTER OPTIONS
             @* case "Oldest to Newest":
@@ -161,7 +160,6 @@
             @* default:
                 feeders = await FeederService.GetFeeders();
                 break; *@
-        }
         clicked = true;
 
     }

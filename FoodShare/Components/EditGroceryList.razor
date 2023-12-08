@@ -15,7 +15,7 @@ Get a list of all donation requests where the id is not present in the donation 
     For Update/Edit:
         there will be an edit button on the right of the row, if the button is selected, the row becomes editable?  *@
 
-@* @if(currList == null)
+@if(currList == null)
 {
     <p>content is loading</p>
 }
@@ -47,7 +47,7 @@ else
                             <p>@i.ItemName</p>
                         </td>
                         <td>
-                            <p>@i.ItemQuantity @i.ItemQuantityType</p>
+                            <p>@i.Quantity @i.QuantityType</p>
                         </td>
                     </tr>
                 }
@@ -70,7 +70,7 @@ else
                     @* <button>Back</button> *@ @*
             
          </div> *@ 
-@*
+
 
 </section>
 }
@@ -78,13 +78,26 @@ else
 
 @code{
 
-    [CascadingParameter]
-    public FoodShare.Pages.Feeder.FeederHome Parent { get; set; }
+    @* [CascadingParameter]
+    public FoodShare.Pages.Feeder.FeederHome Parent { get; set; } *@
 
-    UserInfo cUser = CurrentUserService._currentUser;
+    [Parameter]
+    public string Id { get; set; }
+
+    [CascadingParameter]
+    public bool Edit { get; set; }
+
+    @* UserInfo cUser = CurrentUserService._currentUser; *@
     private void Back()
     {
-        NavigationManager.NavigateTo("/feeder/home", true);
+        
+        @* Parent = false; *@
+        Edit = false;
+        Console.WriteLine("Back: " + Edit);
+        StateHasChanged();
+        //This is a work around - want to find a way of doing this without having to have the whole page reload
+        NavigationManager.NavigateTo("/", true);
+
     } 
 
     public List<DonationRequest> currList = new List<DonationRequest>();
@@ -96,7 +109,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         
-        cUser = CurrentUserService._currentUser;
+        @* cUser = CurrentUserService._currentUser; *@
 
         currList = await ShoppingListService.GetItemsByFeeder(Id);
     }
@@ -108,17 +121,17 @@ else
         {
             if (d.selected)
             {
-                IdsToDelete.Add(d.id);
+                IdsToDelete.Add(d.Id);
             }
         }
 
         foreach (var id in IdsToDelete)
         {
-            currList.RemoveAll(d => d.id == id);
+            currList.RemoveAll(d => d.Id == id);
         }
 
         ShoppingListService.DeleteItems(IdsToDelete);
 
         IdsToDelete = new List<int>();
     }
-} *@
+}

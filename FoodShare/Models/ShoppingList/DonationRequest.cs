@@ -11,19 +11,15 @@ namespace FoodShare.Models
 {
     public class DonationRequest
     {
-        [JsonPropertyName("Id")]
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        [JsonPropertyName("Name")]
         [Required]
-        public string Name { get; set; }
+        public string ItemName { get; set; }
 
-        [JsonPropertyName("QuantityType")]
         [Required]
         [RegularExpression("^(?!-).*$", ErrorMessage = "Please select a valid value.")]
         public string QuantityType { get; set; }
 
-        [JsonPropertyName("Quantity")]
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Value must be greater than zero.")]
         public int Quantity { get; set; }
@@ -31,29 +27,26 @@ namespace FoodShare.Models
         // [JsonPropertyName("RequestDate")]
         // public Date RequestDate { get; set; }
 
-        [JsonPropertyName("FeederId")]
-        [Required]
         public string FeederId { get; set;}
 
-        // [JsonPropertyName("donor_id")]
-        // public int? DonorId { get; set;} = null;
+        public string? DonorId { get; set;} = null;
 
         public bool selected {get; set;} = false;
 
         public DonationRequest(){}
 
-        public DonationRequest(int Id, AddItem item)
-        {
-            id = Id;
-            Name = item.Name;
-            QuantityType = item.QuantityType;
-            Quantity = item.Quantity;
-        }
+        // public DonationRequest(int Id, AddItem item)
+        // {
+        //     Id = Id;
+        //     ItemName = item.ItemName;
+        //     QuantityType = item.QuantityType;
+        //     Quantity = item.Quantity;
+        // }
 
         public DonationRequest(AddItem item)
         {
             // id = ID;
-            Name = item.Name;
+            ItemName = item.Name;
             QuantityType = item.QuantityType;
             Quantity = item.Quantity;
         }

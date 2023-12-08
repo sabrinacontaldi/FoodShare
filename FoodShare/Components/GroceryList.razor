@@ -2,15 +2,16 @@
 @* @inject IAccountService AccountService *@
 @* @inject IAlertService AlertService *@
 @* @inject IItemService ItemService *@
+@using Microsoft.AspNetCore.Components.Forms
 @inject NavigationManager NavigationManager
 @inject IShoppingListService ShoppingListService
 @* @inject IHttpContextAccessor httpContextAccessor *@
 
 
-@if(!edit)
+@if(!Edit)
 {
     <div>
-        <button class="btn btn-primary button" @onclick="(()=>edit=true)">Edit Shopping List</button>
+        <button class="btn btn-primary button" @onclick="(()=>Edit=true)">Edit Shopping List</button>
     </div>
     <section class="card">
         <div class="card-header">
@@ -31,20 +32,20 @@
                 {
                 <tr>
                     <td>
-                        <p>@i.Name</p>
+                        <p>@i.ItemName</p>
                     </td>
                     <td>
                         <p>@i.Quantity @i.QuantityType</p>
                     </td>
                     <td>
-                        @* @if(i.DonorId == null)
+                        @if(i.DonorId == null)
                         {
                             <label>Pending</label>
                         }
                         else
                         {
                             <label>Accepted</label>
-                        } *@
+                        }
                     </td>
                 </tr>
                 }
@@ -55,8 +56,8 @@
         <DataAnnotationsValidator />
         <div class="add-section">
             <div class="input">
-                <InputText placeholder="Canned Beans" @bind-Value="model.Name" />
-                <ValidationMessage For="@(() => model.Name)" />
+                <InputText placeholder="Canned Beans" @bind-Value="model.ItemName" />
+                <ValidationMessage For="@(() => model.ItemName)" />
             </div>
             <div class="input">
                 <InputNumber @bind-Value="model.Quantity"/>
@@ -84,8 +85,8 @@
     </section>          
 }
 else{
-    <CascadingValue Name="edit" Value="@edit">
-        <EditGroceryList></EditGroceryList>
+    <CascadingValue Name="Edit" Value="@Edit">
+        <EditGroceryList Id="@Id"></EditGroceryList>
     </CascadingValue>
 }
         
@@ -93,31 +94,23 @@ else{
 
 
 @code{
-    @* private readonly IHttpContextAccessor _contextAccessor; *@
-    UserInfo cUser = CurrentUserService._currentUser;
-
-    @* Issue is that the string is null when it's passed to this component
-    Is there a way for this component to only load once the parent has been initialised*@
-    [CascadingParameter]
-    protected string Id {get; set;}
+    [Parameter]
+    public string Id {get; set;}
+    
+    [Parameter]
+    public bool Edit { get; set; }
 
     private bool IsDisabled = false;
-    private bool edit = false;
-
-
-    @* [CascadingParameter(Name="people")] int people { get; set; } *@
-
-    @* [CascadingParameter(Name ="submitted")] bool submitted { get; set; } *@
     
-    public ShoppingList list = new ShoppingList();
-    public List<DonationRequest> currList = new List<DonationRequest>();
+ 
     
-    @* Model *@
+    @* Model that is used for the EditForm*@
     private DonationRequest model = new DonationRequest();
 
-    DonationRequest donation = new DonationRequest();
-
-    AddItem item = new AddItem();
+    public List<DonationRequest> currList = new List<DonationRequest>();
+    @* DonationRequest donation = new DonationRequest(); *@
+@* 
+    AddItem item = new AddItem(); *@
     private bool loading = false;
 
     @* 
@@ -130,156 +123,68 @@ else{
         For Update/Edit:
             there will be an edit button on the right of the row, if the button is selected, the row becomes editable?
     *@
-    private void Edit()
+    protected override async Task OnInitializedAsync()
     {
-        edit = true;
+        Edit = false;
+        Console.WriteLine("OnInitialized: " + Edit);
+        
+        //is this necessary?
+        @* try{ *@
+            currList = await ShoppingListService.GetItemsByFeeder(Id);
+        @* }
+        catch(Exception e)
+        {
+            Console.WriteLine(e.Message);
+        } *@
+    }
+
+    private void EditList()
+    {
+        Edit = true;
         
     }
+
+    //Does this do anything?
     @* private void Update(int id)
     { *@
         @* var word = document.getElementById("id");
         word.contentEditable = true;
         word.focus(); *@
     @* } *@
-    private void OnValidSubmit()
+    
+    public void OnValidSubmit()
     {
-        @* model.FeederId = cUser.Id; *@
+        //Console.WriteLine("Submitted");
         model.FeederId = Id;
-        @* int id = await ShoppingListService.InsertItem(model); *@
-        @* model.id = id; *@
+        
         currList.Add(model);
+        Console.WriteLine(currList.Count);
+        
         DonationRequest m = model;
-        ShoppingListService.Register(m);
-
+   
+        var s = ShoppingListService.Register(m);
+        //Console.WriteLine(s);
 
         model = new DonationRequest();
-        model.Name = string.Empty;
+        model.ItemName = string.Empty;
         model.Quantity = 0;
-        
-        @* loading = false; *@
     }
 
-    protected override async Task OnInitializedAsync()
+    private void HandleEditUpdate()
     {
-        Console.WriteLine("This is the Id: " + Id);
-        @* Id = "15cd8b63-102a-44df-b42d-721d72ebd7d6"; *@
-        @* Instead of using cUser - use localStorage Id *@
-        @* string id = httpContextAccessor.HttpContext.User.Identity.NameIdentifier; *@
-        @* Console.WriteLine(id); *@
-        cUser = CurrentUserService._currentUser;
-        @* currList = await ShoppingListService.GetItemsByFeeder(cUser.Id); *@
-        try{
-            currList = await ShoppingListService.GetItemsByFeeder(Id);
-        }
-        catch(Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-        @* currList = await ShoppingListService.GetItemsByFeeder("15cd8b63-102a-44df-b42d-721d72ebd7d6"); *@
+        // Handle updates to the Edit property
+
+        // Trigger a re-render
+        StateHasChanged();
     }
 
-    @* public async void refresh()
+    //Testing:
+    //Used for testing the Parameter
+    protected override void OnParametersSet()
     {
-        
-    } *@
+        // This method is called whenever parameters are set (including cascading parameters)
+        // You can react to parameter changes here
+        Console.WriteLine($"Id changed to: {Id}");
+        StateHasChanged();
+    }
 }
-
-            
-            @* <tbody>
-
-            </tbody> *@
-            @* <!-- Items to Input-->
-                @foreach (var i in list.Items)
-                {
-                <tr>
-                    <td>
-                        <input type="text" placeholder="Canned Beans" class="form-control" @bind-value="i.ItemName"
-                    @bind-value:event="oninput" />
-                    </td>
-                    <td>
-                        <input type="text" placeholder="Eg. Intro to WGSS" class="form-control" @bind-value="i.ItemQuantity"
-                    @bind-value:event="oninput" />
-                    </td>
-                    <td>
-                        <select class="box-dropdown form-control" @bind="i.ItemQuantityType">
-                            <option>-</option>
-                            <option>lbs</option>
-                            <option>units</option>
-                        </select>
-                    </td>
-                    <td>
-                        @* <label>Pending</label> *@ @*
-                    </td>
-                </tr>
-                }
-            </tbody> *@
-
-        @* <div class="add-section">
-            <button class="add" type="button" @onclick = "@(()=>list.Items.Add(new Item{}))" disabled="@IsDisabled">+</button>
-        </div> *@
-        @* <div class="send">
-            <button class="button" type="button" disabled="@IsDisabled" @onclick = "OnValidSubmit">Send List</button>
-        </div> *@
-
-
-            @* <table class="add-section">
-                <tbody>
-                    <tr>
-                        <td>
-                            <InputText placeholder="Canned Beans" @bind-Value="model.ItemName" />
-                            <ValidationMessage For="@(() => model.ItemName)" />
-                        </td>
-                        <td>
-                            <div class="r">
-                                <InputNumber @bind-Value="model.ItemQuantity"/>
-                                <ValidationMessage For="@(() => model.ItemQuantity)" />
-                                <InputSelect TValue="string" class="box-dropdown form-control qt" @bind-Value="model.ItemQuantityType">
-                                    <option>-</option>
-                                    <option>lbs</option>
-                                    <option>units</option>
-                                </InputSelect>
-                                <ValidationMessage For="@(() => model.ItemQuantityType)" />
-                            </div>
-                            
-                        </td>
-                        <td>
-                            <button class="add" disabled="@loading">
-                                 @if (loading) 
-                                {
-                                    <span class="spinner-border spinner-border-sm mr-1"></span>
-                                }
-                                +
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> *@
-        
-        @* <table id="shopping-list-table">
-            <tbody>
-                 <tr>
-                    <td>
-                        <input type="text" placeholder="Canned Beans" class="form-control" @bind-value="item.ItemName"
-                    @bind-value:event="oninput" />
-                    </td>
-                    <td>
-                        <div class="r">
-                            <input type="text" placeholder="Eg. Intro to WGSS" class="form-control" @bind-value="item.ItemQuantity"
-                    @bind-value:event="oninput" />
-                    @* </td>
-                    <td> *@ @*
-                            <select class="box-dropdown form-control qt" @bind="item.ItemQuantityType">
-                                <option>-</option>
-                                <option>lbs</option>
-                                <option>units</option>
-                            </select>
-                        </div>
-                        
-                    </td>
-                    <td>
-                        @* <button class="add" type="button" disabled="@IsDisabled" @onclick="OnValidSubmit">+</button> *@ @*
-                        <button class="add" type="button" disabled="@IsDisabled" @onclick="@(()=>currList.Add(new DonationRequest(item)))">+</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table> *@

@@ -29,8 +29,9 @@ namespace JwtWebApi.Models
         [Column("feeder_id")]
         public string FeederId { get; set; }
         
-        // [Column("donor_id")]
-        // public string DonorId { get; set; }
+        // Not sure if it should be string? or string
+        [Column("donor_id")]
+        public string? DonorId { get; set; }
 
     }
 }

@@ -26,13 +26,13 @@ namespace FoodShare.DatabaseObjects
         // public DateTime RequestDate { get; set; }
 
         public AddItem(){}
-        public AddItem(ShoppingList sl, Item item)
-        {
-            Name = item.Name;
-            Quantity = item.Quantity;
-            QuantityType = item.QuantityType;
-            // RequestDate = sl.Date;
-        }
+        // public AddItem(ShoppingList sl, Item item)
+        // {
+        //     Name = item.Name;
+        //     Quantity = item.Quantity;
+        //     QuantityType = item.QuantityType;
+        //     // RequestDate = sl.Date;
+        // }
 
     }
 

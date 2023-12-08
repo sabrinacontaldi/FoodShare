@@ -14,6 +14,6 @@ namespace JwtWebApi.Contracts
         public int Quantity { get; set; }
         public string QuantityType { get; set; }
         public string FeederId { get; set; }
-        // public string DonorId { get; set; }
+        public string DonorId { get; set; }
     }
 }

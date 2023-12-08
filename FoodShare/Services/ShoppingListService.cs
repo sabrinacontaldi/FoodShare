@@ -17,9 +17,9 @@ namespace FoodShare.Services
     public interface IShoppingListService
     {
         // Task Register(AddItem item);
-        Task Register(DonationRequest donation);
+        Task<string> Register(DonationRequest donation);
         // Task<int> InsertItem(AddItem item);
-        // Task<int> InsertItem(DonationRequest donation);
+        Task<int> InsertItem(DonationRequest donation);
         Task<List<DonationRequest>> GetItemsByFeeder(string id);
         // Task<List<DonationRequest>> GetAllItems();
         // Task<List<DonationRequest>> GetItemsNewToOld();
@@ -43,10 +43,18 @@ namespace FoodShare.Services
             _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         }
         
-         public async Task Register(DonationRequest item)
+         public async Task<string> Register(DonationRequest item)
         { 
-            await _httpClient.PostAsJsonAsync($"api/DonationRequest/new", item);
 
+            // await _httpClient.PostAsJsonAsync($"api/DonationRequest/new", item);
+            var response = await _httpClient.PostAsJsonAsync($"api/DonationRequest/new", item);
+            var content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content);
+            }
+            
+            return content;
             // var response = await _httpClient.PostAsJsonAsync($"api/Profile/register", profile);
             // var content = await response.Content.ReadAsStringAsync();
             // if (!response.IsSuccessStatusCode)
@@ -60,18 +68,20 @@ namespace FoodShare.Services
 
         //Add a donation to the donation request table in the database
         //return the auto-incremented id of the donation request
-        //  public async Task<int> InsertItem(DonationRequest donation)
-        // {
-        //     var response = await _httpClient.PostAsJsonAsync($"api/Item/InsertItemRID", donation);
-        //     var content = await response.Content.ReadAsStringAsync();
-        //     if (!response.IsSuccessStatusCode)
-        //     {
-        //         throw new ApplicationException(content);
-        //     }
-        //     var id = System.Text.Json.JsonSerializer.Deserialize<int>(content, _options);
+         public async Task<int> InsertItem(DonationRequest donation)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"api/DonationRequest/new", donation);
+
+            // var response = await _httpClient.PostAsJsonAsync($"api/Item/InsertItemR", donation);
+            var content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content);
+            }
+            var id = System.Text.Json.JsonSerializer.Deserialize<int>(content, _options);
             
-        //     return id;
-        // }
+            return id;
+        }
 
         //Get a list of donations that are linked to a specific feeder id
         public async Task<List<DonationRequest>> GetItemsByFeeder(string id)
@@ -85,7 +95,7 @@ namespace FoodShare.Services
                 throw new ApplicationException(content);
             }
             List<DonationRequest> items = System.Text.Json.JsonSerializer.Deserialize<List<DonationRequest>>(content, _options);
-
+            Console.WriteLine(items.Count);
             return items;
 
         }

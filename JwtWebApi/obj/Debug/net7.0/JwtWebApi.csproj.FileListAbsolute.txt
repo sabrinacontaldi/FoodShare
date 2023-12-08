@@ -57,3 +57,4 @@
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.pdb
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.genruntimeconfig.cache
 /Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/ref/JwtWebApi.dll
+/Users/sabrinacontaldi/Desktop/FoodShareProject/JwtWebApi/obj/Debug/net7.0/JwtWebApi.sourcelink.json
