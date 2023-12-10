@@ -124,10 +124,10 @@ namespace JwtWebApi.Controllers
         {
             List<Claim> claims = new List<Claim>
             {
-                // Add id?
                 new Claim(ClaimTypes.Name, profile.Name),
                 new Claim(ClaimTypes.Role, profile.Role),
-                new Claim(ClaimTypes.NameIdentifier , profile.Id)
+                new Claim(ClaimTypes.NameIdentifier, profile.Id),
+                new Claim(ClaimTypes.PostalCode, profile.ZipCode.ToString())
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(

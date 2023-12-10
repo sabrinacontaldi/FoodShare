@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using FoodShare.DatabaseObjects;
+using FoodShare;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FoodShare.Models
@@ -43,12 +43,12 @@ namespace FoodShare.Models
         //     Quantity = item.Quantity;
         // }
 
-        public DonationRequest(AddItem item)
-        {
-            // id = ID;
-            ItemName = item.Name;
-            QuantityType = item.QuantityType;
-            Quantity = item.Quantity;
-        }
+        // public DonationRequest(AddItem item)
+        // {
+        //     // id = ID;
+        //     ItemName = item.Name;
+        //     QuantityType = item.QuantityType;
+        //     Quantity = item.Quantity;
+        //}
     }
 }

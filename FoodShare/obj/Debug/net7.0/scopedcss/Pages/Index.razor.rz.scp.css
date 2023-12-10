@@ -2,29 +2,28 @@
     margin-left: 3rem;
     margin-right: 3rem;
 } */
-.header[b-ho0mgu62t8]{
+/* .header{
     display: flex;
 	align-items: center;
 	justify-content: center;
     background-color: #53af8a;
     height: 50vh;
 }
-.header h1[b-ho0mgu62t8]{
+.header h1{
     font-family: "Papyrus";
     font-weight: bold;
-    /* font: "Papyrus"; */
     text-align: center;
     color: white !important;
     font-size: 15vh;
     position: absolute;
     top: 5rem;
 }
-.header img[b-ho0mgu62t8]{
+.header img{
     height: 20vh;
     position: relative;
     align-items: center;
     margin-top: 5rem;
-}
+} */
 
 .main-page h2[b-ho0mgu62t8]{
     text-align: center;

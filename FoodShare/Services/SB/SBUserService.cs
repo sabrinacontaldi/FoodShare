@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
-using FoodShare.DatabaseObjects;
 using FoodShare.Models;
 using FoodShare.Models.Account;
 
@@ -17,7 +16,6 @@ namespace FoodShare.Services
     }
     public class SBUserService : ISBUserService
     {
-
         private readonly HttpClient _httpClient;
 
         private readonly JsonSerializerOptions _options;
@@ -36,8 +34,7 @@ namespace FoodShare.Services
             if (!response.IsSuccessStatusCode)
             {
                 throw new ApplicationException(content);
-            }
-                       
+            }         
             // user id
             return content;
         }

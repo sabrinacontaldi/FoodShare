@@ -86,16 +86,82 @@ namespace JwtWebApi.Controllers
 
         }
         
-        // Even if the id doesn't exist, the same code is being returned
-        [HttpDelete("delete/{id}")]
-        public async Task<HttpStatusCode> DeleteItem(string id)
+        [HttpGet("getFeeders")]
+        public async Task<ActionResult<ProfileResponse>> GetFeeders()
         {
-            await _client
-                .From<Profile>()
-                .Where(n => n.Id == id)
-                .Delete();
+            List <ProfileResponse> response = new List <ProfileResponse>();
             
-            return HttpStatusCode.OK;
+            var dataList = await _client
+                .From<Profile>()
+                .Where(n => n.Role == "Feeder")
+                .Get();
+            
+            dataList.Models.ForEach(s => response.Add(new ProfileResponse{
+                Id = s.Id,
+                Role = s.Role,
+
+                Name = s.Name,
+                Email = s.Email,
+                Number = s.Number,
+
+                StreetAddress = s.StreetAddress,
+                City = s.City,
+                State = s.State,
+                ZipCode = s.ZipCode,
+
+                CreatedAt = s.CreatedAt
+            }));
+
+           if (!response.Any())
+            {
+                Console.WriteLine("No data found.");
+                return NotFound();
+            }
+            else
+            {
+                Console.WriteLine("Data found.");
+                return Ok(response);
+            }
+        
         }
+
+        // [HttpGet("getFeedersCloseToFar")]
+        // public async Task<ActionResult<ProfileResponse>> GetFeedersCloseToFar(string zip)
+        // {
+        //     List <ProfileResponse> response = new List <ProfileResponse>();
+            
+        //     var dataList = await _client
+        //         .From<Profile>()
+        //         .Where(n => n.Role == "Feeder")
+        //         .Get();
+            
+        //     dataList.Models.ForEach(s => response.Add(new ProfileResponse{
+        //         Id = s.Id,
+        //         Role = s.Role,
+
+        //         Name = s.Name,
+        //         Email = s.Email,
+        //         Number = s.Number,
+
+        //         StreetAddress = s.StreetAddress,
+        //         City = s.City,
+        //         State = s.State,
+        //         ZipCode = s.ZipCode,
+
+        //         CreatedAt = s.CreatedAt
+        //     }));
+
+        //    if (!response.Any())
+        //     {
+        //         Console.WriteLine("No data found.");
+        //         return NotFound();
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("Data found.");
+        //         return Ok(response);
+        //     }
+        
+        // }
     }
 }

@@ -15,30 +15,49 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     }
     private string? token;
 
-    public async Task<string> GetJwtAsync()
-    {
-        token = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", "jwt");
-        Console.WriteLine("This is the token being taken from local storage: " + token);
-        return token;
-    }
+    // public async Task<string> GetJwtAsync()
+    // {   
+    //     try
+    //     {
+    //         token = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", "jwt");
+    //         Console.WriteLine("This is the token being taken from local storage: " + token);
+    //         return token;
+    //     }
+    //     catch(Exception e)
+    //     {
+    //         return e.Message;
+    //     }
+       
+    // }
     // possibly parse token as a parameter
     public async override Task<AuthenticationState> GetAuthenticationStateAsync()
     {
         //Random token so that the rest of the authentication can be completed before looking at JWT
-        // token = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiVG9ueSBTdGFyayIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Iklyb24gTWFuIiwiZXhwIjozMTY4NTQwMDAwfQ.IbVQa1lNYYOzwso69xYfsMOHnQfO3VLvVqV2SOXS7sTtyyZ8DEf5jmmwz2FGLJJvZnQKZuieHnmHkg7CGkDbvA";
-        token = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", "jwt");
-        // empty identity means User is not authorized
-        // var identity = new ClaimsIdentity();
+        //token = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiVG9ueSBTdGFyayIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Iklyb24gTWFuIiwiZXhwIjozMTY4NTQwMDAwfQ.IbVQa1lNYYOzwso69xYfsMOHnQfO3VLvVqV2SOXS7sTtyyZ8DEf5jmmwz2FGLJJvZnQKZuieHnmHkg7CGkDbvA";
+        try
+        {
+            token = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", "jwt");
+            // empty identity means User is not authorized
+            // var identity = new ClaimsIdentity();
 
-        var identity = new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt");
-        // with the identity we create a new user with a ClaimsPrincipal
-        var user = new ClaimsPrincipal(identity);
+            var identity = new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt");
+            // with the identity we create a new user with a ClaimsPrincipal
+            var user = new ClaimsPrincipal(identity);
 
-        var state = new AuthenticationState(user);
+            var state = new AuthenticationState(user);
 
-        //components will get a notification that the authentication state has changed
-        NotifyAuthenticationStateChanged(Task.FromResult(state));
-        return state;
+            //components will get a notification that the authentication state has changed
+            NotifyAuthenticationStateChanged(Task.FromResult(state));
+            return state;
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine(e.Message);
+            var unauthenticatedState = new AuthenticationState(new ClaimsPrincipal());
+            NotifyAuthenticationStateChanged(Task.FromResult(unauthenticatedState));
+            return unauthenticatedState;
+        }
+        
     }
 
     // Code written by Steve Sanders

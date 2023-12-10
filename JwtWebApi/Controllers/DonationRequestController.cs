@@ -11,8 +11,6 @@ namespace JwtWebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    // help secure the webApi
-    // [Authorize]
 
     public class DonationRequestController : ControllerBase
     {
@@ -25,9 +23,7 @@ namespace JwtWebApi.Controllers
             _configuration = configuration;
         }
 
-    // Edited for Supabase
-    //------------------------------------------------------
-    //add a new donation request to the table
+        //add a new donation request to the table
         [HttpPost("new")]
         public async Task<ActionResult<string>> InsertItem(CreateDonationRequest request)
         {
@@ -78,18 +74,6 @@ namespace JwtWebApi.Controllers
             
             await entity.Update<DonationRequest>();
             return HttpStatusCode.OK;
-
-            // var entity = await DBContext.DonationRequests.FirstOrDefaultAsync(s => s.Id == Item.Id);
-
-            //     entity.ItemName = Item.ItemName;
-            //     entity.ItemQuantity = Item.ItemQuantity;
-            //     entity.ItemQuantityType = Item.ItemQuantityType;
-            //     // entity.RequestDate = Item.RequestDate;
-            //     entity.feeder_id = Item.feeder_id;
-            //     entity.donor_id = Item.donor_id;
-
-            // await DBContext.SaveChangesAsync();
-            // return HttpStatusCode.OK;
         }
     
         //Delete a donation request given a specific id
@@ -103,6 +87,7 @@ namespace JwtWebApi.Controllers
             
             return HttpStatusCode.OK;
         }
+        
     // Get Requests
         //returns a donation request linked to a specified id
         [HttpGet("Get/{id}")]
@@ -169,7 +154,43 @@ namespace JwtWebApi.Controllers
             }
         }
 
-        // For Donor views:
+        //returns all donation requests with a specified FeederId
+        [HttpGet("GetUndonatedItemsByFeeder/{id}")]
+        public async Task<ActionResult<List<DonationRequestResponse>>> GetUndonatedItemByFeeder(string id)
+        {
+            List <DonationRequestResponse> response = new List <DonationRequestResponse>();
+            
+            var dataList = await _client
+                .From<DonationRequest>()
+                .Where(s => s.FeederId == id)
+                .Where(s => s.DonorId == null)
+                .Get();
+
+            dataList.Models.ForEach(s => response.Add(
+                new DonationRequestResponse{
+                Id = s.Id,
+                ItemName = s.ItemName,
+                Quantity = s.Quantity,
+                QuantityType = s.QuantityType,
+                FeederId = s.FeederId,
+                DonorId = s.DonorId,
+                CreatedAt = s.CreatedAt
+            }));
+
+
+           if (!response.Any())
+            {
+                Console.WriteLine("No data found.");
+                return NotFound();
+            }
+            else
+            {
+                Console.WriteLine("Data found.");
+                return Ok(response);
+            }
+        }
+
+    // For Donor views:
          // returns all donation requests (oldest to newest)
         [HttpGet("GetItems")]
         public async Task<ActionResult<List<DonationRequestResponse>>> GetItem()
@@ -208,66 +229,40 @@ namespace JwtWebApi.Controllers
         }
 
         //returns all donation requests ordered from newest to oldest
-        // [HttpGet("GetItemsNewToOld")]
-        // public async Task<ActionResult<List<DonationRequestResponse>>> GetItemNewToOld()
-        // {
-        //     List <DonationRequestResponse> response = new List <DonationRequestResponse>();
+        [HttpGet("GetItemsNewToOld")]
+        public async Task<ActionResult<List<DonationRequestResponse>>> GetItemNewToOld()
+        {
+            List <DonationRequestResponse> response = new List <DonationRequestResponse>();
             
-        //     var dataList = await _client
-        //         .From<DonationRequest>()
-        //         // Only items that still need to be donated
-        //         .Where(s => s.DonorId == null)
-        //         // This is what the supabase c# client says you should do but it gives an error
-        //         .Order(d => d.Id, Ordering.Descending)
-        //         .Get();
+            var dataList = await _client
+                .From<DonationRequest>()
+                // Only items that still need to be donated
+                .Where(s => s.DonorId == null)
+                // This is what the supabase c# client says you should do but it gives an error
+                .Order(d => d.Id, Postgrest.Constants.Ordering.Descending)
+                .Get();
 
-        //     dataList.Models.ForEach(s => response.Add(new DonationRequestResponse{
-        //         Id = s.Id,
-        //         ItemName = s.ItemName,
-        //         Quantity = s.Quantity,
-        //         QuantityType = s.QuantityType,
-        //         FeederId = s.FeederId,
-        //         DonorId = s.DonorId,
-        //         CreatedAt = s.CreatedAt
-        //     }));
+            dataList.Models.ForEach(s => response.Add(new DonationRequestResponse{
+                Id = s.Id,
+                ItemName = s.ItemName,
+                Quantity = s.Quantity,
+                QuantityType = s.QuantityType,
+                FeederId = s.FeederId,
+                DonorId = s.DonorId,
+                CreatedAt = s.CreatedAt
+            }));
 
 
-        //    if (!response.Any())
-        //     {
-        //         Console.WriteLine("No data found.");
-        //         return NotFound();
-        //     }
-        //     else
-        //     {
-        //         Console.WriteLine("Data found.");
-        //         return Ok(response);
-        //     }
-        // }
+           if (!response.Any())
+            {
+                Console.WriteLine("No data found.");
+                return NotFound();
+            }
+            else
+            {
+                Console.WriteLine("Data found.");
+                return Ok(response);
+            }
+        }
     }
 }
-    
-
-    
-    //     [HttpPost("InsertItemRID")]
-    //     // [HttpHead("Access-Control-Allow-Origin: *")]
-    //     public async Task<int> InsertItemRID(DonationRequestDTO Item)
-    //     {
-    //         var entity = new DonationRequest()
-    //         {
-    //             // Id = Item.Id,
-    //             ItemName = Item.ItemName,
-    //             ItemQuantity = Item.ItemQuantity,
-    //             ItemQuantityType = Item.ItemQuantityType,
-    //             // RequestDate = Item.RequestDate,
-    //             feeder_id = Item.feeder_id,
-    //             donor_id = Item.donor_id
-    //         };
-
-    //         DBContext.DonationRequests.Add(entity);
-    //         await DBContext.SaveChangesAsync();
-    //         // var status = HttpStatusCode.Created + HttpRequestHeader
-    //         return entity.Id;
-    //     }
-
-    //     
-    // }

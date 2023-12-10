@@ -1,0 +1,165 @@
+@using Microsoft.AspNetCore.Components.Forms
+@inject NavigationManager NavigationManager
+@inject IShoppingListService ShoppingListService
+
+@if(!Edit)
+{
+    <div>
+        <button class="btn btn-primary button" @onclick="(()=>Edit=true)">Edit Shopping List</button>
+    </div>
+    <section class="card">
+        <div class="card-header">
+            <h4>Shopping List</h4> 
+        </div>
+        
+        <table id="shopping-list-table" class="table semester-table">
+            <col><col><col>
+            <thead>
+                <tr class="table-header">
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* Put all of the accepted ones first *@
+                @foreach (var i in currList)
+                {
+                <tr>
+                    <td>
+                        <p>@i.ItemName</p>
+                    </td>
+                    <td>
+                        <p>@i.Quantity @i.QuantityType</p>
+                    </td>
+                    <td>
+                        @if(i.DonorId == null)
+                        {
+                            <label>Pending</label>
+                        }
+                        else
+                        {
+                            <label>Accepted</label>
+                        }
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <div class="add-section">
+            <InputText placeholder="Canned Beans" @bind-Value="model.ItemName" />
+            <ValidationMessage For="@(() => model.ItemName)" />
+
+            <InputNumber @bind-Value="model.Quantity"/>
+            <ValidationMessage For="@(() => model.Quantity)" />
+
+            @* <InputSelect TValue="string" class="box-dropdown form-control qt" @bind-Value="model.QuantityType"> *@
+            <InputSelect TValue="string" class="format-dropdown" @bind-Value="model.QuantityType">
+                <option>lbs</option>
+                <option>units</option>
+            </InputSelect>
+            <ValidationMessage For="@(() => model.QuantityType)" />
+
+        
+            <button class="add" disabled="@loading">
+                    @if (loading) 
+                {
+                    <span class="spinner-border spinner-border-sm mr-1"></span>
+                }
+                +
+            </button>
+        </div>
+        </EditForm>
+    </section>          
+}
+else{
+    <CascadingValue Name="Edit" Value="@Edit">
+        <EditGroceryList Id="@Id"></EditGroceryList>
+    </CascadingValue>
+}
+        
+@* } *@
+
+
+@code{
+    [Parameter]
+    public string? Id {get; set;}
+    
+    [Parameter]
+    public bool Edit { get; set; }
+
+    private bool IsDisabled = false;
+    
+ 
+    
+    @* Model that is used for the EditForm*@
+    private DonationRequest model = new DonationRequest();
+
+    public List<DonationRequest> currList = new List<DonationRequest>();
+
+    private bool loading = false;
+
+    @* 
+    Get a list of all donation requests where the id is not present in the donation progress table/where donor id = null
+        - cannot edit/delete a donation that has been accepted/donated
+            - could display them but not make them editable or deletable/add a note at the top:
+                Showing all items that are Pending
+        If the checkbox is selected the ids are added to an idsToDelete list 
+        when delete is selected they are deleted
+        For Update/Edit:
+            there will be an edit button on the right of the row, if the button is selected, the row becomes editable?
+    *@
+    protected override async Task OnInitializedAsync()
+    {
+        Edit = false;
+        
+        try{
+            currList = await ShoppingListService.GetItemsByFeeder(Id);
+        }
+        catch(Exception e)
+        {
+            @*TO DO: Display a "Try again later" message*@
+            Console.WriteLine(e.Message);
+        }
+    }
+
+    private void EditList()
+    {
+        Edit = true;
+        
+    }
+    
+    public void OnValidSubmit()
+    {
+        //Gets the Id of the Feeder from the logged in user
+        model.FeederId = Id;
+
+        try{
+            var s = ShoppingListService.Register(model);
+            //Adds the new donation request to the visible list on the page
+            currList.Add(model);
+
+            model = new DonationRequest();
+            model.ItemName = string.Empty;
+            model.Quantity = 0;
+        }
+        catch(Exception e)
+        {
+            //TO DO: display this message
+            string message = "Something went wrong, try again later.";
+        }
+    }
+
+    //Testing:
+    //Used for testing the Parameter
+    @* protected override void OnParametersSet()
+    {
+        // This method is called whenever parameters are set (including cascading parameters)
+        // You can react to parameter changes here
+        Console.WriteLine($"Id changed to: {Id}");
+        StateHasChanged();
+    } *@
+}

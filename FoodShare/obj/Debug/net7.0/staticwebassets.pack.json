@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets/images/HANDSHAKE.png"
     },
     {
+      "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/images/HANDSHAKE1.png",
+      "PackagePath": "staticwebassets/images/HANDSHAKE1.png"
+    },
+    {
       "Id": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/images/handshake2.jpeg",
       "PackagePath": "staticwebassets/images/handshake2.jpeg"
     },

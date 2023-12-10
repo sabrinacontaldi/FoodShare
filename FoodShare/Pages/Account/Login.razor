@@ -4,6 +4,7 @@
 @* @inject IAccountService AccountService *@
 @* @inject IAlertService AlertService *@
 @inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 @inject ISBUserService UserService
 @inject IJSRuntime JSRuntime
@@ -78,6 +79,8 @@
             await JSRuntime.InvokeVoidAsync("localStorage.setItem", "jwt", token);
             Console.WriteLine(token);
             
+
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
             NavigationManager.NavigateTo("/", forceLoad: true);
         }
         catch(Exception ex)

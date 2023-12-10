@@ -1,12 +1,10 @@
 ﻿@page "/"
 @inject IJSRuntime JSRuntime
-@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@* @inject Blazored.LocalStorage.ILocalStorageService LocalStorage *@
+
 @using System.Security.Claims
-@* @inject CustomAuthenticationStateProvider AuthState *@
-@* Auth0 *@
-@* @attribute [Authorize] *@
-@* @attribute [AllowAnonymous] *@
+
 <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" 
@@ -15,8 +13,6 @@
 
 <PageTitle>Home</PageTitle>
 
-@* PG AUTH + RBAUTH *@
-    
 <AuthorizeView Roles="Feeder">
     <Authorized>
         <h1>You're logged in as a Feeder, @context.User.Identity.Name</h1>
@@ -36,7 +32,7 @@
         <h1>You're logged in as a Donor, @context.User.Identity.Name</h1>
         @if (isParentInitialized)
         {
-            
+            <FoodShare.Pages.Donor.DonorHome Id = "@id" Zip="@zipCode"></FoodShare.Pages.Donor.DonorHome>
         }
         else
         {
@@ -45,40 +41,30 @@
     </Authorized>
 </AuthorizeView>
 
-@* ------------- *@
 <AuthorizeView>
     <NotAuthorized>
-
    <body class="main-page">
         <div class="box">
             <div class="card">
-                @* <i class="fa-solid fa-laptop"></i> *@
                 <h5>What do we do?</h5>
                 <div class="pra">
                     <p>We connect those who have excess food with those who don't have enough food, opening a channel of communication between
                     the two parties.</p>
-                    <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p> -->
                 </div>
             </div>
 
             <div class= "card" >
-                @* <i class="fa-sharp fa-solid fa-database"></i> *@
                 <h5>Why do we do it?</h5>
                 <div class="pra">
-                    <p>The goal is to reduce food waste and help make the food dontaion process more efficient and effective.</p>
-
-                    <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p> -->	
+                    <p>The goal is to reduce food waste and help make the food dontaion process more efficient and effective.</p>	
                 </div>
             </div>
 
             <div class= "card" >
-                @* <i class="fa-solid fa-laptop"></i> *@
                 <h5>How can you help?</h5>
                 <div class="pra">
                     <p>Sign up and join our team! At this current moment we are focusing on Grocery stores as donors and food banks and 
                     shelters as distributors.</p>
-
-                    <!-- <p style="text-align: center;"><a class="button" href="#">Read More</a></p>	 -->
                 </div>
             </div>
         </div>    
@@ -95,36 +81,45 @@
     [CascadingParameter]
     private Task<AuthenticationState>? authenticationState { get; set; }
     
-    protected string? id {get; set;}
+    protected string? id {get; set;} = null;
+    protected string? zipCode { get; set; } = null;
 
     private bool isParentInitialized = false;
 
     protected override async Task OnInitializedAsync()
     {
-        @* Save id *@
-        @* Use id as a cascading parameter into different components *@
         if (authenticationState is not null)
         {
-
-            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-            var user = authState?.User;
-           
-            if (user?.Identity is not null && user.Identity.IsAuthenticated)
+            try
             {
-               var nameIdentifierClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-               if (nameIdentifierClaim != null)
+                var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+                var user = authState?.User;
+            
+                if (user?.Identity is not null && user.Identity.IsAuthenticated)
                 {
-                    id = nameIdentifierClaim.Value;
-                    @* check to see if it works *@
-                    Console.WriteLine(id);
+                var nameIdentifierClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (nameIdentifierClaim != null)
+                    {
+                        id = nameIdentifierClaim.Value;
+                        Console.WriteLine(id);
+                    }
+                    var zip = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PostalCode);
+                    if (zip != null)
+                    {
+                        zipCode = zip.Value;
+                        Console.WriteLine(zip);
+                    }
+                }
+
+                if(id != null)
+                {
+                    isParentInitialized = true;
                 }
             }
-
-            if(id != null)
+            catch (Exception e)
             {
-                isParentInitialized = true;
+                Console.WriteLine(e.Message);
             }
         }
     }
-
 }

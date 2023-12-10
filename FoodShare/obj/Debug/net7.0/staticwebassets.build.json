@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2Qw2jcRANiDYtz8K6HgBGSxouu/WgR9bZqrMgxGIfW4=",
+  "Hash": "eIlu6JzN4TsoznFL/E4BhySwAiV+4JyYrrX3Xetx60U=",
   "Source": "FoodShare",
   "BasePath": "/",
   "Mode": "Root",
@@ -17324,6 +17324,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/HANDSHAKE.png"
+    },
+    {
+      "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/images/HANDSHAKE1.png",
+      "SourceId": "FoodShare",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "images/HANDSHAKE1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/HANDSHAKE1.png"
     },
     {
       "Identity": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/wwwroot/images/handshake2.jpeg",
