@@ -6640,9 +6640,11 @@
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.FoodShare.props
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.FoodShare.props
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/staticwebassets.pack.json
+/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Components/Donor/DonorHome.razor.rz.scp.css
+/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Components/Feeder/EditGroceryList.razor.rz.scp.css
+/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Components/Feeder/GroceryList.razor.rz.scp.css
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Pages/Account/CreateAccount.razor.rz.scp.css
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Pages/Account/Login.razor.rz.scp.css
-/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Pages/Donor/MoreInfo.razor.rz.scp.css
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Pages/Index.razor.rz.scp.css
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Shared/MainLayout.razor.rz.scp.css
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/bundle/FoodShare.styles.css
@@ -7099,6 +7101,4 @@
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/refint/FoodShare.dll
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/FoodShare.pdb
 /Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/ref/FoodShare.dll
-/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Components/Feeder/EditGroceryList.razor.rz.scp.css
-/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Components/Feeder/GroceryList.razor.rz.scp.css
-/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Components/Donor/DonorHome.razor.rz.scp.css
+/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/Debug/net7.0/scopedcss/Components/Donor/MoreInfo.razor.rz.scp.css

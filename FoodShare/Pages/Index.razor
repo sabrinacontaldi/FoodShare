@@ -32,7 +32,7 @@
         <h1>You're logged in as a Donor, @context.User.Identity.Name</h1>
         @if (isParentInitialized)
         {
-            <FoodShare.Pages.Donor.DonorHome Id = "@id" Zip="@zipCode"></FoodShare.Pages.Donor.DonorHome>
+            <DonorHome Id = "@id" Zip="@zipCode"></DonorHome>
         }
         else
         {
@@ -46,31 +46,30 @@
    <body class="main-page">
         <div class="box">
             <div class="card">
-                <h5>What do we do?</h5>
+                <h5>What?</h5>
                 <div class="pra">
-                    <p>We connect those who have excess food with those who don't have enough food, opening a channel of communication between
+                    <p>We connect those who have excess food with those who don't have enough, opening a channel of communication between
                     the two parties.</p>
                 </div>
             </div>
 
             <div class= "card" >
-                <h5>Why do we do it?</h5>
+                <h5>Why?</h5>
                 <div class="pra">
                     <p>The goal is to reduce food waste and help make the food dontaion process more efficient and effective.</p>	
                 </div>
             </div>
 
             <div class= "card" >
-                <h5>How can you help?</h5>
+                <h5>How?</h5>
                 <div class="pra">
-                    <p>Sign up and join our team! At this current moment we are focusing on Grocery stores as donors and food banks and 
-                    shelters as distributors.</p>
+                    <p>We focus on connecting grocery stores to food banks and homeless shelters. Sign up and join our team!</p>
                 </div>
             </div>
         </div>    
         @* I'm pretty sure there's a better way to navigate between the pages *@
         <div class="buttons button-center button-horizontal">
-            <a href="/account/create-account" asp-page="/account/create-account" class="button" type="button">Create an Account</a>
+            <a href="/account/create-account" asp-page="/account/create-account" class="button" type="button">Sign Up</a>
             <a href="/account/login" asp-page="/account/login" class="button" type="button">Login</a>
         </div> 
      </body>

@@ -1,0 +1,87 @@
+/* CSS FOR MORE INFO COMPONENT */
+.card[b-l5e0b7qkpc]{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    /* align-items: center; */
+    position:  center;
+    justify-content: center;
+    /* background-color: #53af8a; */
+}
+.card-header[b-l5e0b7qkpc]{
+    width: 100%;
+    background-color: #53af8a;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    margin-bottom: 2rem;
+}
+.card-footer[b-l5e0b7qkpc]{
+    width: 100%;
+    background-color: #53af8a;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    /* margin-bottom: 2rem; */
+    /* padding-bottom: 0.5rem; */
+    /* justify-content: space-between; */
+}
+.card-footer .btn[b-l5e0b7qkpc]{
+    width: 125px;
+    color: #53af8a;
+    background: #fff;
+    border-radius: 3px;
+    padding: 8px 5px;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+.card-body[b-l5e0b7qkpc]{
+    background-color: white;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    /* flex: ; */
+}
+.card-body p[b-l5e0b7qkpc]{
+    text-align: center;
+}
+.card-body h3[b-l5e0b7qkpc]{
+    margin-top: 5px;
+    text-align: center;
+}
+
+.item[b-l5e0b7qkpc]{
+    display: flex;
+    /* justify-content: space-between; */
+    margin-inline-start: 15px;
+    width: 60%;
+}
+.item p[b-l5e0b7qkpc]{
+    margin-right: 20px;
+}
+
+/* Change color of selected row */
+ table[b-l5e0b7qkpc] {
+    /* border-collapse: collapse; */ 
+    margin-left: 10%;
+    width: 80%;
+    align-items: center;
+    margin-bottom: 2rem;
+    /* position: center; */ 
+}
+
+
+/* Buttons */
+.btn[b-l5e0b7qkpc]{
+    width: 125px;
+    background: #53af8a;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px 5px;
+    text-align: center;
+    font-weight: 200;
+    cursor: pointer;
+}

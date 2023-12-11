@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
-using FoodShare.Models.Account.Profile;
+using FoodShare.Models.Account;
 
 namespace FoodShare.Services
 {

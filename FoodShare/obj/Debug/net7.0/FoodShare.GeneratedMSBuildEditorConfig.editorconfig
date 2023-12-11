@@ -26,8 +26,8 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/Donor/Dialog.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Eb25vci9EaWFsb2cucmF6b3I=
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/Dialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9EaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Shared/AccessControl.razor]
@@ -41,6 +41,10 @@ build_metadata.AdditionalFiles.CssScope =
 [/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/Donor/DonorHome.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Eb25vci9Eb25vckhvbWUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-xy81jiy8v9
+
+[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/Donor/MoreInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Eb25vci9Nb3JlSW5mby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-l5e0b7qkpc
 
 [/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Components/Feeder/EditGroceryList.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9GZWVkZXIvRWRpdEdyb2NlcnlMaXN0LnJhem9y
@@ -57,10 +61,6 @@ build_metadata.AdditionalFiles.CssScope = b-nuziuaw7kd
 [/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Account/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9Mb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-yys5osjy8c
-
-[/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Donor/MoreInfo.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRG9ub3IvTW9yZUluZm8ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-e96nzluehl
 
 [/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=

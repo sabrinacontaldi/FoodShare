@@ -6,88 +6,94 @@
 @inject IProfileService ProfileService
 @inject NavigationManager NavigationManager
 
-<body>
-    <div class="page">
-    <div class="wrapper">
-        <div class="links">
-            <h5>Welcome back! These are the locations near you that need donations:</h5>
-            <div class="filter">
-                <select @onchange="()=>location=!location" class="select">
-                    <option @onselect="()=>location=true">Organizations</option>
-                    <option @onselect="()=>location=false">Items</option>
-                </select>
-                @if(location)
-                {
-                    <select class="select" @bind="filter" @bind:event="onchange">
-                        @* <option >Closest to Furthest</option> *@
-                        @* <option>Most items to least items</option>
-                        <option>Least items to most items</option> *@
+@if(!moreInfo)
+{
+    <body>
+        <div class="page">
+        <div class="wrapper">
+            <div class="links">
+                <h5>Welcome back! These are the locations near you that need donations:</h5>
+                <div class="filter">
+                    <select @onchange="()=>location=!location" class="select">
+                        <option @onselect="()=>location=true">Organizations</option>
+                        <option @onselect="()=>location=false">Items</option>
                     </select>
-                }
-                else
-                {
-                    <select class="select"@bind="filter" @bind:event="onchange">
-                        <option>Oldest to Newest</option>
-                        <option>Newest to Oldest</option>
-                    </select>
-                }
-                <button class="filter-btn" @onclick="()=>FetchData()">Filter</button>
+                    @if(location)
+                    {
+                        @* <select class="select" @bind="filter" @bind:event="onchange">
+                            @* <option >Closest to Furthest</option> *@
+                            @* <option>Most items to least items</option>
+                            <option>Least items to most items</option> *@ @*
+                        </select> *@
+                    }
+                    else
+                    {
+                        <select class="select"@bind="filter" @bind:event="onchange">
+                            <option>Oldest to Newest</option>
+                            <option>Newest to Oldest</option>
+                        </select>
+                    }
+                    <button class="filter-btn" @onclick="()=>FetchData()">Filter</button>
+                </div>
             </div>
+        
+
+            @if(feeders != null)
+            {
+            <div class ="view_main">
+                    <div class="view_wrap list-view">
+                        @foreach (Profile feeder in @feeders)
+                        {
+                            <div class="view_item">
+                                <div class="vi_left">
+                                    <img src="/images/HANDSHAKE.png" alt="tomato">    
+                                </div>
+                                <div class="vi_center">
+                                    <p class="title">@feeder.Name</p>
+                                </div>
+                                <br/>
+                                <div class="vi_right">
+                                    @* <button class="btn" @onclick="()=> ShowMoreInfo(feeder)" >More Info</button> *@
+                                    <button class="btn" @onclick="()=> ShowMoreInfo(feeder.Id)" >More Info</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+            </div>
+            }
+            @if(items != null)
+            {
+            <div class ="view_main">
+                    <div class="view_wrap list-view">
+                        @foreach (DonationRequest item in @items)
+                        {
+                            <div class="view_item">
+                                <div class="vi_left">
+                                    @* <img src="/images/HANDSHAKE.png" alt="tomato">     *@
+
+                                </div>
+                                <div class="vi_center">
+                                    <p class="title">@item.ItemName</p>
+                                    <p class="content">@item.Quantity @item.QuantityType</p>
+                                </div>
+                                <br/>
+                                <div class="vi_right">
+                                    <button class="btn" @onclick="()=> ShowMoreInfo(item.FeederId)" >More Info</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+            </div>
+            }
+
         </div>
-       
-
-        @if(feeders != null)
-        {
-        <div class ="view_main">
-                <div class="view_wrap list-view">
-                    @foreach (Profile feeder in @feeders)
-                    {
-                        <div class="view_item">
-                            <div class="vi_left">
-                                <img src="/images/HANDSHAKE.png" alt="tomato">    
-                            </div>
-                            <div class="vi_center">
-                                <p class="title">@feeder.Name</p>
-                            </div>
-                            <br/>
-                            <div class="vi_right">
-                                 @* <button class="btn" @onclick="()=> ShowMoreInfo(feeder)" >More Info</button> *@
-                                 <button class="btn" @onclick="()=> ShowMoreInfo(feeder.Id)" >More Info</button>
-                            </div>
-                        </div>
-                    }
-                </div>
         </div>
-        }
-        @if(items != null)
-        {
-        <div class ="view_main">
-                <div class="view_wrap list-view">
-                    @foreach (DonationRequest item in @items)
-                    {
-                        <div class="view_item">
-                            <div class="vi_left">
-                                @* <img src="/images/HANDSHAKE.png" alt="tomato">     *@
-
-                            </div>
-                            <div class="vi_center">
-                                <p class="title">@item.ItemName</p>
-                                <p class="content">@item.Quantity @item.QuantityType</p>
-                            </div>
-                            <br/>
-                            <div class="vi_right">
-                                 <button class="btn" @onclick="()=> ShowMoreInfo(item.FeederId)" >More Info</button>
-                            </div>
-                        </div>
-                    }
-                </div>
-        </div>
-        }
-
-    </div>
-</div>
-
-</body>
+    </body>
+}
+else
+{
+    <MoreInfo FeederId="@FeederId" moreInfo="@moreInfo"></MoreInfo>
+}
 
                
 @code{
@@ -97,25 +103,21 @@
 
     [Parameter]
     public string? Zip { get; set; }
+    
+    [Parameter]
+    public bool moreInfo { get; set; }
+
+    [Parameter]
+    public string? FeederId { get; set; }
 
     //this variable is true if the user is filtering by location and false if the user is filtering by item
     private bool location = true;
-
-    @* UserInfo cUser = CurrentUserService._currentUser; *@
-    
-    protected override async Task OnInitializedAsync()
-    {
-        @* cUser = CurrentUserService._currentUser; *@
-    } 
-
     public void goLogin()
     {
         NavigationManager.NavigateTo("/account/login");
     }
 
-    string filter = "Closest to Furthest";
-
-    @* private bool IsDisabled = false; *@
+    string filter = "";
 
     public List<Profile> feeders = null;
     
@@ -132,18 +134,7 @@
         switch(filter)
         {
             //LOCATION FILTER OPTIONS
-            case "Closest to Furthest":
-                feeders = await ProfileService.GetFeeders();
-                @* feeders = await FeederService.GetFeedersCloseToFar(); *@
-                break;
-            case "Most items to least items":
-                feeders = await ProfileService.GetFeeders();
-                @* feeders = await FeederService.GetFeedersMostToLeast(); *@
-                break;
-            case "Least items to most items":
-                feeders = await ProfileService.GetFeeders();
-                @* feeders = await FeederService.GetFeedersLeastToMost(); *@
-                break;
+
             
             //ITEM FILTER OPTIONS
             case "Oldest to Newest":
@@ -153,7 +144,7 @@
                 items = await ShoppingListService.GetItemsNewToOld();
                 break;
 
-            //The default is not filtered 
+            //The default is Feeders 
             default:
                 feeders = await ProfileService.GetFeeders();
                 break;
@@ -164,7 +155,9 @@
 
     private void ShowMoreInfo(string id)
     {
-        NavigationManager.NavigateTo($"donor/MoreInfo/{id}");
+        FeederId = id;
+        moreInfo = true;
+        @* NavigationManager.NavigateTo($"donor/MoreInfo/{id}"); *@
     }
 
 }
