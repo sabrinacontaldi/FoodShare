@@ -46,13 +46,13 @@ build_metadata.AdditionalFiles.CssScope = b-xy81jiy8v9
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Eb25vci9Nb3JlSW5mby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-l5e0b7qkpc
 
-[/Users/sabrinacontaldi/Desktop/FoodShare/FoodShare/Components/Feeder/EditGroceryList.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9GZWVkZXIvRWRpdEdyb2NlcnlMaXN0LnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-8prj7nrbzi
+[/Users/sabrinacontaldi/Desktop/FoodShare/FoodShare/Components/Feeder/EditShoppingList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9GZWVkZXIvRWRpdFNob3BwaW5nTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-qnqdrzy20o
 
-[/Users/sabrinacontaldi/Desktop/FoodShare/FoodShare/Components/Feeder/GroceryList.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9GZWVkZXIvR3JvY2VyeUxpc3QucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-decoqwx4m0
+[/Users/sabrinacontaldi/Desktop/FoodShare/FoodShare/Components/Feeder/ShoppingList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9GZWVkZXIvU2hvcHBpbmdMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-moe9r22gdx
 
 [/Users/sabrinacontaldi/Desktop/FoodShare/FoodShare/Pages/Account/CreateAccount.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9DcmVhdGVBY2NvdW50LnJhem9y
