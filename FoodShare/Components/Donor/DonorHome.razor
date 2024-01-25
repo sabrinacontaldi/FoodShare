@@ -18,13 +18,13 @@
                         <option @onselect="()=>location=true">Organizations</option>
                         <option @onselect="()=>location=false">Items</option>
                     </select>
-                    @if(location)
+                    @* @if(location)
                     {
                         @* <select class="select" @bind="filter" @bind:event="onchange">
                             @* <option >Closest to Furthest</option> *@
                             @* <option>Most items to least items</option>
                             <option>Least items to most items</option> *@ @*
-                        </select> *@
+                        </select> *@ @*
                     }
                     else
                     {
@@ -32,7 +32,7 @@
                             <option>Oldest to Newest</option>
                             <option>Newest to Oldest</option>
                         </select>
-                    }
+                    } *@
                     <button class="filter-btn" @onclick="()=>FetchData()">Filter</button>
                 </div>
             </div>
@@ -131,11 +131,17 @@ else
         items = null;
         feeders = null;
 
-        switch(filter)
+        if(location)
+            feeders = await ProfileService.GetFeeders();
+        else
+            items = await ShoppingListService.GetAllItems();
+
+        @* switch(filter)
         {
             //LOCATION FILTER OPTIONS
 
-            
+            if location
+                
             //ITEM FILTER OPTIONS
             case "Oldest to Newest":
                 items = await ShoppingListService.GetAllItems();
@@ -148,7 +154,7 @@ else
             default:
                 feeders = await ProfileService.GetFeeders();
                 break;
-        }
+        } *@
         clicked = true;
 
     }

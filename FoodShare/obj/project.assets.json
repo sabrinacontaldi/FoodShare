@@ -21044,11 +21044,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/FoodShare.csproj",
+      "projectUniqueName": "/Users/sabrinacontaldi/Desktop/FoodShare/FoodShare/FoodShare.csproj",
       "projectName": "FoodShare",
-      "projectPath": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/FoodShare.csproj",
+      "projectPath": "/Users/sabrinacontaldi/Desktop/FoodShare/FoodShare/FoodShare.csproj",
       "packagesPath": "/Users/sabrinacontaldi/.nuget/packages/",
-      "outputPath": "/Users/sabrinacontaldi/Desktop/FoodShareProject/FoodShare/obj/",
+      "outputPath": "/Users/sabrinacontaldi/Desktop/FoodShare/FoodShare/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/sabrinacontaldi/.nuget/NuGet/NuGet.Config"

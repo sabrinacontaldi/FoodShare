@@ -4,7 +4,13 @@
 
 @if(!Edit)
 {
-    <div>
+   
+    <div class="info">
+        <h2>What donations do you need?</h2>
+        <p>Add items to the shopping list below. If the status of an item is pending that means that no one has agreed to donate it yet. If the status is accepted that means that someone has agreed to donate it. 
+            Select the Edit Shopping List button to remove items that are no longer needed from your list. Once an item has been accepted it cannot be removed from your shopping list.</p>
+    </div>
+     <div>
         <button class="btn btn-primary button" @onclick="(()=>Edit=true)">Edit Shopping List</button>
     </div>
     <section class="card">
@@ -57,9 +63,11 @@
             <ValidationMessage For="@(() => model.Quantity)" />
 
             @* <InputSelect TValue="string" class="box-dropdown form-control qt" @bind-Value="model.QuantityType"> *@
-            <InputSelect TValue="string" class="format-dropdown" @bind-Value="model.QuantityType">
+            <InputSelect TValue="string" class="format-dropdown dd" @bind-Value="model.QuantityType">
+                <option>-</option>
+                <option>oz</option>
                 <option>lbs</option>
-                <option>units</option>
+                <option>units/cans/boxes</option>
             </InputSelect>
             <ValidationMessage For="@(() => model.QuantityType)" />
 

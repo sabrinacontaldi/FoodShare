@@ -1,7 +1,7 @@
 {
   "entryAssembly": "FoodShare",
   "resources": {
-    "hash": "sha256-cgffek1VYKUP/s2jYOoeC0MC5ihHC2CGISg+bdVzqf0=",
+    "hash": "sha256-+9NuzVsml+lCdtjpv0AgKBEzs/njjzEaa/9SaqAUdxE=",
     "runtime": {
       "dotnet.7.0.14.fpp0wrlyfm.js": "sha256-YWGUknGRzP/fgO6YjvCJKPVQNZAPEd6ll+rHfQEIW+I=",
       "dotnet.timezones.blat": "sha256-t5xviiOQTfAsF0UDhmcyalKiaehUmf/sqJl97tmPM0M=",
@@ -292,10 +292,10 @@
       "mscorlib.dll": "sha256-YcsJInaT/kw3Vrm+SESegPxvT/Lr9RE6rE/KnxWIIc0=",
       "netstandard.dll": "sha256-TztlSRjADgiEABbiAMdWZpHrUVd8wnRtQRAvlwmRP/4=",
       "System.Private.CoreLib.dll": "sha256-BAhrZ8Zg3cJKQipxdzqQo+9jtPkOkRx1ou3oIhDohtk=",
-      "FoodShare.dll": "sha256-byAqmfwXr/5xdOgA4kI7fr606W11W73hNSxAY5oywAY="
+      "FoodShare.dll": "sha256-660FLn5+5CSShHfvaX3ZDa7T+hMnS0AciOr42p3Hihc="
     },
     "pdb": {
-      "FoodShare.pdb": "sha256-KHwGTsts8cGCXgIEpGNN3SXo3PVJdasbvbFsQKIAbcI="
+      "FoodShare.pdb": "sha256-X3SAkAAc8eXep0d905kawRwRZlE8PzCr3xV2GqUJ8/0="
     },
     "satelliteResources": {
       "cs": {

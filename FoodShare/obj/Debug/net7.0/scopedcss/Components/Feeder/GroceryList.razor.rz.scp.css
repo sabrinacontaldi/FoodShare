@@ -58,7 +58,7 @@
 		height: 2rem;
 	}
 	.format-dropdown[b-decoqwx4m0]{
-		height: 2rem;
+		height: 100%;
 		width: 4rem;
 
 	}
@@ -108,4 +108,11 @@
 }
 .qt[b-decoqwx4m0]{
 	width: 30%;
+}
+.dd[b-decoqwx4m0]{
+	height: 100%;
+}
+
+.info[b-decoqwx4m0]{
+	color: white;
 }
