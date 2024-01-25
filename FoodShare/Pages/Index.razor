@@ -15,7 +15,9 @@
 
 <AuthorizeView Roles="Feeder">
     <Authorized>
-        <h1>You're logged in as a Feeder, @context.User.Identity.Name</h1>
+        <h1>Welcome back, @context.User.Identity.Name!</h1>
+        @* <h2>What donations do you need?</h2> *@
+
         @if (isParentInitialized)
         {
             <GroceryList Id = "@id"></GroceryList>
@@ -29,7 +31,8 @@
 </AuthorizeView>
 <AuthorizeView Roles ="Donor">
     <Authorized>
-        <h1>You're logged in as a Donor, @context.User.Identity.Name</h1>
+        <h1>@context.User.Identity.Name</h1>
+        
         @if (isParentInitialized)
         {
             <DonorHome Id = "@id" Zip="@zipCode"></DonorHome>

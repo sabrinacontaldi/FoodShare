@@ -17,7 +17,7 @@ namespace FoodShare.Models
         public string ItemName { get; set; }
 
         [Required]
-        [RegularExpression("^(?!-).*$", ErrorMessage = "Please select a valid value.")]
+        // [RegularExpression("^(?!-).*$", ErrorMessage = "Please select a valid value.")]
         public string QuantityType { get; set; }
 
         [Required]

@@ -58,7 +58,7 @@
 		height: 2rem;
 	}
 	.format-dropdown{
-		height: 2rem;
+		height: 100%;
 		width: 4rem;
 
 	}
@@ -108,4 +108,11 @@
 }
 .qt{
 	width: 30%;
+}
+.dd{
+	height: 100%;
+}
+
+.info{
+	color: white;
 }

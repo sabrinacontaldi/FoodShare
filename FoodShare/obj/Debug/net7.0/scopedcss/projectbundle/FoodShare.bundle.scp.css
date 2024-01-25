@@ -560,7 +560,7 @@ table #course-table thead tr {
 		height: 2rem;
 	}
 	.format-dropdown[b-decoqwx4m0]{
-		height: 2rem;
+		height: 100%;
 		width: 4rem;
 
 	}
@@ -610,6 +610,13 @@ table #course-table thead tr {
 }
 .qt[b-decoqwx4m0]{
 	width: 30%;
+}
+.dd[b-decoqwx4m0]{
+	height: 100%;
+}
+
+.info[b-decoqwx4m0]{
+	color: white;
 }
 /* /Pages/Account/CreateAccount.razor.rz.scp.css */
 body[b-nuziuaw7kd]{
@@ -973,6 +980,10 @@ h5[b-ho0mgu62t8]{
 	color: #53af8a;
 	font-size: 30px;
 	margin-bottom: 15px;
+}
+h2[b-ho0mgu62t8]{
+	text-align: center;
+	color: white;
 }
 .pra p[b-ho0mgu62t8]{
 	color: #191919;
