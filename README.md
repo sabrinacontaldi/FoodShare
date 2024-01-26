@@ -15,6 +15,10 @@ _Authentication_: Supabase + custom JWT stored in local storage
 
 
 **A walk through of the project can be found below:**
-https://github.com/sabrinacontaldi/FoodShare/assets/68654728/126b07ab-1358-4e20-9b35-893713e73e63
+
+
+https://github.com/sabrinacontaldi/FoodShare/assets/68654728/16fd00e0-b5e1-437e-807b-a3a5b54500da
+
+
 
 
